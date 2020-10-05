@@ -13,7 +13,7 @@ class Help extends Command {
 
     async run(message, args) {
 
-        return message.channel.send('sup')
+        return message.channel.send('hello')
     }
 }
 
