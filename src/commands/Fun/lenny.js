@@ -1,6 +1,6 @@
 const Command = require('../../core/Command');
 
-class Help extends Command {
+class Lenny extends Command {
     constructor(rice) {
         super(rice, {
             name: 'lenny',
@@ -17,4 +17,4 @@ class Help extends Command {
     }
 }
 
-module.exports = lenny;
+module.exports = Lenny;

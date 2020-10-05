@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const info = require('../config.json')
 
 module.exports.init = () => {
     
@@ -11,7 +13,7 @@ module.exports.init = () => {
             family: 4,
         }
 
-        mongoose.connect(`connection string`, dbOptions)
+        mongoose.connect(info.mongo, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
