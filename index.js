@@ -1,11 +1,12 @@
+require('dotenv').config();
+
 const Rice = require('./core/Rice');
-const config = require('./config');
 
 const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
-const rice = new Rice(config.token);
+const rice = new Rice(process.env.TOKEN);
 
 const setup = async () => {
 
