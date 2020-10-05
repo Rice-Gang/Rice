@@ -10,10 +10,6 @@ const rice = new Rice(process.env.TOKEN, {
     allowedMentions: []
 });
 
-// const rice = new Rice(process.env.TOKEN,) {
-//     allowedMentions: []
-// };
-
 const setup = async () => {
 
     const dirs = await readdir(`./commands/`);
