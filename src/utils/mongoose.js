@@ -11,7 +11,7 @@ module.exports.init = () => {
             family: 4,
         }
 
-        mongoose.connect(`mongodb+srv://poweruser:mbrIoa6CEscAV6Cu@ricebot.5ifhs.azure.mongodb.net/Rice?retryWrites=true&w=majority`, dbOptions)
+        mongoose.connect(`connection string`, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
