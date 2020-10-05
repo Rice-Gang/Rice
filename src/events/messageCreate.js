@@ -11,7 +11,7 @@ module.exports = class {
 
         if (!message.content.startsWith(prefix)) return;
 
-        const msg = message.cleanContent.split(' ');
+        const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
 
