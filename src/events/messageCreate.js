@@ -5,7 +5,7 @@ module.exports = class {
 
     async run(message) {
 
-        if (message.channel.guild.id === undefined) return;
+        if (message.channel.guild === undefined) return;
 
         const prefix = 'rice ';
 
