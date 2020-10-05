@@ -13,13 +13,15 @@ module.exports = class {
 
         const prefix = 'rice ';
 
-        if (!message.content.startsWith(prefix)) return;
+        if (!message.content.toLowerCase().startsWith(prefix)) return;
 
         const msg = message.cleanContent.split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
+
+        if (!command) return;
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
