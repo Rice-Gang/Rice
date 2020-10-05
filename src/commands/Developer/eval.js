@@ -11,10 +11,14 @@ class Eval extends Command {
             description: 'Evaluates some javascript code.',
             botPerms: ['sendMessages'],
             memberPerms: [],
+            category: 'Developer'
         });
     }
 
     async run(message, args) {
+
+        const client = this.rice,
+            rice = this.rice;
 
         let input = args.join(' ');
 
