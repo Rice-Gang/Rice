@@ -6,6 +6,7 @@ module.exports = class {
     async run(message) {
 
         if (message.channel.guild === undefined) return;
+        if (message.author.bot) return;
 
         const prefix = 'rice ';
 
