@@ -21,6 +21,17 @@ const setup = async () => {
             }
         });
     });
+
+    const events = await readdir('./events');
+    console.log(`${events.length} events loading.`);
+    events.forEach((evt) => {
+        const evtName = evt.split('.')[0];
+        console.log(`Event loaded ${evtName}`);
+        const event = new (require(`./events/${file}`))(rice);
+        rice.on(evtName, (...args) => event.run(...args));
+        delete require.cache[require.resolve(`./events/${file}`)];
+    });
+
 }
 
 setup();
