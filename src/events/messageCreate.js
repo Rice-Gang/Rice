@@ -10,12 +10,13 @@ module.exports = class {
         const developers = ['699312838455459911', '423687326405885957', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672']
 
         if (message.channel.guild === undefined) return;
+        if (message.author.bot) return;
 
         const prefix = 'rice ';
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-        const msg = message.cleanContent.split(' ');
+        const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
 

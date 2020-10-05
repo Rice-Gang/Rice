@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const Rice = require('./core/Rice');
 
+const mongoose = require('mongoose');
+
 const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
@@ -34,6 +36,7 @@ const setup = async () => {
         delete require.cache[require.resolve(`./events/${evt}`)];
     });
 
+    
 }
 
 setup();
