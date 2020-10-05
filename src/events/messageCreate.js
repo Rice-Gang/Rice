@@ -27,7 +27,7 @@ module.exports = class {
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
         try {
-            command.run(message, args, config);
+            command.run(message, args, developers);
         } catch (err) {
             console.log(err);
         }

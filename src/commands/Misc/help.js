@@ -11,9 +11,32 @@ class Help extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message, args, developers) {
 
-        return message.channel.send('hello')
+        const emojis = {
+            'developer': '<:developer:762772547464724480>',
+            'moderation': '🛠️',
+            'misc': 'ℹ️'
+        };
+
+        const categories = [];
+
+        this.rice.commands.forEach((cmd) => {
+            if (!categories.includes(cmd.help.category)) {
+                categories.push(cmd.help.category);
+            }
+        });
+
+        const embed = {
+            fields: []
+        };
+
+        categories.sort().forEach((ct) => {
+            const cmds = this.rice.commands.filter((cmd) => cmd.help.category === ct);
+            embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(' ') })
+        });
+
+        message.channel.send({ embed });
     }
 }
 

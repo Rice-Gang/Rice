@@ -25,7 +25,7 @@ class Rice extends Client {
             return `Command not loaded: ${cmdName} - ${err}`;
         }
     }
-
+    
 }
 
 module.exports = Rice;
