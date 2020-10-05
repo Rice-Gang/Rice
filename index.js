@@ -33,9 +33,9 @@ const setup = async () => {
     events.forEach((evt) => {
         const evtName = evt.split('.')[0];
         console.log(`Event loaded ${evtName}`);
-        const event = new (require(`./events/${file}`))(rice);
+        const event = new (require(`./events/${evt}`))(rice);
         rice.on(evtName, (...args) => event.run(...args));
-        delete require.cache[require.resolve(`./events/${file}`)];
+        delete require.cache[require.resolve(`./events/${evt}`)];
     });
 
 }
