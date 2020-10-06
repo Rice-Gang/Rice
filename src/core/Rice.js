@@ -6,6 +6,8 @@ class Rice extends Client {
 
         this.commands = new Collection();
         this.aliases = new Collection();
+
+        this.db = require('../helpers/utils/db')(this);
     }
 
     setupCommand(cmdPath, cmdName) {

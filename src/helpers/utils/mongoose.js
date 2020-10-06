@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 
-const info = require('../config.json')
+const info = require('../../config.json')
 
 module.exports.init = (rice) => {
     

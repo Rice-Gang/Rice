@@ -1,5 +1,3 @@
-let config = {};
-const serverConfig = require('../models/guild');
 
 module.exports = class {
     constructor(rice) {
@@ -7,7 +5,7 @@ module.exports = class {
     }
 
     async run(message) {
-        let data = await serverConfig.findOne({ guildID: message.channel.guild.id })
+        //let data = await serverConfig.findOne({ guildID: message.channel.guild.id })
 
 
         const developers = ['699312838455459911', '423687326405885957', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704']
@@ -15,18 +13,13 @@ module.exports = class {
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
 
-        var prefix;
+        let prefix = 'rice ';
 
-        if (data) {
-            prefix = data.prefix;
-
-        } else {
-            const newData = new serverConfig({
-                Guild: message.guild.id
-            })
-            await newData.save();
-            prefix = newData.prefix;
+        if (message.content == 'prefix') {
+            message.channel.send(this.rice.db.getPrefix(message.channel.guild.id))
         }
+
+        // get prefix here.
 
         const prefixRegex = new RegExp(`^(<@!?${this.rice.user.id}>)\\s*`);
         if (prefixRegex.test(message.content)) return message.channel.send(`My prefix in here is \`${prefix}\``);
@@ -43,54 +36,34 @@ module.exports = class {
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
+        if (message.channel.guild) {
+            let permissions = [];
 
-        /*Perm checks*/
-        let memberperms = command.config.memberPerms;
-        let memberpermsstring = memberperms.join(', ')
-        let member_do_return = false
-        memberperms.forEach(perm => {
-            if (!message.member.permission.has(perm)) member_do_return = true;
-        })
-        if (member_do_return == true) {
-            return message.channel.send({
-                embed: {
-                    title: 'Missing permission(s)',
-                    description: `Permission(s) needed: ${memberpermsstring}`,
-                    color: 0xFFFFFd
+            if (!command.config.botPerms.includes('embedLinks')) {
+                command.config.botPerms.push('embedLinks');
+            }
+            command.config.botPerms.forEach((p) => {
+                if (!message.channel.permissionsOf(this.rice.user.id).has(p)) {
+                    permissions.push(perm);
                 }
-            })
-        }
+            });
 
-        let botperms = command.config.botPerms;
-        let botpermsstring = memberperms.join(', ')
-        let bot_do_return = false;
-        let botmemberperms = message.channel.guild.members.find(x => x.id == this.rice.user.id).permission;
-        if (!botmemberperms.has('embedLinks')) {
-            try {
-                return this.rice.getDMChannel(message.author.id).then(ch => {
-                    ch.createMessage(`I do not have embedLinks permission in **${message.channel.guild.name}** Please tell a admin to give me embedLinks or if you are a admin you could give me the permission to embedLinks`)
-                })
-            } catch (err) {
-                return;
+            if (permissions.length > 0) {
+                return message.channel.sendError(`Looks like I am missing some permissions for that command! Here they are: ${permissions.map((p) => `\`${p}\``).join(', ')}`)
             }
 
-        }
-        botperms.forEach(perm => {
-            if (!botmemberperms.has(perm)) bot_do_return = true;
-        })
-        if (bot_do_return == true) {
-            return message.channel.send({
-                embed: {
-                    title: 'Missing bot permission(s)',
-                    description: `Permission(s) needed: ${botpermsstring}`,
-                    color: 0xFFFFFd
+            permissions = [];
+
+            command.config.memberPerms.forEach((p) => {
+                if (!message.channel.permissionsOf(message.author.id).has(p)) {
+                    permissions.push(p);
                 }
-            })
+                return message.channel.sendError(`Looks like you are missing some permissions for that command! Here they are: ${permissions.map((p) => `\`${p}\``).join(', ')}`)
+            });
         }
-        /*Perm checks*/
 
         try {
-            command.run(message, args, developers);
+            command.run(message, args);
         } catch (err) {
             console.log(err);
         }
