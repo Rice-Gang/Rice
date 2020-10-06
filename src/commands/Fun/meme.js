@@ -7,7 +7,7 @@ class Meme extends Command {
         super(rice, {
             name: 'meme',
             category: 'Fun',
-            botPerms: [],
+            botPerms: ['embedLinks'],
             memberPerms: [],
             description: 'Send a meme from reddit'
         });
@@ -53,7 +53,7 @@ class Meme extends Command {
         })
         
 
-        //return message.channel.send('( ͡° ͜ʖ ͡°)')
+
     }
 }
 

@@ -50,11 +50,16 @@ class Help extends Command {
                 message.channel.send({
                     embed:{
                         title: command.help.name,
-                        description: `aliases: ${alli || 'None'}\
+                        description: `Aliases: ${alli || 'None'}\
                         \nCategory: ${command.help.category}\
                         \nDescription: ${command.help.description}\
                         \nUsage: ${prefix} ${command.help.usage}`,
-                        color: 0xFFFFFd
+                        color: 0xFFFFFd,
+                        footer:{
+                            text: '< Not optional >    [ optional ]\
+                            \n Command options are split with --> |',
+                            icon_url: message.author.avatarURL
+                        },
                     }
                 })
                 return;

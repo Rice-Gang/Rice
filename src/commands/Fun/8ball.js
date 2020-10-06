@@ -2,7 +2,7 @@ const Command = require('../../core/Command');
 const fetch = require('node-fetch')
 const got = require('got')
 
-class Lenny extends Command {
+class Ball extends Command {
     constructor(rice) {
         super(rice, {
             name: '8ball',
@@ -28,4 +28,4 @@ class Lenny extends Command {
     }
 }
 
-module.exports = Lenny;
+module.exports = Ball;
