@@ -31,7 +31,7 @@ class Help extends Command {
                    { name: 'Category', value: cmd.help.category },
                    { name: 'Description', value: cmd.help.description },
                    { name: 'Cooldown', value: cmd.config.cooldown / 1000 + 'seconds' },
-                   { name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
+                   //{ name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
                    { name: 'Usage', value: cmd.config.usage },
                    { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') },
                ]
