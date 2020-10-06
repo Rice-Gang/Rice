@@ -6,6 +6,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "eris": "github:settlelol/eris",
+    "jimp": "^0.16.1",
     "mongoose": "^5.10.7",
     "node-fetch": "^2.6.1",
     "util": "^0.12.3"
