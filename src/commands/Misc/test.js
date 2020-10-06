@@ -13,7 +13,7 @@ class Test extends Command {
 
     async run(message, args) {
         const Embed = new MessageEmbed()
-        .setColor('#ffffff')
+        .setDescription
         message.channel.send(Embed);
     }
 }
