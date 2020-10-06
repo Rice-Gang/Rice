@@ -9,7 +9,7 @@ const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
 const info = require(__dirname + '/config.json')
-const rice = new Rice(info.token, {
+const rice = new Rice(process.env.token || info.token, {
     allowedMentions: []
 });
 
@@ -47,6 +47,6 @@ setTimeout(() => {
     setInterval(() => {
         if(rice.shards.get(0).status == 'disconnected') rice.connect();
         
-    }, info.connectionchecks);
+    }, info.connectionchecks || 10000);
 }, 5000);
 rice.connect()
