@@ -1,8 +1,22 @@
 const fieldArray = [];
 class MessageEmbed {   
-    constructor() {
-        return this;
+    constructor(data = {}) {
+        const e = this._setup(data);
+        return e;
     };
+    _setup(data) {
+        data.title = this.title;
+        data.color = this.color;
+        data.url = this.url;
+        data.author = this.author;
+        data.description = this.description;
+        data.thumbnail = this.thumbnail;
+        data.fields = this.fields;
+        data.image = this.image;
+        data.footer = this.footer;
+        data.timestamp = this.timestamp;
+        return data;
+    }
     setTitle(text) {
         if (!text) throw new Error('You didn\'t provide any text for the title');
         this.title = text; 
@@ -60,9 +74,9 @@ class MessageEmbed {
     setFooter(content, url) {
         if (!content) throw new Error(`No Text for footer specified.`);
         
-        this.text = content;
+        this.footer.text = content;
         
-        if (url) this.icon_url = url
+        if (url) this.footer.icon_url = url
         return;
     };
     setTimestamp() {
