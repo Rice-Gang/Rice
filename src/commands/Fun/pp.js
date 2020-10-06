@@ -1,5 +1,5 @@
 const Command = require('../../core/Command');
-var penis = ["8D", "8=D", "8==D", "8===D", "8====D"];
+var penis = ["8D", "8=D", "8==D", "8===D", "8====D", "8=====D", "8======D", "8=======D", "8========D", "8=========D", "8==========D"];
 
 class pp extends Command {
     constructor(rice) {
