@@ -13,10 +13,8 @@ class say extends Command {
 
     
     async run(message, args) {
-        const sayMessage = args.join(" ");
 
-        message.channel.send({ embed: {description: `sayMessage`} });
-
+        message.channel.send(`${args.join(' ')} \n\n - ${message.author.username}#${message.author.discriminator}`)
     }
 }
 
