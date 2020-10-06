@@ -7,9 +7,10 @@ module.exports = class Command {
         cooldown = 3000,
         category = 'Misc',
         description = 'No description',
+        usage = 'No usage',
     }) {
         this.rice = rice;
         this.config = { memberPerms, botPerms, cooldown };
-        this.help = { name, category, aliases, description };
+        this.help = { name, category, aliases, description, usage };
     }
 };
