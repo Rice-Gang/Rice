@@ -17,7 +17,7 @@ class Ban extends Command {
         const authorTag = `${message.author.username}#${message.author.discriminator}`;
         const userMentions = message.mentions;
         if (!userMentions[0] || !message.channel.guild.members.get(userMentions[0].id)) {
-            return message.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** Specify a valid member to ban!`, color: 0xff4949 } });
+            return message.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** Provide a valid member to ban.`, color: 0xff4949 } });
         }
 
         if (userMentions[0].id == message.author.id) {

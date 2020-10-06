@@ -17,7 +17,26 @@ class Help extends Command {
 
             const cmd = this.rice.commands.get(args[0]) || this.rice.commands.get(this.rice.aliases.get(args[0]));
 
-           
+            if (!cmd) {
+                return message.channel.sendError(`I couldn't find that command.`)
+            }
+
+           const embed = {
+               author: {
+                   name: cmd.name
+               },
+               fields: [
+                   { name: 'Category', value: cmd.help.category },
+                   { name: 'Description', value: cmd.help.description },
+                   { name: 'Cooldown', value: cmd.config.cooldown / 1000 + 'seconds' },
+                   { name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
+                   { name: 'Usage', value: cmd.config.usage },
+                   { name: 'Member Permissions', value: cmd.config.memberPerms.map(x => `\`${x}\``).join(', ') },
+                   { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') }
+               ]
+           }
+
+           message.channel.send({ embed });
 
         } else if (!args[0]) {
 
