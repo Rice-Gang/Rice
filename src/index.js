@@ -45,5 +45,5 @@ setup();
 
 setInterval(() => {
     if(rice.shards.get(0).status == 'disconnected') rice.connect();
-}, 10000);
+}, info.connectionchecks);
 rice.connect();
