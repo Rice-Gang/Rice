@@ -10,7 +10,7 @@ const info = require('./config.json')
 const rice = new Rice(info.token, {
     allowedMentions: []
 });
-
+//invite 5768#5768 5o the server :sadChamp:
 const setup = async () => {
 
     const dirs = await readdir(__dirname + `/commands/`);
