@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 
 const Rice = require('./core/Rice');
 
