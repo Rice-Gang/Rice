@@ -21,6 +21,8 @@ class Help extends Command {
                 return message.channel.sendError(`I couldn't find that command.`)
             }
 
+            console.log(cmd.config)
+
            const embed = {
                author: {
                    name: cmd.name
@@ -31,7 +33,6 @@ class Help extends Command {
                    { name: 'Cooldown', value: cmd.config.cooldown / 1000 + 'seconds' },
                    { name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
                    { name: 'Usage', value: cmd.config.usage },
-                   { name: 'Member Permissions', value: cmd.config.memberPerms.map(x => `\`${x}\``).join(', ') },
                    { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') },
                ]
            }

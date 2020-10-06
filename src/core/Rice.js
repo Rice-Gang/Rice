@@ -9,6 +9,7 @@ class Rice extends Client {
         this.commands = new Collection();
         this.aliases = new Collection();
 
+        this.snipes = new Collection();
     }
 
     setupCommand(cmdPath, cmdName) {

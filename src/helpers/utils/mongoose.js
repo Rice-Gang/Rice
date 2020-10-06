@@ -13,7 +13,7 @@ module.exports.init = (rice) => {
             family: 4,
         }
 
-        mongoose.connect(process.env.mongo, dbOptions)
+        mongoose.connect(process.env.mongo || null, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
