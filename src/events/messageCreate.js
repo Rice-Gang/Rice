@@ -1,4 +1,5 @@
 let config = {};
+const GuildConfig = require('../models/guild');
 
 module.exports = class {
     constructor(rice) {
@@ -12,6 +13,20 @@ module.exports = class {
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
 
+        let prefix = await GuildConfig.findOne({
+            guildID: message.guild.id
+        });
+        if (!prefix) {
+            const newGuild = new GuildConfig({
+                guildID: message.guild.id,
+                guildName: message.guild.name
+            });
+            await newGuild.save().catch(() => { });
+            prefix = await GuildConfig.findOne({
+                guildID: message.guild.id,
+                guildName: message.guild.name
+            });
+        }
         const prefix = 'rice ';
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
