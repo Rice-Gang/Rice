@@ -17,7 +17,8 @@ class Help extends Command {
             'developer': '<:developer:762772547464724480>',
             'moderation': '🛠️',
             'misc': 'ℹ️',
-            'fun': '🤣'
+            'fun': '🤣',
+            'image': `<:JOY:762839719779500088>`
         };
 
         const categories = [];
