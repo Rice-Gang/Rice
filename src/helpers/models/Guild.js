@@ -6,6 +6,8 @@ const Guild = new mongoose.Schema({
 
     prefix: { type: String, default: 'rice ' },
 
+    muteRole: { type: String, default: ''},
+
     autorole: { type: String, default: 'none' },
 });
 
