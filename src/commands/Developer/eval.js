@@ -21,6 +21,7 @@ class Eval extends Command {
             rice = this.rice;
 
         let input = args.join(' ');
+        if(input.includes('token')) return message.channel.send('I smell the word token so no')
 
         if (!args[0]) {
             return message.channel.sendError('You need to provide some code...')
@@ -62,7 +63,8 @@ class Eval extends Command {
                         { name: 'Input', value: `\`\`\`${input}\`\`\`` },
                         { name: 'Output', value: `\`${result}\`` }
                     ],
-                    footer: { text: evalTime || evalTime === 0 ? `evaluated in ${evalTime}ms` : '' }
+                    footer: { text: evalTime || evalTime === 0 ? `evaluated in ${evalTime}ms` : '' },
+                    color: 0xFFFFFd
                 }
             });
         }

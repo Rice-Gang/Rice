@@ -1,3 +1,4 @@
+const { color } = require('jimp');
 const Command = require('../../core/Command');
 
 class Help extends Command {
@@ -13,6 +14,8 @@ class Help extends Command {
 
     async run(message, args, developers) {
 
+        
+
         const emojis = {
             'developer': '<:developer:762772547464724480>',
             'moderation': '🛠️',
@@ -22,15 +25,40 @@ class Help extends Command {
         };
 
         const categories = [];
+        const allcmds = [];
 
         this.rice.commands.forEach((cmd) => {
+            allcmds.push(cmd.help.name)
             if (!categories.includes(cmd.help.category)) {
                 categories.push(cmd.help.category);
             }
         });
+        if(args[0]){
+            let cmd = args[0]
+            if(allcmds.includes(cmd)){
+                let command = this.rice.commands.get(cmd)
+                let alli = command.help.aliases.join(', ')
+                message.channel.send({
+                    embed:{
+                        title: command.help.name,
+                        description: `aliases: ${alli || 'None'}\
+                        \nCategory: ${command.help.category}\
+                        \nDescription ${command.help.description}`,
+                        color: 0xFFFFFd
+                    }
+                })
+                return;
+            }
+        }
+        
+        
+
+
+        
 
         const embed = {
-            fields: []
+            fields: [],
+            color: 0xFFFFFd
         };
 
         categories.sort().forEach((ct) => {
