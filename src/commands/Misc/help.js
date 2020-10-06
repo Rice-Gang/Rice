@@ -1,5 +1,6 @@
 const { color } = require('jimp');
 const Command = require('../../core/Command');
+const PREFIX = require('../../models/prefix')
 
 class Help extends Command {
     constructor(rice) {
@@ -8,12 +9,19 @@ class Help extends Command {
             category: 'Misc',
             botPerms: ['embedLinks'],
             memberPerms: ['sendMessages'],
-            description: 'View the help commands.'
+            description: 'View the help commands',
+            usage: `help [ command ]`
         });
     }
 
     async run(message, args, developers) {
-
+        let data = await PREFIX.findOne({guildID: message.guildID})
+        let prefix;
+        if(!data){
+            prefix = 'rice';
+        }else{
+            prefix = data.prefix;
+        }
         
 
         const emojis = {
@@ -44,7 +52,8 @@ class Help extends Command {
                         title: command.help.name,
                         description: `aliases: ${alli || 'None'}\
                         \nCategory: ${command.help.category}\
-                        \nDescription ${command.help.description}`,
+                        \nDescription: ${command.help.description}\
+                        \nUsage: ${prefix} ${command.help.usage}`,
                         color: 0xFFFFFd
                     }
                 })
@@ -59,6 +68,11 @@ class Help extends Command {
 
         const embed = {
             fields: [],
+            footer:{
+                text: '< Not optional >    [ optional ]\
+                \n Command options are split with --> |',
+                icon_url: message.author.avatarURL
+            },
             color: 0xFFFFFd
         };
 

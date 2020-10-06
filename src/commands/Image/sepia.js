@@ -1,5 +1,6 @@
 const Command = require('../../core/Command');
-const find = require('../../core/Image/find')
+const find = require('../../core/Image/find');
+const { sepia } = require('../../core/Image/imgedit');
 const imgedit = require('../../core/Image/imgedit')
 
 
@@ -10,7 +11,8 @@ class Sepia extends Command {
             category: 'Image',
             botPerms: ['attachFiles'],
             memberPerms: [],
-            description: 'Place a sepia filter over a image'
+            description: 'Place a sepia filter over a image',
+            usage: 'sepia [ user ]'
         });
     }
 

@@ -10,7 +10,8 @@ class Prefix extends Command {
             category: 'Config',
             botPerms: ['embedLinks'],
             memberPerms: ['manageGuild'],
-            description: 'Change your servers prefix'
+            description: 'Change your servers prefix',
+            usage: `set-prefix < new-prefix >`
         });
     }
 

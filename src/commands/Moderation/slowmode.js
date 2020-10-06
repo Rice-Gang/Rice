@@ -9,7 +9,8 @@ class Slowmode extends Command {
             category: 'Moderation',
             botPerms: ['manageChannels'],
             memberPerms: ['manageChannels'],
-            description: 'Add a slowmode to a specific channel'
+            description: 'Add a slowmode to a specific channel',
+            usage: `slowmode < seconds >`
         });
     }
 

@@ -11,7 +11,8 @@ class Bars extends Command {
             category: 'Image',
             botPerms: ['attachFiles'],
             memberPerms: [],
-            description: 'Place bars over a image'
+            description: 'Place bars over a image',
+            usage: 'bars [ user ]'
         });
     }
 

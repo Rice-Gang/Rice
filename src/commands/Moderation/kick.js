@@ -7,7 +7,8 @@ class Kick extends Command {
             category: 'Moderation',
             botPerms: ['kickMembers'],
             memberPerms: ['kickMembers'],
-            description: 'Kick a specific member'
+            description: 'Kick a specific member',
+            usage: 'kick < user >'
         });
     }
 

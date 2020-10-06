@@ -11,7 +11,8 @@ class Gay extends Command {
             category: 'Image',
             botPerms: ['attachFiles'],
             memberPerms: [],
-            description: 'Overly the raibow over a image'
+            description: 'Overly the raibow over a image',
+            usage: `gay [ user ]`
         });
     }
 

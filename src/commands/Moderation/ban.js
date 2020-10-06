@@ -8,7 +8,8 @@ class Ban extends Command {
             category: 'Moderation',
             botPerms: ['banMembers'],
             memberPerms: ['banMembers'],
-            description: 'Ban a specific member'
+            description: 'Ban a specific member',
+            usage: 'ban < user >'
         });
     }
 

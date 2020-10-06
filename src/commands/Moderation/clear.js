@@ -7,7 +7,8 @@ class Clear extends Command {
             category: 'Moderation',
             botPerms: ['manageMessages'],
             memberPerms: ['manageMessages'],
-            description: 'Clear messages in a channel'
+            description: 'Clear messages in a channel',
+            usage: `clear < amout >`
         });
     }
 
