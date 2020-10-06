@@ -5,7 +5,7 @@ const serverConfig = require('../../models/guild');
 class Prefix extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'set-prefix',
+            name: 'prefix',
             category: 'Config',
             botPerms: ['embedLinks'],
             memberPerms: ['manageGuild'],
