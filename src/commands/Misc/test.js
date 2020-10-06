@@ -13,7 +13,8 @@ class Test extends Command {
 
     async run(message, args) {
         const Embed = new MessageEmbed()
-        .setDescription('Hello there')
+        .setDescription('Hello there');
+        console.log(Embed);
         message.channel.send({embed: Embed});
     }
 }

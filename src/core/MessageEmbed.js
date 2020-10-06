@@ -1,47 +1,60 @@
-let embedObject = { };
 const fieldArray = [];
 class MessageEmbed {   
-    constructor() {
-        return embedObject;
+    constructor(data = {}) {
+        const e = this._setup(data);
+        return e;
+    };
+    _setup(data) {
+        data.title = this.title;
+        data.color = this.color;
+        data.url = this.url;
+        data.author = this.author;
+        data.description = this.description;
+        data.thumbnail = this.thumbnail;
+        data.fields = this.fields;
+        data.image = this.image;
+        data.footer = this.footer;
+        data.timestamp = this.timestamp;
+        return data;
     }
     setTitle(text) {
         if (!text) throw new Error('You didn\'t provide any text for the title');
-        embedObject.title = text; 
+        this.title = text; 
         return;
-    }
+    };
 
     setColor(hex) {
         if (!hex) throw new Error("You didn't provide a color.");
-        embedObject.color = hex;
+        this.color = hex;
         return;
-    }
+    };
 
     setURL(url) {
         if (!url) throw new Error("You didn't provide a url.");
-        embedObject.url = url;
+        this.url = url;
         return;
-    }
+    };
 
     setAuthor(text, url) {
         if (!text) throw new Error('Author can\'t be empty.');
-        embedObject.author.name = text;
+        this.author.name = text;
         if (url) {
-            embedObject.author.icon_url = url
+            this.author.icon_url = url
         }
         return;
-    }
+    };
     setDescription(content) {
         if (!content) throw new Error(`No Content for description provided.`);
 
-        embedObject.description = content;
+        this.description = content;
         return;
-    }
+    };
     setThumbnail(url) {
         if (!url) throw new Error(`No Thumbnail URL Provided.`);
 
-        embedObject.thumbnail.url = url;
+        this.thumbnail.url = url;
         return;
-    }
+    };
     addField(title, content, position) {
         if (!title) throw new Error(`No Name specified for the field.`);
 
@@ -49,26 +62,26 @@ class MessageEmbed {
 
         fieldArray.push({ name: title, value: content, inline: position ? position : false });
 
-        embedObject.fields = fieldArray
+        this.fields = fieldArray
         return;
-    }
+    };
     setImage(url) {
         if (!url) throw new Error(`No URL for embed image specified.`);
         
-        embedObject.image.url = url;
+        this.image.url = url;
         return;
-    }
+    };
     setFooter(content, url) {
         if (!content) throw new Error(`No Text for footer specified.`);
         
-        embedObject.text = content;
+        this.footer.text = content;
         
-        if (url) embedObject.icon_url = url
+        if (url) this.footer.icon_url = url
         return;
-    }
+    };
     setTimestamp() {
-        embedObject.timestamp = new Date()
+        this.timestamp = new Date()
         return;
-    }
-}
-module.exports = MessageEmbed
+    };
+};
+module.exports = MessageEmbed;
