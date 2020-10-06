@@ -13,18 +13,37 @@ class Avatar extends Command {
 
     async run(message, args) {
 
-        const member = message.member;
+        const member = message.mentions[0];
         const author = message.author;
-      //  console.log(member || author)
-               const embed = {
-                    color: 0xFFFFFd,
-                    title: "Avatar for: ",
-                    field: member.mention || author.mention,
-                    //image: member.avatar || author.avatar
+
+        // console.log(author.username)
+
+
+
+
+        if (!args[0]) {
+            const authorembed = {
+                color: 0xFFFFFd,
+                title: "Your Avatar!",
+                image: {
+                    url: author.avatarURL
                 }
-                message.channel.send({embed})
-            
-        
+            }
+            message.channel.send({ embed: authorembed })
+        }
+        else {
+            const mentionembed = {
+                color: 0xFFFFFd,
+                title: "Avatar for: \n" + member.username,
+                image: {
+                    url: member.avatarURL
+                }
+            }
+
+            message.channel.send({ embed: mentionembed })
+        }
+
+
     }
 }
 
