@@ -19,7 +19,7 @@ module.exports = class {
         
         if(data){
             prefix = data.prefix;
-            console.log(data.prefix)
+
         }else{
             prefix = 'rice ';
         }
