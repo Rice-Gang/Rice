@@ -24,6 +24,9 @@ module.exports = class {
             prefix = 'rice ';
         }
 
+        const prefixRegex = new RegExp(`^(<@!?${this.rice.user.id}>)\\s*`);
+        if (prefixRegex.test(message.content)) return message.channel.send(`My prefix is \`${prefix}\``);
+
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
         const msg = message.cleanContent.toLowerCase().split(' ');
