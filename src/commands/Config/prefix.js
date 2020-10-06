@@ -1,6 +1,5 @@
 const Command = require('../../core/Command');
-const { findOneAndDelete } = require('../../models/prefix');
-const PREFIX = require('../../models/prefix')
+const serverConfig = require('../../models/guild');
 
 
 class Prefix extends Command {
@@ -16,11 +15,26 @@ class Prefix extends Command {
     }
 
     async run(msg, args) {
-        const data = await PREFIX.findOne({guildID: msg.channel.guild.id})
-        let newprefix = args[0].toLowerCase()
-        if(!newprefix) return msg.channel.send('Please give me a new prefix')
-        if(newprefix.length > 15)return msg.channel.send('That prefix is to long, It needs to be under 15 characters')
-        if(!data){
+        const data = await serverConfig.findOne({ guildID: msg.channel.guild.id });
+        if (!args[0]) args[0] = '';
+        let newprefix = args[0].toLowerCase();
+        const authorTag = `${msg.author.username}#${msg.author.discriminator}`;
+        if (!newprefix) {
+            return msg.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** Please provide a prefix.`, color: 0xff4949  } });
+        }
+        if (newprefix.length > 15) {
+            return msg.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** That prefix is to long, It needs to be under 15 characters.`, color: 0xff4949  } });
+        }
+
+        if (data.prefix == newprefix) {
+            return msg.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** This Prefix is already set!`, color: 0xff4949  } });
+        }
+
+        data.prefix = newprefix;
+        await data.save();
+        msg.channel.send({ embed: { description: `<:yes:762884751832252417> Prefix set to \`${newprefix}\``, color: 0x3cb474}})
+
+        /*if(!data){
             if(newprefix == 'rice') return msg.channel.send('This is already your prefix')
             new PREFIX({
                 prefix: newprefix,
@@ -53,9 +67,9 @@ class Prefix extends Command {
                 guildID: msg.channel.guild.id
             }).save()
             
-        }
+        }*/
 
-        
+
     }
 }
 

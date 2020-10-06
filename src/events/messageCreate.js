@@ -1,5 +1,5 @@
 let config = {};
-const PREFIX = require('../models/prefix')
+const serverConfig = require('../models/guild');
 
 module.exports = class {
     constructor(rice) {
@@ -7,7 +7,7 @@ module.exports = class {
     }
 
     async run(message) {
-        let data = await PREFIX.findOne({ guildID: message.channel.guild.id })
+        let data = await serverConfig.findOne({ guildID: message.channel.guild.id })
 
 
         const developers = ['699312838455459911', '423687326405885957', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704']
@@ -21,11 +21,15 @@ module.exports = class {
             prefix = data.prefix;
 
         } else {
-            prefix = 'rice ';
+            const newData = new serverConfig({
+                Guild: message.guild.id
+            })
+            await newData.save();
+            prefix = newData.prefix;
         }
 
         const prefixRegex = new RegExp(`^(<@!?${this.rice.user.id}>)\\s*`);
-        if (prefixRegex.test(message.content)) return message.channel.send(`My prefix is \`${prefix}\``);
+        if (prefixRegex.test(message.content)) return message.channel.send(`My prefix in here is \`${prefix}\``);
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 

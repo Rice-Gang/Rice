@@ -1,5 +1,5 @@
 const Command = require('../../core/Command');
-const MUTED_ROLE = require('../../models/muted_role')
+//const MUTED_ROLE = require('../../models/muted_role')
 let delete_responses = ['disable', 'delete', 'remove', 'reset']
 
 class Muted_set extends Command {
@@ -16,6 +16,13 @@ class Muted_set extends Command {
     }
 
     async run(msg, args) {
+
+        //Awaiting for remake ....
+
+
+
+
+        return
         let data = await MUTED_ROLE.findOne({guildID: msg.guildID})
         let responce = args[0]
         if(!responce) return msg.channel.send('I need your responce')
