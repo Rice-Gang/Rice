@@ -6,7 +6,7 @@ const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
-const rice = new Rice('NzYyNzQ5NjUyOTY1MTMwMzAw.X3tr-A.iCPiMEY6bAM_tMJ-wW_5NwHiSyA', {
+const rice = new Rice(process.env.token, {
     allowedMentions: []
 });
 
