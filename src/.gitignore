@@ -2,3 +2,5 @@
 .DS_Store
 config.json
 node_modules
+node_modules/
+/node_modules
