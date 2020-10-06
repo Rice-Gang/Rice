@@ -19,7 +19,7 @@ class Clear extends Command {
         if (isNaN(amout) || parseInt(amout) <= 0) {
             return msg.channel.createMessage(`${amout} is not a number`).then(m => {
                 setTimeout(() => {
-                    m.delete()
+                    if (m) m.delete()
                 }, 5000);
             })
         }

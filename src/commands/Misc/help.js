@@ -1,6 +1,6 @@
 const { color } = require('jimp');
 const Command = require('../../core/Command');
-const PREFIX = require('../../models/prefix')
+const serverSettings = require('../../models/guild')
 
 class Help extends Command {
     constructor(rice) {
@@ -15,14 +15,9 @@ class Help extends Command {
     }
 
     async run(message, args, developers) {
-        let data = await PREFIX.findOne({guildID: message.guildID})
-        let prefix;
-        if(!data){
-            prefix = 'rice';
-        }else{
-            prefix = data.prefix;
-        }
-        
+        let data = await serverSettings.findOne({ guildID: message.guildID })
+        let prefix = data.prefix;
+
 
         const emojis = {
             'developer': '<:developer:762772547464724480>',
@@ -42,20 +37,20 @@ class Help extends Command {
                 categories.push(cmd.help.category);
             }
         });
-        if(args[0]){
+        if (args[0]) {
             let cmd = args[0]
-            if(allcmds.includes(cmd)){
+            if (allcmds.includes(cmd)) {
                 let command = this.rice.commands.get(cmd)
                 let alli = command.help.aliases.join(', ')
                 message.channel.send({
-                    embed:{
+                    embed: {
                         title: command.help.name,
                         description: `Aliases: ${alli || 'None'}\
                         \nCategory: ${command.help.category}\
                         \nDescription: ${command.help.description}\
                         \nUsage: ${prefix} ${command.help.usage}`,
                         color: 0xFFFFFd,
-                        footer:{
+                        footer: {
                             text: '< Not optional >    [ optional ]\
                             \n Command options are split with --> |',
                             icon_url: message.author.avatarURL
@@ -65,15 +60,15 @@ class Help extends Command {
                 return;
             }
         }
-        
-        
 
 
-        
+
+
+
 
         const embed = {
             fields: [],
-            footer:{
+            footer: {
                 text: '< Not optional >    [ optional ]\
                 \n Command options are split with --> |',
                 icon_url: message.author.avatarURL
