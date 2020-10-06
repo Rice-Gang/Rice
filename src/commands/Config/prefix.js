@@ -1,5 +1,5 @@
 const Command = require('../../core/Command');
-const serverConfig = require('../../models/guild');
+const serverConfig = require('../../helpers/models/guild');
 
 
 class Prefix extends Command {
