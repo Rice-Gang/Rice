@@ -22,7 +22,7 @@ class Help extends Command {
             'misc': 'ℹ️',
             'fun': '🤣',
             'image': `<:JOY:762839719779500088>`,
-            'config': ':open_mouth:'
+            'config': '⚙️'
         };
 
         const categories = [];
