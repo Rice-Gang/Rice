@@ -49,4 +49,7 @@ setTimeout(() => {
         
     }, info.connectionchecks || 10000);
 }, 5000);
-rice.connect()
+rice.connect().catch(e => {
+    console.log(e)
+    rice.connect()
+})
