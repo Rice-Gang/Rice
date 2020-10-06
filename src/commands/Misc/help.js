@@ -32,7 +32,7 @@ class Help extends Command {
                    { name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
                    { name: 'Usage', value: cmd.config.usage },
                    { name: 'Member Permissions', value: cmd.config.memberPerms.map(x => `\`${x}\``).join(', ') },
-                   { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') }
+                   { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') },
                ]
            }
 
