@@ -1,5 +1,7 @@
 const { Client, Collection } = require('eris');
 
+const Guild = require('../helpers/models/Guild');
+
 class Rice extends Client {
     constructor(token, options) {
         super(token, options);
@@ -24,6 +26,19 @@ class Rice extends Client {
             return false;
         } catch (err) {
             return `Command not loaded: ${cmdName} - ${err}`;
+        }
+    }
+
+    async guild(guildID) {
+        const guild = await Guild.findOne({ id: guildID });
+        if (!guild) {
+            const newData = new Guild({
+                id: guildID
+            });
+            newData.save();
+            return newData;
+        } else {
+            return guild;
         }
     }
     
