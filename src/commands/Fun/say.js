@@ -15,7 +15,7 @@ class say extends Command {
     async run(message, args) {
         const sayMessage = args.join(" ");
 
-        message.channel.send({ embed: {description: `sayMessage`, color: f6f2c5} });
+        message.channel.send({ embed: {description: `sayMessage`} });
 
     }
 }
