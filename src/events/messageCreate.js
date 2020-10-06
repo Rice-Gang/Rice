@@ -1,4 +1,5 @@
 let config = {};
+const PREFIX = require('../models/prefix')
 
 module.exports = class {
     constructor(rice) {
@@ -6,13 +7,25 @@ module.exports = class {
     }
 
     async run(message) {
+        let data = await PREFIX.findOne({guildID: message.channel.guild.id})
+
 
         const developers = ['699312838455459911', '423687326405885957', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704']
 
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
 
-        const prefix = 'rice ';
+        var prefix
+        
+        if(data){
+            prefix = data.prefix;
+            console.log(data.prefix)
+        }else{
+            prefix = 'rice ';
+        }
+
+        
+
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
