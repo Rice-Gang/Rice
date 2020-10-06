@@ -16,7 +16,6 @@ class Test extends Command {
         const Embed = new MessageEmbed()
         Embed.title = 'hello'
         Embed.color = 0xFFFFFd
-        console.log(Embed);
         message.channel.send({embed: Embed});
     }
 }

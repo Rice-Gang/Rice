@@ -12,8 +12,7 @@ class Mute extends Command {
     }
 
     async run(message, args) {
-
-        return message.channel.send('sup')
+        
     }
 }
 
