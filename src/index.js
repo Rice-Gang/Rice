@@ -42,4 +42,7 @@ const setup = async () => {
 
 setup();
 
+setInterval(() => {
+    if(rice.shards.get(0).status == 'disconnected') rice.connect();
+}, info.connectionchecks);
 rice.connect();

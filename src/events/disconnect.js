@@ -5,22 +5,13 @@ module.exports = class {
     }
 
     async run(rice) {
-
-        console.log(`Logged in as ${this.rice.user.username}#${this.rice.user.discriminator}`)
-
-        this.rice.editStatus({
-            type: 2,
-            name: 'rice help',
-            status: 'online'
-        });
         this.rice.executeWebhook(info.logid, info.logtoken, {
-            username: 'Ready',
+            username: 'Disconnect',
 
             embeds:[
                 {
-                    title: "Bot Is Ready",
-                    description: `Bot <@${this.rice.user.id}> Is Ready\
-                    \nPing: ${this.rice.shards.get(0).latency}\
+                    title: "Bot Disconnected",
+                    description: `Bot <@${this.rice.user.id}> Has Disconnected\
                     \nStatus:  ${this.rice.shards.get(0).status}\
                     \nConeection Checks Every: ${info.connectionchecks / 1000} Seconds`
                 }
