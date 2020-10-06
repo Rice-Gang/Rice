@@ -15,8 +15,7 @@ class Autorole extends Command {
         if (!['true', 'false', 'on', 'off', 'disable', 'enable'].includes(args[0])) {
             return message.channel.sendError(`You need to choose an option between \`true\`, \`false\` or \`view\``)
         }
-
-        if (['true', 'on', 'enable'].includes(args[0])) {
+        if (args[0] === 'true' || args[0] === 'on' || args[0] === 'enable') {
             const role = message.channel.guild.roles.find(x => x.name === args.slice(1).join(' ')) || message.channel.guild.roles.get(args[0]);
 
             if (!role || !args[1]) {
@@ -28,7 +27,7 @@ class Autorole extends Command {
 
             return message.channel.sendSuccess(`Set the autorole in this guild to <@&${role.id}>`)
 
-        } else if (['false', 'off', 'disable'].includes(args[0])) {
+        } else if (args[0] === 'false' || args[0] === 'off' || args[0] === 'disable') {
 
             data.guild.autorole = 'none';
             await data.guild.save();
