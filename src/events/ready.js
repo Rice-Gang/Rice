@@ -1,3 +1,4 @@
+const info = require('../config.json')
 module.exports = class {
     constructor(rice) {
         this.rice = rice;
@@ -12,5 +13,20 @@ module.exports = class {
             name: 'rice help',
             status: 'online'
         });
+        this.rice.executeWebhook(info.logid, info.logtoken, {
+            username: 'Ready',
+
+            embeds:[
+                {
+                    title: "Bot Is Ready",
+                    description: `Bot <@${this.rice.user.id}> Is Ready\
+                    \nPing: ${this.rice.shards.get(0).latency}\
+                    \nStatus:  ${this.rice.shards.get(0).status}`
+                }
+                
+            ]
+
+            
+        })
     }
 }
