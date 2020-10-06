@@ -13,7 +13,7 @@ module.exports.init = () => {
             family: 4,
         }
 
-        mongoose.connect(info.mongo, dbOptions)
+        mongoose.connect(info.MONGO, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
