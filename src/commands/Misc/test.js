@@ -7,7 +7,7 @@ class Test extends Command {
             category: 'Misc',
             botPerms: ['embedLinks'],
             memberPerms: ['sendMessages'],
-            description: 'Rest Command'
+            description: 'Test Command'
         });
     }
 
