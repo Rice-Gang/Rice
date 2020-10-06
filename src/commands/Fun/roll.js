@@ -5,7 +5,7 @@ class Roll extends Command {
         super(rice, {
             name: 'roll',
             category: 'fun',
-            botPerms: [''],
+            botPerms: [],
             memberPerms: [],
             description: 'roll some dice'
         });
