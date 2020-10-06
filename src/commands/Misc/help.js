@@ -16,7 +16,8 @@ class Help extends Command {
         const emojis = {
             'developer': '<:developer:762772547464724480>',
             'moderation': '🛠️',
-            'misc': 'ℹ️'
+            'misc': 'ℹ️',
+            'fun': '🤣'
         };
 
         const categories = [];
