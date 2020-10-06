@@ -1,5 +1,5 @@
 const Command = require('../../core/Command');
-var penis = ["8D", "8=D", '8==D'];
+var penis = ["8D", "8=D", "8==D", "8===D", "8====D"];
 
 class pp extends Command {
     constructor(rice) {
@@ -20,10 +20,10 @@ class pp extends Command {
         const author = message.author;
 
         if (!args[0]) {
-            message.channel.send(`<@${message.author.id}> pp size is:`+ penis[randomIndex])
+            message.channel.send(`<@${message.author.id}>'s pp size is:` + penis[randomIndex])
         }
         else {
-            message.channel.send(`<@${message.member.id}> pp size is:`+ penis[randomIndex])
+            message.channel.send(`<@${message.member.id}>'s pp size is:` + penis[randomIndex])
         }
     }
 }
