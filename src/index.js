@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 const Rice = require('./core/Rice');
 
@@ -6,8 +6,7 @@ const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
-const info = require('./config.json')
-const rice = new Rice(info.token, {
+const rice = new Rice(process.env.token, {
     allowedMentions: []
 });
 
