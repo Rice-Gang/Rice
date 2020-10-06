@@ -20,10 +20,10 @@ class pp extends Command {
         const author = message.author;
 
         if (!args[0]) {
-            message.channel.send(`<@${message.author.id}>'s pp size is:` + penis[randomIndex])
+            message.channel.send(`<@${message.author.id}>'s pp size is: ` + penis[randomIndex])
         }
         else {
-            message.channel.send(`<@${message.member.id}>'s pp size is:` + penis[randomIndex])
+            message.channel.send(`<@${message.member.id}>'s pp size is: ` + penis[randomIndex])
         }
     }
 }
