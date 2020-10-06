@@ -14,11 +14,10 @@ class fac extends Command {
 
     
     async run(message, args) {
-        const Member = message.mentions;
 
         var randomIndex = Math.floor(Math.random() * flipcoin.length); 
 
-        return message.channel.send(`<@${Member.user.id}> `+ flipcoin[randomIndex])
+        return message.channel.send(`<@${message.author.id}> `+ flipcoin[randomIndex])
     }
 }
 
