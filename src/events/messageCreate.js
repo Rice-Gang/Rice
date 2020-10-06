@@ -14,7 +14,7 @@ module.exports = class {
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
 
-        const prefix = data.guild.prefix + ' ' ? data.guild.prefix + ' ' : 'rice '
+        const prefix = data.guild.prefix ? data.guild.prefix : 'rice ';
 
         const prefixRegex = new RegExp(`^(<@!?${this.rice.user.id}>)\\s*`);
         if (prefixRegex.test(message.content)) return message.channel.send(`My prefix in here is \`${prefix}\``);
