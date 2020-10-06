@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
 require('dotenv').config();
+
+const mongoose = require('mongoose');
+
 const info = require('../config.json')
 
-module.exports.init = () => {
+module.exports.init = (rice) => {
     
         const dbOptions = {
             useNewUrlParser: true,
@@ -21,8 +23,15 @@ module.exports.init = () => {
             console.log('Mongoose has successfully connected!');
         });
 
-        mongoose.connection.on('err', err => {
+        mongoose.connection.on('err', (err) => {
             console.error(`Mongoose connection error: \n${err.stack}`);
+            rice.executeWebhook(info.logid, info.logtoken, {
+                username: 'Mongoose Error',
+                embeds: {
+                    title: 'Mongoose Error',
+                    description: `Mongoose Connection (${mongoose.connection.host}) has disconnected.`
+                }
+            });
         });
 
         mongoose.connection.on('disconnected', () => {

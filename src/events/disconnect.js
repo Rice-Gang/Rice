@@ -8,7 +8,7 @@ module.exports = class {
         this.rice.executeWebhook(info.logid, info.logtoken, {
             username: 'Disconnect',
 
-            embeds:[
+            embeds: [
                 {
                     title: "Bot Disconnected",
                     description: `Bot <@${this.rice.user.id}> Has Disconnected\
@@ -17,8 +17,6 @@ module.exports = class {
                 }
                 
             ]
-
-            
         })
     }
 }

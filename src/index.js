@@ -2,14 +2,11 @@ require('dotenv').config();
 
 const Rice = require('./core/Rice');
 
-const mongoose = require('mongoose');
-
 const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
-const info = require(__dirname + '/config.json')
-const rice = new Rice(process.env.token || info.token, {
+const rice = new Rice(process.env.token, {
     allowedMentions: []
 });
 
@@ -38,7 +35,7 @@ const setup = async () => {
     });
 
     rice.mongoose = require('./utils/mongoose');
-    await rice.mongoose.init();
+    await rice.mongoose.init(rice);
 }
 
 setup();
@@ -47,9 +44,9 @@ setTimeout(() => {
     setInterval(() => {
         if(rice.shards.get(0).status == 'disconnected') rice.connect();
         
-    }, info.connectionchecks || 10000);
+    }, 10000);
 }, 5000);
 rice.connect().catch(e => {
     console.log(e)
     rice.connect()
-})
+});
