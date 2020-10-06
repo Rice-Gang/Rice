@@ -47,7 +47,7 @@ class MessageEmbed {
 
         if (!content) throw new Error(`No Value specified for the field.`);
 
-        fieldArray.push({ name: title, value: content, inline: position??false });
+        fieldArray.push({ name: title, value: content, inline: position ? position : false });
 
         embedObject.fields = fieldArray
         return;
