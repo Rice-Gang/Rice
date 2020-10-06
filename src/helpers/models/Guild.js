@@ -6,6 +6,7 @@ const Guild = new mongoose.Schema({
 
     prefix: { type: String, default: 'rice ' },
 
+    autorole: { type: String, default: 'none' },
 });
 
 module.exports = mongoose.model('Guild', Guild);

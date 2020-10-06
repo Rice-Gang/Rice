@@ -7,14 +7,15 @@ class Test extends Command {
             category: 'Misc',
             botPerms: ['embedLinks'],
             memberPerms: ['sendMessages'],
-            description: 'Rest Command'
+            description: 'Test Command'
         });
     }
 
     async run(message, args) {
+        
         const Embed = new MessageEmbed()
-        .setDescription('Hello there');
-        console.log(Embed);
+        Embed.title = 'hello'
+        Embed.color = 0xFFFFFd
         message.channel.send({embed: Embed});
     }
 }
