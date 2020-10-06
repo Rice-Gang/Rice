@@ -4,7 +4,6 @@ class MessageEmbed {
     constructor() {
         return embedObject;
     }
-    embed
     setTitle(text) {
         if (!text) throw new Error('You didn\'t provide any text for the title');
         embedObject.title = text; 
