@@ -12,8 +12,10 @@ class Test extends Command {
     }
 
     async run(message, args) {
+        
         const Embed = new MessageEmbed()
-        .setDescription('Hello there');
+        Embed.title = 'hello'
+        Embed.color = 0xFFFFFd
         console.log(Embed);
         message.channel.send({embed: Embed});
     }
