@@ -4,10 +4,10 @@ class Roll extends Command {
     constructor(rice) {
         super(rice, {
             name: 'roll',
-            category: 'fun',
+            category: 'Fun',
             botPerms: [],
             memberPerms: [],
-            description: 'roll some dice'
+            description: 'Foll some dice'
         });
     }
 
