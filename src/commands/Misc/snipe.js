@@ -42,7 +42,7 @@ class Snipe extends Command {
             const embed = {
                 color: (Math.random() * (1 << 24)) | 0,
                 author: {
-                    name: `${msg.tag} | <#${message.channel.id}>`,
+                    name: `${msg.tag} | ${message.channel.name}`,
                     icon_url: msg.avatar
                 },
                 description: msg.content.length > 1950 ? `${msg.content.substr(0, 1950)}...` : msg.content || '',
