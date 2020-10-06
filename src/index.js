@@ -48,5 +48,5 @@ setTimeout(() => {
         if(rice.shards.get(0).status == 'disconnected') rice.connect();
         
     }, info.connectionchecks);
-}, 50000);
+}, 5000);
 rice.connect()

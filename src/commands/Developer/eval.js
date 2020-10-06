@@ -9,7 +9,7 @@ class Eval extends Command {
         super(rice, {
             name: 'eval',
             description: 'Evaluates some javascript code.',
-            botPerms: ['sendMessages'],
+            botPerms: ['embedLinks'],
             memberPerms: [],
             category: 'Developer'
         });

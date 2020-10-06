@@ -26,6 +26,53 @@ module.exports = class {
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
+
+        /*Perm checks*/
+        let memberperms = command.config.memberPerms;
+        let memberpermsstring = memberperms.join(', ')
+        let member_do_return = false
+        memberperms.forEach(perm => {
+            if(!message.member.permission.has(perm)) member_do_return = true;
+        })
+        if(member_do_return == true){
+            return message.channel.send({
+                embed: {
+                    title:'Missing permission(s)',
+                    description: `Permission(s) needed: ${memberpermsstring}`,
+                    color: 0xFFFFFd
+                }
+            })
+        }
+        
+        let botperms = command.config.botPerms;
+        let botpermsstring = memberperms.join(', ')
+        let bot_do_return = false;
+        let botmemberperms = message.channel.guild.members.find(x => x.id == this.rice.user.id).permission;
+        if(!botmemberperms.has('embedLinks')){
+            try{
+                return this.rice.getDMChannel(message.author.id).then(ch => {
+                    ch.createMessage(`I do not have embedLinks permission in **${message.channel.guild.name}** Please tell a admin to give me embedLinks or if you are a admin you could give me the permission to embedLinks`)
+                })
+            }catch(err){
+                return;
+            }
+            
+        }
+        botperms.forEach(perm => {
+            if(!botmemberperms.has(perm)) bot_do_return = true;
+        })
+        if(bot_do_return == true){
+            return message.channel.send({
+                embed: {
+                    title:'Missing bot permission(s)',
+                    description: `Permission(s) needed: ${botpermsstring}`,
+                    color: 0xFFFFFd
+                }
+            })
+        }
+        /*Perm checks*/
+
+
         try {
             command.run(message, args, developers);
         } catch (err) {

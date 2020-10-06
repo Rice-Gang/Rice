@@ -5,8 +5,8 @@ class Ban extends Command {
         super(rice, {
             name: 'ban',
             category: 'Moderation',
-            botPerms: [''],
-            memberPerms: [],
+            botPerms: ['embedLinks', 'banMembers'],
+            memberPerms: ['banMembers'],
             description: ''
         });
     }

@@ -9,7 +9,7 @@ class Eval extends Command {
         super(rice, {
             name: 'sendconfig',
             description: 'Will send you the config file for the bot',
-            botPerms: ['sendMessages'],
+            botPerms: ['attachFiles'],
             memberPerms: [],
             category: 'Developer'
         });

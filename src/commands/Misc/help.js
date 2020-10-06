@@ -6,8 +6,8 @@ class Help extends Command {
         super(rice, {
             name: 'help',
             category: 'Misc',
-            botPerms: ['sendMessages'],
-            memberPerms: [],
+            botPerms: ['embedLinks'],
+            memberPerms: ['sendMessages'],
             description: 'View the help commands.'
         });
     }
@@ -21,7 +21,8 @@ class Help extends Command {
             'moderation': '🛠️',
             'misc': 'ℹ️',
             'fun': '🤣',
-            'image': `<:JOY:762839719779500088>`
+            'image': `<:JOY:762839719779500088>`,
+            'config': ':open_mouth:'
         };
 
         const categories = [];
