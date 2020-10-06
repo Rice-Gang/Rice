@@ -1,14 +1,10 @@
-require('dotenv').config();
-
 const Rice = require('./core/Rice');
-
-const mongoose = require('mongoose');
 
 const util = require('util');
 const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
-const info = process.env
+const info = require('./config.json');
 const rice = new Rice(info.token, {
     allowedMentions: []
 });
@@ -36,14 +32,15 @@ const setup = async () => {
         rice.on(evtName, (...args) => event.run(...args));
         delete require.cache[require.resolve(__dirname + `/events/${evt}`)];
     });
-
     rice.mongoose = require('./utils/mongoose');
     await rice.mongoose.init();
 }
 
 setup();
+setTimeout(() => {
+    setInterval(() => {
+        if (rice.shards.get(0).status == 'disconnected') rice.connect();
+    }, info.connectionchecks);
+}, 50000)
 
-setInterval(() => {
-    if(rice.shards.get(0).status == 'disconnected') rice.connect();
-}, info.connectionchecks);
 rice.connect();

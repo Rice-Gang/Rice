@@ -27,9 +27,9 @@ module.exports = class {
                 guildName: message.guild.name
             });
         }
-        const prefix = 'rice ';
+        //const prefix = 'rice ';
 
-        if (!message.content.toLowerCase().startsWith(prefix)) return;
+        if (!message.content.toLowerCase().startsWith(prefix.prefix)) return;
 
         const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];

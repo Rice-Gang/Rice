@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
-const info = require('../config.json')
-
+const info = require('../config.json');
 module.exports.init = () => {
     
         const dbOptions = {
