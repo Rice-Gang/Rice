@@ -1,4 +1,3 @@
-const info = require('../config.json')
 module.exports = class {
     constructor(rice) {
         this.rice = rice;
