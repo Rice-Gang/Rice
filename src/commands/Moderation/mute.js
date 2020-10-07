@@ -48,7 +48,7 @@ class Mute extends Command {
 
         await message.channel.guild.members.get(memberToMute[0].id).addRole(muteRole.id);
 
-        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason ?? 'No Reason Provided.'}`, color: 0x3cb474 } });
+        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || 'No Reason Provided.'}` } });
 
         message.channel.guild.channels.forEach(c => {
             if (!c.permissionsOf(this.rice.user.id).has('readMessages')) return;

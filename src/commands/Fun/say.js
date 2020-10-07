@@ -14,7 +14,17 @@ class say extends Command {
     
     async run(message, args) {
 
-        message.channel.send(`${args.join(' ')} \n\n - ${message.author.username}#${message.author.discriminator}`)
+        const embed = {
+            title: `${message.author.username}#${message.author.discriminator} says`,
+            description:`${args.join(' ')}`,
+            color: 0xFFFFFd,
+            timestamp: new Date(),
+            footer: {
+                text: this.rice.user.username,
+                icon_url: this.rice.user.avatarURL
+            }
+        }
+        message.channel.send({embed: embed})
     }
 }
 

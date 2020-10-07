@@ -4,6 +4,7 @@ const Rice = require('./core/Rice');
 
 const util = require('util');
 const fs = require('fs');
+
 const readdir = util.promisify(fs.readdir);
 
 const rice = new Rice(process.env.token, {
@@ -33,7 +34,7 @@ const setup = async () => {
         rice.on(evtName, (...args) => event.run(...args));
         delete require.cache[require.resolve(__dirname + `/events/${evt}`)];
     });
-
+    rice.fs = fs
     rice.mongoose = require('./helpers/utils/mongoose');
     await rice.mongoose.init(rice);
 }
