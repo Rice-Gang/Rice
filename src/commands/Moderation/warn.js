@@ -13,23 +13,41 @@ class Warn extends Command {
 
     async run(message, args, data) {
 
+        const user = message.mentions[0] || message.channel.guild.members.get(args[0]) || message.channel.guild.members.find(x => x.user.username === args[0]);
+
         if (!message.mentions[0] || !message.channel.guild.members.get(message.mentions[0].id)) {
             return message.channel.sendError('You need to provide a valid member to warn.')
         }
 
-        if (message.mentions[0].id === message.author.id) {
-            return message.channel.sendError('Youi')
+        if (user.id === message.author.id) {
+            return message.channel.sendError('I cannot ban that user.')
         }
 
-        // const userMentions = message.mentions;
-        // if (!userMentions[0] || !message.channel.guild.members.get(userMentions[0].id)) {
-        //     return message.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** Provide a valid member to ban.`, color: 0xff4949 } });
-        // }
+        const member = await message.channel.guild.members.get(user.id);
 
-        // if (userMentions[0].id == message.author.id) {
-        //     return message.channel.send({ embed: { description: `<:no:762884741069275156> **${authorTag}** You can't ban yourself.`, color: 0xff4949 } });
-        // }
-        // const memberToBan = message.channel.guild.members.get(userMentions[0].id);
+        if (!member) {
+            message.channel.sendError('You need to provide a valid user.')
+        }
+
+        let reason = args.slice(1).join(' ');
+
+        if (!reason) reason = 'No reason provided';
+
+        data.guild.infractionCount++;
+        await data.guild.save();
+
+        data.member.warns.push({
+            moderator: message.author.id,
+            channel: message.channel.id,
+            time: Date.now(),
+            case: data.guild.infractionCount,
+            reason
+        });
+
+        const embed = {
+            color: 0xEDD3BB,
+            
+        }
     }
 }
 
