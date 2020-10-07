@@ -15,7 +15,7 @@ class Eval extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message, args, data) {
 
         const client = this.rice,
             rice = this.rice;
