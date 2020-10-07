@@ -33,7 +33,7 @@ const setup = async () => {
         rice.on(evtName, (...args) => event.run(...args));
         delete require.cache[require.resolve(__dirname + `/events/${evt}`)];
     });
-
+    rice.fs = fs
     rice.mongoose = require('./helpers/utils/mongoose');
     await rice.mongoose.init(rice);
 }
