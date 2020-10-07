@@ -15,7 +15,8 @@ class weather extends Command {
 
   async run(message, args) {
     const search = args.join(" ");
-    if (!args[0]) return message.reply("Weather for what location?");
+    if (!args[0]) return message.channel.send(message.author.mention+', Weather for what location?')
+    
     const lmao = await weathers.find(
       { search: search, degreeType: "F" },
       function (error, result) {
