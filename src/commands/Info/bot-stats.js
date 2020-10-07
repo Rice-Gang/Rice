@@ -79,6 +79,7 @@ class Bstats extends Command {
                         inline: true
                     },
                     {
+                    {
                         name: `Model`,
                         value: core.model,
                         inline: false
