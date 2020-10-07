@@ -34,7 +34,8 @@ class Help extends Command {
                    //{ name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
                    //{ name: 'Usage', value: cmd.config.usage },
                    //{ name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') },
-               ]
+               ],
+               color: 0xFFFFFd
            }
 
            message.channel.send({ embed });
@@ -59,7 +60,8 @@ class Help extends Command {
             });
     
             const embed = {
-                fields: []
+                fields: [],
+                color: 0xFFFFFd,
             };
     
             categories.sort().forEach((ct) => {

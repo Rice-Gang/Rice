@@ -8,7 +8,9 @@ const fs = require('fs');
 const readdir = util.promisify(fs.readdir);
 
 const rice = new Rice(process.env.token, {
-    allowedMentions: []
+    allowedMentions: [],
+    defaultImageFormat: "png",
+    defaultImageSize: 512,
 });
 
 const setup = async () => {
