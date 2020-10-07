@@ -42,6 +42,11 @@ class Warn extends Command {
         data.guild.infractionCount++;
         await data.guild.save();
 
+        data.guild.warns.push({
+            user: member.user.id,
+            
+        })
+
         mData.warns.push({
             moderator: message.author.id,
             channel: message.channel.id,
