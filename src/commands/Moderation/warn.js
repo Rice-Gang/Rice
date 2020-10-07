@@ -44,8 +44,12 @@ class Warn extends Command {
 
         data.guild.warns.push({
             user: member.user.id,
-            
-        })
+            channel: message.channel.id,
+            time: Date.now(),
+            case: data.guild.infractionCount,
+            reason,
+            typeOf: 'warn',
+        });
 
         mData.warns.push({
             moderator: message.author.id,
