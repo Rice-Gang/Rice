@@ -10,6 +10,7 @@ module.exports = class {
         const developers = ['699312838455459911', '423687326405885957', '657191205968543764', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704', '342314924804014081']
 
         data.guild = await this.rice.guild(message.channel.guild.id);
+        data.member = await this.rice.member(message.channel.guild.id);
 
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;

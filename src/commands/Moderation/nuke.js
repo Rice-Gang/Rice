@@ -4,7 +4,7 @@ const Command = require('../../core/Command');
 class Channelnuke extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'channelnuke',
+            name: 'nuke',
             aliases: ['c-nuke', 'channel-nuke', 'channel-c'],
             category: 'Moderation',
             botPerms: ['manageChannels', 'manageMessages'],

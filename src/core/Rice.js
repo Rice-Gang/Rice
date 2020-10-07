@@ -1,6 +1,7 @@
 const { Client, Collection } = require('eris');
 
 const Guild = require('../helpers/models/Guild');
+const Member = require('../helpers/models/Member');
 
 class Rice extends Client {
     constructor(token, options) {
@@ -42,6 +43,20 @@ class Rice extends Client {
             return guild;
         }
     }
+
+    async member(memberID) {
+        const member = await Member.findOne({ id: memberID });
+        if (!guild) {
+            const newData = new Member({
+                id: memberID
+            });
+            newData.save();
+            return newData;
+        } else {
+            return member;
+        }
+    }
+
     async warn(target, message, reason) {
         if (!target) throw new Error(`No target id for warn specified.`);
         if (!message) throw new Error(`No Message of warn specified.`);

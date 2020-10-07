@@ -26,7 +26,7 @@ class Prefix extends Command {
         
         data.guild.prefix = args[0];
         await data.guild.save();
-        message.channel.sendSuccess(`The new prefix in ${message.channel.guild.name} has been set to \`${prefix}\`, try \`${prefix}help\`!`)
+        message.channel.sendSuccess(`The new prefix in ${message.channel.guild.name} has been set to \`${prefix + ' '}\`, try \`${prefix + ' '}help\`!`)
 
     }
 }
