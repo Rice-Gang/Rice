@@ -112,4 +112,4 @@ dist
 .tern-port
 
 # File ext's
-* .txt
+*.txt
