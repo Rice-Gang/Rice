@@ -25,7 +25,7 @@ class Warn extends Command {
 
         const member = await message.channel.guild.members.get(user.id);
 
-        console.log(member)
+        //console.log(member)
 
         if (!member) {
             message.channel.sendError('You need to provide a valid user.')
@@ -54,8 +54,8 @@ class Warn extends Command {
                 name: `Case #${data.guild.infractionCount}`
             },
             fields: [
-                { name: 'User', value: member.username + '#' + member.discriminator },
-                { name: 'Moderator', value: message.author.username + '#' + member.author.discriminator },
+                { name: 'User', value: member.user.username + '#' + member.user.discriminator },
+                { name: 'Moderator', value: message.author.username + '#' + message.author.discriminator },
                 { name: 'Reason', value: reason }
             ]
         }
