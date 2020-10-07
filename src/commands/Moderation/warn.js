@@ -52,7 +52,7 @@ class Warn extends Command {
                 name: `Case #${data.guild.infractionCount}`
             },
             fields: [
-                { name: 'User', value: member.user.username + '#' + member.user.discriminator },
+                { name: 'User', value: member.username + '#' + member.discriminator },
                 { name: 'Moderator', value: message.author.username + '#' + member.author.discriminator },
                 { name: 'Reason', value: reason }
             ]
