@@ -47,7 +47,8 @@ class Warn extends Command {
             channel: message.channel.id,
             time: Date.now(),
             case: data.guild.infractionCount,
-            reason
+            reason,
+            typeOf: 'warn'
         });
 
         await data.save();
