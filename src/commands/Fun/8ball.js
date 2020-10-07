@@ -1,6 +1,7 @@
 const Command = require('../../core/Command');
 const fetch = require('node-fetch')
 const got = require('got')
+const jimp = require('jimp')
 
 class Ball extends Command {
     constructor(rice) {
@@ -18,9 +19,10 @@ class Ball extends Command {
         got('https://nekos.life/api/v2/8ball').then(r => {
             (async () => {
                 let content = JSON.parse(r.body);
-                let res = await fetch(content.url)
-                let img = await res.buffer()
-                msg.channel.send('', {file: img, name: '8ball.png'})
+                let img = await jimp.read(content.url)
+                img.resize(400, 400)
+                let final = await img.getBufferAsync('image/png')
+                msg.channel.send('', {file: final, name: '8ball.png'})
             })()
             
         })
