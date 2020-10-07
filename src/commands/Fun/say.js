@@ -20,8 +20,8 @@ class say extends Command {
             color: 0xFFFFFd,
             timestamp: new Date(),
             footer: {
-                text: 
-                icon_url:
+                text: this.rice.user.username,
+                icon_url: this.rice.user.avatarURL
             }
         }
         message.channel.send({embed: embed})
