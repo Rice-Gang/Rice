@@ -15,7 +15,9 @@ class Mute extends Command {
 
         const authorTag = `${message.author.username}#${message.author.discriminator}`;
 
-        const memberToMute = message.mentions;
+        if (!args[0]) return error(`**${authorTag}** Specify a valid member to mute!`);
+
+        const memberToMute = message.mentions || this.rice.users.get(args[0]) || this.rice.users.find(u => u.username == args[0]);
 
         if (!memberToMute[0] || !message.channel.guild.members.get(memberToMute[0].id)) return error(`**${authorTag}** Specify a valid member to mute!`);
 
@@ -48,7 +50,7 @@ class Mute extends Command {
 
         await message.channel.guild.members.get(memberToMute[0].id).addRole(muteRole.id);
 
-        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || 'No Reason Provided.'}` } });
+        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || 'No Reason Provided.'}`, color: 0x3cb474 } });
 
         message.channel.guild.channels.forEach(c => {
             if (!c.permissionsOf(this.rice.user.id).has('readMessages')) return;
