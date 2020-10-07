@@ -10,6 +10,7 @@ class MessageEmbed {
 
     setColor(hex) {
         if (!hex) throw new Error("You didn't provide a color.");
+        if (hex == 1) return this.color = 0xFFFFFd
         this.color = hex;
         return;
     };

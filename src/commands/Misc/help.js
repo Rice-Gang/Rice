@@ -48,7 +48,8 @@ class Help extends Command {
                 'misc': 'ℹ️',
                 'image': '📸',
                 'config': '⚙️',
-                'fun': '🤣'
+                'fun': '🤣',
+                'info': '<:PeepoThink:763311088217096232>'
             };
     
             const categories = [];
