@@ -1,22 +1,7 @@
 const fieldArray = [];
 class MessageEmbed {   
-    constructor(data = {}) {
-        const e = this._setup(data);
-        return e;
+    constructor() {
     };
-    _setup(data) {
-        data.title = this.title;
-        data.color = this.color;
-        data.url = this.url;
-        data.author = this.author;
-        data.description = this.description;
-        data.thumbnail = this.thumbnail;
-        data.fields = this.fields;
-        data.image = this.image;
-        data.footer = this.footer;
-        data.timestamp = this.timestamp;
-        return data;
-    }
     setTitle(text) {
         if (!text) throw new Error('You didn\'t provide any text for the title');
         this.title = text; 
@@ -71,12 +56,20 @@ class MessageEmbed {
         this.image.url = url;
         return;
     };
-    setFooter(content, url) {
-        if (!content) throw new Error(`No Text for footer specified.`);
+    // setFooter(content, url) {
+    //     if (!content) throw new Error(`No Text for footer specified.`);
         
-        this.footer.text = content;
+    //     this.footer.text = content;
         
-        if (url) this.footer.icon_url = url
+    //     if (url) this.footer.icon_url = url
+    //     return;
+    // };
+    setFooter(name, icon_url) {
+        if (!name) throw new Error(`No Text for footer specified.`);
+        
+        this.footer.name = name
+          
+        if (icon_url) this.footer.icon_url = icon_url
         return;
     };
     setTimestamp() {
