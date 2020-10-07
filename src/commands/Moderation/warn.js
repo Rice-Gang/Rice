@@ -20,7 +20,7 @@ class Warn extends Command {
         }
 
         if (user.id === message.author.id) {
-            return message.channel.sendError('I cannot ban that user.')
+            return message.channel.sendError('I cannot warn that user.')
         }
 
         const member = await message.channel.guild.members.get(user.id);
