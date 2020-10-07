@@ -66,7 +66,7 @@ class Help extends Command {
     
             categories.sort().forEach((ct) => {
                 const cmds = this.rice.commands.filter((cmd) => cmd.help.category === ct);
-                embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(' ') })
+                embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(', ') })
             });
     
             message.channel.send({ embed });
