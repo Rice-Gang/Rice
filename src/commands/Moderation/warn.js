@@ -13,7 +13,7 @@ class Warn extends Command {
 
     async run(message, args, data) {
 
-        const user = message.mentions[0] || message.channel.guild.members.get(args[0]) || message.channel.guild.members.find(x => x.user.username === args[0]);
+        const user = message.mentions[0] || message.channel.guild.members.get(args[0]) || message.channel.guild.members.find(x => x.username === args[0]);
 
         if (!message.mentions[0] || !message.channel.guild.members.get(message.mentions[0].id)) {
             return message.channel.sendError('You need to provide a valid member to warn.')
@@ -44,10 +44,21 @@ class Warn extends Command {
             reason
         });
 
+        await data.member.save();
+
         const embed = {
             color: 0xEDD3BB,
-            
+            author: {
+                name: `Case #${data.guild.infractionCount}`
+            },
+            fields: [
+                { name: 'User', value: member.user.username + '#' + member.user.discriminator },
+                { name: 'Moderator', value: message.author.username + '#' + member.author.discriminator },
+                { name: 'Reason', value: reason }
+            ]
         }
+
+        message.channel.createMessage({ embed });
     }
 }
 
