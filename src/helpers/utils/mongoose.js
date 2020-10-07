@@ -1,4 +1,5 @@
 require('dotenv').config();
+const info = require('../../config.json')
 
 const mongoose = require('mongoose');
 
@@ -13,7 +14,7 @@ module.exports.init = (rice) => {
             family: 4,
         }
 
-        mongoose.connect(process.env.mongo || null, dbOptions)
+        mongoose.connect(process.env.mongo || info.mongo || null, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
