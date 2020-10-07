@@ -46,7 +46,7 @@ class Rice extends Client {
 
     async member(memberID) {
         const member = await Member.findOne({ id: memberID });
-        if (!guild) {
+        if (!member) {
             const newData = new Member({
                 id: memberID
             });
