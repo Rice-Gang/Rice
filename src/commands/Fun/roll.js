@@ -7,11 +7,13 @@ class Roll extends Command {
             category: 'Fun',
             botPerms: [],
             memberPerms: [],
-            description: 'Foll some dice'
+            description: 'Roll some dice'
         });
     }
 
     async run(message, args) {
+
+        
 
         return message.channel.send('rolled a ' + Math.floor(Math.random() * 12) +5)
     }
