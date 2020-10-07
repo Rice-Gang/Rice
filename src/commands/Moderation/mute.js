@@ -5,9 +5,9 @@ class Mute extends Command {
         super(rice, {
             name: 'mute',
             category: 'Moderation',
-            botPerms: [''],
-            memberPerms: [],
-            description: ''
+            botPerms: ['manageRoles'],
+            memberPerms: ['manageMessages'],
+            description: 'Mute a specific member'
         });
     }
 
@@ -17,14 +17,14 @@ class Mute extends Command {
 
         const memberToMute = message.mentions;
 
-        if (!memberToMute[0] || !message.channel.guild.members.get(memberToMute[0].id)) error(`**${authorTag}** Specify a valid member to mute!`);
+        if (!memberToMute[0] || !message.channel.guild.members.get(memberToMute[0].id)) return error(`**${authorTag}** Specify a valid member to mute!`);
 
-        if (memberToMute.user.id == message.author.id) return error(`**${authorTag}** You can mute yourself!`);
-        
+        if (memberToMute[0].id == message.author.id) return error(`**${authorTag}** You can mute yourself!`);
+
         const highestAuthorRole = Math.max.apply(Math, message.member.roles.map((x) => {
             return x.position;
         }));
-        const highestTargetRole = Math.max.apply(Math, message.channel.guild.members.get(memberToMute[0].user.id).roles.map((x) => {
+        const highestTargetRole = Math.max.apply(Math, message.channel.guild.members.get(memberToMute[0].id).roles.map((x) => {
             return x.position;
         }));
 
@@ -32,27 +32,33 @@ class Mute extends Command {
 
         const reason = args.slice(1).join(' ');
 
-        const targetTag = `${memberToMute.user.username}#${memberToMute.user.discriminator}`;
+        const targetTag = `${memberToMute[0].username}#${memberToMute[0].discriminator}`;
 
         const server = await serverData.findOne({ id: message.channel.guild.id });
 
         let muteRole = message.channel.guild.roles.get(server.muteRole);
 
-        if (memberToMute.roles.find(r => r.id == muteRole)) return error(`**${targetTag}** Is already muted!`);
-
         if (!muteRole) {
-            muteRole = await message.channel.guild.createRole(`Muted`, { color: 0xA8A8A8, mentionable: false, permissions: [] });
-            data.muteRole = muteRole.id;
+            muteRole = await message.channel.guild.createRole({ name: 'Muted', color: 0xA8A8A8, mentionable: false, permissions: [] });
+            server.muteRole = muteRole.id;
+            await server.save();
         }
 
-        await memberToMute.addRole(muteRole.id);
+        if (message.channel.guild.members.get(memberToMute[0].id).roles.find(r => r.id == muteRole.id)) return error(`**${targetTag}** Is already muted!`);
 
-        message.channel.send(`<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason ?? 'No Reason Provided.'}`);
+        await message.channel.guild.members.get(memberToMute[0].id).addRole(muteRole.id);
+
+        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason ?? 'No Reason Provided.'}` } });
+
+        message.channel.guild.channels.forEach(c => {
+            if (!c || c)
+            c.editPermission(muteRole.id, 0, 2048, 'role');
+        })
 
         function error(text) {
-            message.channel.send({ embed: { description: `<:no:762884741069275156> ${text}` }, color: 0xff4949 })
+            message.channel.send({ embed: { description: `<:no:762884741069275156> ${text}`, color: 0x0ff4949 } })
         }
-        
+
     }
 }
 
