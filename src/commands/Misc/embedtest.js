@@ -14,14 +14,11 @@ class EmbedTest extends Command {
     async run(message, args) {
         //message.channel.send(message.member.user.avatarURL)
         const Embed = new MessageEmbed()
-        Embed.setTitle('test')
-        Embed.setColor(0xFFFFFd)
+        Embed.setTitle('test');
+        Embed.setColor(0xFFFFFd);
         //Embed.url = ''
-        Embed.author={text: message.member.user.username} 
-        Embed.setDescription('hello')
-        Embed.thumbnail = {
-            url: message.member.user.avatarURL
-        }
+        Embed.setDescription('hello');
+        Embed.setThumbnail(message.member.user.avatarURL);
         // //Embed.fields = [{ }]
         // Embed.image = {
         //    url: 
