@@ -16,7 +16,7 @@ module.exports = class {
             snipes.splice(10);
             this.rice.snipes.set(message.channel.id, snipes);
         }catch (err){
-            //So it no log del msg tht is no in cache :0
+            //So it does not log an err when a message is deleted that is not in the cache
         }
         
     }
