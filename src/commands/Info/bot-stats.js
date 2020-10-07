@@ -25,6 +25,7 @@ class Bstats extends Command {
         msg.channel.send({
             embed: {
                 title: `Bot stats`,
+                description: `Developers: <@699312838455459911>, <@423687326405885957>, <@657191205968543764>, <@329220047824486400>, <@521677874055479296>, <@373293135704621077>, <@695520751842885672>, <@515204641450098704>, <@342314924804014081>`,
                 thumbnail:{
                     url: this.rice.user.avatarURL
                 },
