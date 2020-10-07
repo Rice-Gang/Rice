@@ -67,7 +67,7 @@ class Infractions extends Command {
             embed.footer.text = ' ';
         } else {
             warns.forEach((s) => {
-                embed.color = '16777215',
+                embed.color = 16777215;
                 embed.fields.push({ name: this.firstLUC(s.typeOf) + ' | #' + s.case, value: 'Moderator', value: `<@!${s.moderator}> - ${s.reason}`, inline: false });
                 embed.footer.text = `Page ${args[1] || 1} / ${page}`
             });
