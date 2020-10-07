@@ -20,7 +20,8 @@ class Eval extends Command {
         const client = this.rice,
             rice = this.rice;
 
-        let input = args.join(' ');
+        let input = message.content.slice(10)
+        //let input = args.join(' ');
         if(input.includes('token')) return message.channel.send('I smell the word token so no')
 
         if (!args[0]) {

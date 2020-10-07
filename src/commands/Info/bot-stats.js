@@ -2,6 +2,7 @@ const Command = require('../../core/Command');
 const os = require('os')
 const core = os.cpus()[0];
 
+
 class Bstats extends Command {
     constructor(rice) {
         super(rice, {
@@ -79,6 +80,10 @@ class Bstats extends Command {
                         inline: true
                     },
                     {
+                        name: `Version`,
+                        value: `Node ${process.version}`,
+                        inline: true
+                    },
                     {
                         name: `Model`,
                         value: core.model,
