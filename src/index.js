@@ -36,6 +36,7 @@ const setup = async () => {
         rice.on(evtName, (...args) => event.run(...args));
         delete require.cache[require.resolve(__dirname + `/events/${evt}`)];
     });
+    
     rice.weather = require('weather-js');
     rice.fs = fs;
     rice.mongoose = require('./helpers/utils/mongoose');
