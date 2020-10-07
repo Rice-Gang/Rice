@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const mongoose = require('mongoose');
 
 module.exports.init = (rice) => {
@@ -13,7 +14,7 @@ module.exports.init = (rice) => {
             family: 4,
         }
 
-        mongoose.connect(process.env.mongo || null, dbOptions)
+        mongoose.connect(process.env.mongo|| null, dbOptions)
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
 
