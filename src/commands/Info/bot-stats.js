@@ -1,5 +1,6 @@
 const Command = require('../../core/Command');
-const MessageEmbed = require('../../core/MessageEmbed');
+const os = require('os')
+const core = os.cpus()[0];
 
 class Bstats extends Command {
     constructor(rice) {
@@ -62,6 +63,26 @@ class Bstats extends Command {
                         value: `${Math.floor(uptime / 86400000)} Days ${Math.floor((uptime / (1000*60*60)) % 24)} Hours ${Math.floor((uptime / (1000*60)) % 60)} Minutes ${Math.floor((uptime / (1000) % 60))} Seconds`,
                         inline: false
                     },
+                    {
+                        name: `Platform`,
+                        value: process.platform,
+                        inline: true,
+                    },
+                    {
+                        name: 'Speed/MHz',
+                        value: core.speed,
+                        inline: true
+                    },
+                    {
+                        name: `Cores`,
+                        value: os.cpus().length,
+                        inline: true
+                    },
+                    {
+                        name: `Model`,
+                        value: core.model,
+                        inline: false
+                    }
                     
                 ],
                 color: 0xFFFFFd,
