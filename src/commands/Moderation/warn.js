@@ -25,6 +25,8 @@ class Warn extends Command {
 
         const member = await message.channel.guild.members.get(user.id);
 
+        console.log(member)
+
         if (!member) {
             message.channel.sendError('You need to provide a valid user.')
         }
