@@ -8,6 +8,7 @@
     "eris": "github:settlelol/eris",
     "got": "^11.7.0",
     "jimp": "^0.16.1",
+    "jokeslol": "^1.0.3",
     "mongoose": "^5.10.7",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
