@@ -8,6 +8,8 @@ const Guild = new mongoose.Schema({
 
     muteRole: { type: String, default: ''},
 
+    logID: { type: String, default: ''},
+
     autorole: { type: String, default: 'none' },
 });
 
