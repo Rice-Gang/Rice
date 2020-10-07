@@ -7,7 +7,7 @@ const fs = require('fs');
 const info = require('./config.json')
 const readdir = util.promisify(fs.readdir);
 
-const rice = new Rice(process.env.token || info.token, {
+const rice = new Rice(process.env.token, {
     allowedMentions: []
 });
 
