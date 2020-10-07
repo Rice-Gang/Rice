@@ -37,6 +37,11 @@ class Avatar extends Command {
                 title: "Avatar for: \n" + member.username,
                 image: {
                     url: member.avatarURL
+                }, 
+                timestamp: new Date(),
+                footer: {
+                    text: this.rice.user.username,
+                    icon_url: this.rice.user.avatarURL
                 }
             }
 
