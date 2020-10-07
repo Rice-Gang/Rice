@@ -24,9 +24,7 @@ class Help extends Command {
             console.log(cmd.config)
 
            const embed = {
-               author: {
-                   name: cmd.name
-               },
+               title: `Command ${cmd.help.name}`,
                fields: [
                    { name: 'Category', value: cmd.help.category },
                    { name: 'Description', value: cmd.help.description },
@@ -38,7 +36,7 @@ class Help extends Command {
                color: 0xFFFFFd
            }
 
-           message.channel.send({ embed });
+           message.channel.send({ embed: embed });
 
         } else if (!args[0]) {
 
@@ -61,13 +59,14 @@ class Help extends Command {
             });
     
             const embed = {
+                title: 'My Commands',
                 fields: [],
                 color: 0xFFFFFd,
             };
     
             categories.sort().forEach((ct) => {
                 const cmds = this.rice.commands.filter((cmd) => cmd.help.category === ct);
-                embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(' ') })
+                embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(', ') })
             });
     
             message.channel.send({ embed });
