@@ -36,24 +36,24 @@ class Mute extends Command {
 
         const server = await serverData.findOne({ id: message.channel.guild.id });
 
-        let muteRole = message.channel.guild.roles.get(server.muteRole);
-
+        let muteRole = await message.channel.guild.roles.get(server.muteRole);
+        
         if (!muteRole) {
-            muteRole = await message.channel.guild.createRole({ name: 'Muted', color: 0xA8A8A8, mentionable: false, permissions: [] });
+            muteRole = await message.channel.guild.createRole({ name: 'Muted', color: 0xA8A8A8, mentionable: false, permissions: 0 });
             server.muteRole = muteRole.id;
             await server.save();
         }
 
-        if (message.channel.guild.members.get(memberToMute[0].id).roles.find(r => r.id == muteRole.id)) return error(`**${targetTag}** Is already muted!`);
+        if (message.channel.guild.members.get(memberToMute[0].id).roles.find(r => r == muteRole.id)) return error(`**${targetTag}** Is already muted!`);
 
         await message.channel.guild.members.get(memberToMute[0].id).addRole(muteRole.id);
 
-        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason ?? 'No Reason Provided.'}` } });
+        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason ?? 'No Reason Provided.'}`, color: 0x3cb474 } });
 
         message.channel.guild.channels.forEach(c => {
-            if (!c || c)
-            c.editPermission(muteRole.id, 0, 2048, 'role');
-        })
+            if (!c.permissionsOf(this.rice.user.id).has('readMessages')) return;
+            else c.editPermission(muteRole.id, 0, 2048, 'role');
+        }); 
 
         function error(text) {
             message.channel.send({ embed: { description: `<:no:762884741069275156> ${text}`, color: 0x0ff4949 } })
