@@ -1,5 +1,5 @@
 require('dotenv').config();
-const info = require('../../config.json')
+
 
 const mongoose = require('mongoose');
 
