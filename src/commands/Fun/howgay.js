@@ -18,8 +18,8 @@ class Howgay extends Command {
         if (!args[0]) {
         return message.channel.send('Your are ' + Math.floor(Math.random() * 12) +5 + '% gay.')
         }
-        else {
-            message.channel.send(`<@${message.member.id}> is ` + Math.floor(Math.random() * 12) +5 + '% gay.')
+        else { //console.log(message.mentions)
+            message.channel.send(`<@${member.id}> is ` + Math.floor(Math.random() * 12) +5 + '% gay.')
         }
     }
 }
