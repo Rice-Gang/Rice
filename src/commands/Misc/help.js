@@ -24,9 +24,7 @@ class Help extends Command {
             console.log(cmd.config)
 
            const embed = {
-               author: {
-                   name: cmd.name
-               },
+               title: `Command ${cmd.help.name}`,
                fields: [
                    { name: 'Category', value: cmd.help.category },
                    { name: 'Description', value: cmd.help.description },
@@ -38,7 +36,7 @@ class Help extends Command {
                color: 0xFFFFFd
            }
 
-           message.channel.send({ embed });
+           message.channel.send({ embed: embed });
 
         } else if (!args[0]) {
 
@@ -61,6 +59,7 @@ class Help extends Command {
             });
     
             const embed = {
+                title: 'My Commands',
                 fields: [],
                 color: 0xFFFFFd,
             };
