@@ -11,7 +11,7 @@ class Warn extends Command {
         });
     }
 
-    async run(message, args, data) {
+    async run(message, args) {
 
         const user = message.mentions[0] || message.channel.guild.members.get(args[0]) || message.channel.guild.members.find(x => x.username === args[0]);
 
@@ -24,6 +24,8 @@ class Warn extends Command {
         }
 
         const member = await message.channel.guild.members.get(user.id);
+
+        const data = await this.rice.member(user.id);
 
         if (member.user.bot) {
             return message.channel.sendError('I can\'t warn bots.')
@@ -40,7 +42,7 @@ class Warn extends Command {
         data.guild.infractionCount++;
         await data.guild.save();
 
-        data.member.warns.push({
+        data.warns.push({
             moderator: message.author.id,
             channel: message.channel.id,
             time: Date.now(),
@@ -48,7 +50,7 @@ class Warn extends Command {
             reason
         });
 
-        await data.member.save();
+        await data.save();
 
         const embed = {
             color: 0xEDD3BB,
