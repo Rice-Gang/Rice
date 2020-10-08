@@ -8,7 +8,7 @@ class ServerMute extends Command {
             category: 'Moderation',
             botPerms: ['manageGuild'],
             memberPerms: ['manageMessages'],
-            description: 'server mute or unmute a user',
+            description: 'server mute or unmute a user (Voice)',
             usage: 'server-mute <user>'
         });
     }

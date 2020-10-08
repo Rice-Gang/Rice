@@ -21,17 +21,18 @@ class Help extends Command {
                 return message.channel.sendError(`I couldn't find that command.`)
             }
 
-            console.log(cmd.config)
-
+            //console.log(cmd)
+            let inline = true;
            const embed = {
                title: `Command ${cmd.help.name}`,
                fields: [
-                   { name: 'Category', value: cmd.help.category },
-                   { name: 'Description', value: cmd.help.description },
-                   { name: 'Cooldown', value: cmd.config.cooldown / 1000 + ' seconds' },
-                   //{ name: 'Aliases', value: cmd.config.aliases.map(x => `\`${x}\``).join(', ') },
-                   //{ name: 'Usage', value: cmd.config.usage },
-                   //{ name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ') },
+                   { name: 'Category', value: cmd.help.category, inline },
+                   { name: 'Description', value: cmd.help.description, inline },
+                   { name: 'Cooldown', value: cmd.config.cooldown / 1000 + ' seconds', inline },
+                   { name: 'Aliases', value: cmd.help.aliases.map(x => `\`${x}\``).join(", ") },
+                   { name: 'Usage', value: cmd.help.usage, inline },
+                   { name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', '), inline },
+                   { name: 'Member Permissions', value: cmd.config.memberPerms.map(x => `\`${x}\``).join(', '), inline },
                ],
                color: 0xFFFFFd
            }
