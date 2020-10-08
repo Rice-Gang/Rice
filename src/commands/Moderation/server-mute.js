@@ -6,8 +6,8 @@ class ServerMute extends Command {
             name: 'servermute',
             aliases: ['smute', 'server-mute'],
             category: 'Moderation',
-            botPerms: [],
-            memberPerms: [],
+            botPerms: ['manageGuild'],
+            memberPerms: ['manageMessages'],
             description: 'server mute or unmute a user',
             usage: 'server-mute <user>'
         });
@@ -23,11 +23,11 @@ class ServerMute extends Command {
             } else {
                 if (user.voiceState.mute === false) {
                     user.edit({ mute: true })
-                    message.channel.send(`<:yes:762884751832252417> I have successfully muted \`${user}\` for you!`)
+                    message.channel.send(`<:yes:762884751832252417> I have successfully muted \`${user.username}\` for you!`)
                 }
                 if (user.voiceState.mute === true) {
                     user.edit({ mute: false })
-                    message.channel.send(`<:yes:762884751832252417> I have successfully unmuted \`${user}\` for you!`)
+                    message.channel.send(`<:yes:762884751832252417> I have successfully unmuted \`${user.username}\` for you!`)
                 }
             }
         }
