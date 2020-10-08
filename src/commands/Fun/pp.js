@@ -7,6 +7,7 @@ class pp extends Command {
             name: 'pp',
             category: 'Fun',
             botPerms: ['sendMessages'],
+            aliases: ['penis'],
             memberPerms: [],
             description: 'Shows a user pp size'
         });
