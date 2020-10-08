@@ -1,7 +1,6 @@
 const { Client, Collection } = require('eris');
 
 const Guild = require('../helpers/models/Guild');
-const Member = require('../helpers/models/Member');
 
 class Rice extends Client {
     constructor(token, options) {
@@ -42,19 +41,6 @@ class Rice extends Client {
             return newData;
         } else {
             return guild;
-        }
-    }
-
-    async member(memberID) {
-        const member = await Member.findOne({ id: memberID });
-        if (!member) {
-            const newData = new Member({
-                id: memberID
-            });
-            newData.save();
-            return newData;
-        } else {
-            return member;
         }
     }
 

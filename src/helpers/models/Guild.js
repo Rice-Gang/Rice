@@ -13,7 +13,7 @@ const Guild = new mongoose.Schema({
     autorole: { type: String, default: 'none' },
 
     warns: { type: Array, default: [] },
-    infractionCount: { type: Number, default: 0 },
+    infractionCount: { type: Array, default: [] },
 
 });
 
