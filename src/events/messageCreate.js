@@ -10,7 +10,6 @@ module.exports = class {
         const developers = ['699312838455459911', '423687326405885957', '657191205968543764', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704', '342314924804014081']
 
         data.guild = await this.rice.guild(message.channel.guild.id);
-        data.member = await this.rice.member(message.channel.guild.id);
 
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
@@ -22,7 +21,7 @@ module.exports = class {
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-        const msg = message.cleanContent.split(' ');
+        const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
 
@@ -33,32 +32,27 @@ module.exports = class {
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
         if (message.channel.guild) {
-            let permissions = [];
+            let Member_perms = []
+            let Rice_perms = []
+            
+            let rice_tocheck = command.config.botPerms;
+            let member_tocheck = command.config.memberPerms;
 
-            if (!command.config.botPerms.includes('embedLinks')) {
-                command.config.botPerms.push('embedLinks');
-            }
-            command.config.botPerms.forEach((p) => {
-                if (!message.channel.permissionsOf(this.rice.user.id).has(p)) {
-                    permissions.push(perm);
+            let bot_perms = message.channel.guild.members.find(x => x.id == this.rice.user.id).permission
+            let member_perms = message.channel.guild.members.find(x => x.id == message.author.id).permission
+
+            member_tocheck.forEach(perm => {
+                if(!member_perms.has(perm)){
+                    Member_perms.push(perm)
                 }
-            });
+            })
+            if(!Member_perms.length == 0) return message.channel.sendError(`Looks like you are missing some permissions for that command! Here they are: ${Member_perms.map((p) => `\`${p}\``).join(', ')}`)
 
-            if (permissions.length > 0) {
-                return message.channel.sendError(`Looks like I am missing some permissions for that command! Here they are: ${permissions.map((p) => `\`${p}\``).join(', ')}`)
-            }
-
-            permissions = [];
-
-            command.config.memberPerms.forEach((p) => {
-                if (!message.channel.permissionsOf(message.author.id).has(p)) {
-                    permissions.push(p);
-                }
-                if (permissions.length === 0) {
-                    return;
-                }
-                return message.channel.sendError(`Looks like you are missing some permissions for that command! Here they are: ${permissions.map((p) => `\`${p}\``).join(', ')}`)
-            });
+            rice_tocheck.forEach(perm => {
+                if(!bot_perms.has(perm))
+                Rice_perms.push(perm)
+            })
+            if(!Rice_perms.length == 0) return message.channel.send(`Looks like I am missing some permissions for that command! Here they are: ${Rice_perms.map((p) => `\`${p}\``).join(', ')}`)
         }
 
         try {
