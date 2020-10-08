@@ -1,5 +1,6 @@
 const data = {};
 
+
 module.exports = class {
     constructor(rice) {
         this.rice = rice;
@@ -31,8 +32,20 @@ module.exports = class {
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
-
-
+        
+        const cooldown = this.rice.cooldown;
+        if(cooldown.has(`${message.author.id}_${command.help.name}`)){
+            return message.channel.sendError(`You are still in cooldown for this command\
+            \nCooldown: ${command.config.cooldown / 1000} Second(s)`)
+        }else{
+            if(!developers.includes(message.author.id)){
+                this.rice.cooldown.add(`${message.author.id}_${command.help.name}`)
+                setTimeout(() => {
+                    this.rice.cooldown.delete(`${message.author.id}_${command.help.name}`)
+                }, command.config.cooldown);
+            }
+        }
+       
         if (message.channel.guild) {
             let Member_perms = []
             let Rice_perms = []
