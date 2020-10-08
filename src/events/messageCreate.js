@@ -45,26 +45,36 @@ module.exports = class {
                 }, command.config.cooldown);
             }
         }
-       
+
         if (message.channel.guild) {
-            let Member_perms = []
-            let Rice_perms = []
+            let neededPerms = [];
+
+            if (!command.config.botPerms.includes('embedLinks')) {
+                command.config.botPerms.push('embedLinks');
+            }
+
+            command.config.botPerms.forEach((perm) => {
+                if (!message.channel.permissionsOf(this.rice.user.id).has(perm)) {
+                    neededPerms.push(perm);
+                }
+            });
+
+            if (neededPerms.length > 0) {
+                const needed = neededPerms.map((p) => '`' + p + '`').join(', ');
+                return message.channel.sendError(`Looks like I am missing some permissions for that command, here they are: ${needed}`)
+            }
             
-            let rice_tocheck = command.config.botPerms;
-            let member_tocheck = command.config.memberPerms;
+            neededPerms = [];
 
-            let bot_perms = message.channel.guild.members.find(x => x.id == this.rice.user.id).permission
-            let member_perms = message.channel.guild.members.find(x => x.id == message.author.id).permission
+            command.config.memberPerms.forEach((perm) => {
+                if (!message.channel.permissionsOf(message.author.id).has(perm)) {
+                    neededPerms.push(perm);
+                }
+            });
 
-            member_tocheck.forEach(perm => {
-                if(!member_perms.has(perm)) Member_perms.push(perm)
-            })
-            if(!Member_perms.length == 0) return message.channel.sendError(`Looks like you are missing some permissions for that command! Here they are: ${Member_perms.map((p) => `\`${p}\``).join(', ')}`)
-
-            rice_tocheck.forEach(perm => {
-                if(!bot_perms.has(perm)) Rice_perms.push(perm)
-            })
-            if(!Rice_perms.length == 0) return message.channel.send(`Looks like I am missing some permissions for that command! Here they are: ${Rice_perms.map((p) => `\`${p}\``).join(', ')}`)
+            if (neededPerms.length > 0) {
+                return message.channel.sendError(`Looks like you are missing some permissions for that command... \n\n here they are: ${neededPerms.map((p) => '`' + p + ``).join(', ')}`)
+            }
         }
 
         try {
