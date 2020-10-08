@@ -7,7 +7,7 @@ class Sstats extends Command {
     constructor(rice) {
         super(rice, {
             name: 'server-stats',
-            aliases: ['sstats', 'serve-info', 'serverinfo','si', 'server'],
+            aliases: ['sstats', 'server-info', 'serverinfo','si', 'server'],
             category: 'Info',
             botPerms: ['embedLinks'],
             memberPerms: ['sendMessages'],
@@ -28,10 +28,10 @@ class Sstats extends Command {
         if(server.mfaLevel == '0') mfa = 'False'
 
         let verlvl = 'None'
-        if(server.verificationLevel == 1) verlvl = 'Verfied email'
-        if(server.verificationLevel == 2) verlvl = 'Verfied email, 5 Mins'
-        if(server.verificationLevel == 3) verlvl = 'Verfied email, 10 Mins'
-        if(server.verificationLevel == 4) verlvl = 'Verfied phone, 10 Mins'
+        if(server.verificationLevel == 1) verlvl = 'Verified email'
+        if(server.verificationLevel == 2) verlvl = 'Verified email, 5 Mins'
+        if(server.verificationLevel == 3) verlvl = 'Verified email, 10 Mins'
+        if(server.verificationLevel == 4) verlvl = 'Verified phone, 10 Mins'
 
         embed.fields.push({name: `Owner`, value: `<@${server.ownerID}>`, inline: true})
         embed.fields.push({name: `Region`, value: server.region, inline: true})
