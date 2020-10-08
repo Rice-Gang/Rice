@@ -6,7 +6,7 @@ const core = os.cpus()[0];
 class Sstats extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'server-stats',
+            name: 'server-info',
             aliases: ['sstats', 'server-info', 'serverinfo','si', 'server'],
             category: 'Info',
             botPerms: ['embedLinks'],
