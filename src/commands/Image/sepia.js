@@ -19,7 +19,7 @@ class Sepia extends Command {
    
     async run(msg, args) {
         let lastimg = await find.find(msg, args, this.rice)
-        if(lastimg == false) return msg.channel.send('I could not find a image in this channel')
+        if(lastimg == false) return msg.channel.sendError('I could not find a image in this channel')
         msg.channel.sendTyping()
         
         let file = await imgedit.sepia(lastimg)
