@@ -15,7 +15,7 @@ class ServerMute extends Command {
 
     async run(message, args) {
 
-        const user = message.mentions[0] || message.channel.guild.members.find(x => x.username.toLowerCase() == args.join(' ').toLowerCase()) || this.rice.users.find(x => x.id == args[0])
+        const user = message.mentions[0] || message.channel.guild.members.find(x => x.username.toLowerCase() == args.join(' ').toLowerCase()) || message.channel.guild.members.find(x => x.id.toLowerCase() == args.join(' ').toLowerCase())
         if (!user) return message.channel.sendError(`You didn't specify a user.`)
         else {
             if (user.voiceState.channelID === null) {
