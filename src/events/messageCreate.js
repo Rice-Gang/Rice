@@ -22,10 +22,9 @@ module.exports = class {
 
         if (!message.content.toLowerCase().startsWith(prefix)) return;
 
-        const msg = message.cleanContent.toLowerCase.split(' ');
+        const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
-        const cleanArgs = message.content.split(' ');
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
 
@@ -79,7 +78,7 @@ module.exports = class {
         }
 
         try {
-            command.run(message, args, data, cleanArgs);
+            command.run(message, args, data);
         } catch (err) {
             console.log(err);
         }
