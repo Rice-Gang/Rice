@@ -4,7 +4,7 @@ const Command = require('../../core/Command');
 class KnockKnockJoke extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'randomjoke',
+            name: 'knockknockjoke',
             aliases: ['rj', 'random', 'rjoke','knock-knock','knock'],
             category: 'Fun',
             botPerms: [],
