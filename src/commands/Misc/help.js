@@ -61,6 +61,7 @@ class Help extends Command {
             const embed = {
                 title: 'My Commands',
                 fields: [],
+
                 color: 0xFFFFFd,
             };
     

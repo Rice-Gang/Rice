@@ -16,9 +16,9 @@ class Howgay extends Command {
         const author = message.author;
 
         if (!args[0]) {
-        return message.channel.send('Your are ' + Math.floor(Math.random() * 12) +5 + '% gay.')
+        return message.channel.send('You are ' + Math.floor(Math.random() * 12) +5 + '% gay.')
         }
-        else { //console.log(message.mentions)
+        else {
             message.channel.send(`<@${member.id}> is ` + Math.floor(Math.random() * 12) +5 + '% gay.')
         }
     }

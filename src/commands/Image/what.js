@@ -1,18 +1,17 @@
 const Command = require('../../core/Command');
-const find = require('../../core/Image/find')
+const find = require('../../core/Image/find');
 const imgedit = require('../../core/Image/imgedit')
 
 
-class Gay extends Command {
+class What extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'gay',
-            aliases: [],
+            name: 'what',
             category: 'Image',
             botPerms: ['attachFiles'],
             memberPerms: [],
-            description: 'Overly the raibow over a image',
-            usage: `gay [ user ]`
+            description: 'What you say',
+            usage: 'what [ user ]'
         });
     }
 
@@ -22,9 +21,9 @@ class Gay extends Command {
         if(lastimg == false) return msg.channel.sendError('I could not find a image in this channel')
         msg.channel.sendTyping()
         
-        let file = await imgedit.gay(lastimg)
-        msg.channel.send('', {file: file, name: 'bars.png'})
+        let file = await imgedit.what(lastimg)
+        msg.channel.send('', {file: file, name: 'what.png'})
     }
 }
 
-module.exports = Gay;
+module.exports = What;

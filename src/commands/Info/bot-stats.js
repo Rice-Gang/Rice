@@ -17,6 +17,8 @@ class Bstats extends Command {
     }
 
     async run(msg, args) {
+
+        const developers = ['699312838455459911', '657191205968543764', '329220047824486400', '521677874055479296', '373293135704621077', '695520751842885672', '515204641450098704', '342314924804014081']
         
         
         let totalchannls = 0
@@ -25,6 +27,7 @@ class Bstats extends Command {
         msg.channel.send({
             embed: {
                 title: `Bot stats`,
+                description: `Developers: ${developers.map(x => `<@${x}>`).join(', ')}`,
                 thumbnail:{
                     url: this.rice.user.avatarURL
                 },

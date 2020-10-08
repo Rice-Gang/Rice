@@ -20,7 +20,8 @@ class Eval extends Command {
         const client = this.rice,
             rice = this.rice;
 
-        let input = args.join(' ')
+
+        let input = message.content.slice(10)
 
         if (!args[0]) {
             return message.channel.sendError('You need to provide some code...')

@@ -69,7 +69,7 @@ class Infractions extends Command {
         /**
          * TODO: ADD DYNAMIC PAGINATE
          */
-        let number = 5 * parseInt(args[1]);
+        number = 5 * parseInt(args[1]);
         let page;
 
         const data = await this.rice.member(user.id);
