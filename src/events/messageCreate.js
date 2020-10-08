@@ -25,7 +25,7 @@ module.exports = class {
         const msg = message.cleanContent.toLowerCase.split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
-        const cleanArgs = message.cleanContent.split(' ');
+        const cleanArgs = message.content.split(' ');
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
 
