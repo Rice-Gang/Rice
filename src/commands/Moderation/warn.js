@@ -37,7 +37,7 @@ class Warn extends Command {
 
         if (!reason) reason = 'No reason provided';
 
-        const warning = await this.rice.warn(user.id, message, reason);
+        const warning = await this.rice.warn(member.user.id, message, reason);
 
         const embed = {
             color: 0xEDD3BB,
