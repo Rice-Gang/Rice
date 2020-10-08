@@ -6,7 +6,7 @@ const core = os.cpus()[0];
 class Ustats extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'user-stats',
+            name: 'user-info',
             aliases: ['ustats', 'whos', 'whois', 'user'],
             category: 'Info',
             botPerms: ['embedLinks'],

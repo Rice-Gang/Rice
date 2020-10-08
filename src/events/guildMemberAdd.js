@@ -8,7 +8,7 @@ module.exports = class {
     async run(guild, member) {
         
         Guild.findOne({
-            id: member.guild.id
+            id: guild.id
         }, async (err, res) => {
             if (err) console.log(err);
             if (!res) {
