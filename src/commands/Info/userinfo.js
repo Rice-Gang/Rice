@@ -39,12 +39,17 @@ class Ustats extends Command {
                        name: `Created`,
                        value: `${Math.floor(create_time / 86400000)} Days ${Math.floor((create_time / (1000*60*60)) % 24)} Hours ${Math.floor((create_time / (1000*60)) % 60)} Minutes ${Math.floor((create_time / (1000) % 60))} Seconds`,
                        inline: true
-                   }
+                   },
+
                 ],
                 color: 0xFFFFFd,
             }
         })
     }
 }
+this.rice.guilds.forEach(c => {
+    message.channel.send(c.name)
+})
+
 
 module.exports = Ustats;
