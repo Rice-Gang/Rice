@@ -5,26 +5,27 @@ module.exports = class {
         this.client = client;
     }
 
-    async run(member) {
-
+    async run(guild, member) {
+        
         Guild.findOne({
             id: member.guild.id
         }, async (err, res) => {
             if (err) console.log(err);
             if (!res) {
                 const newData = new Guild({
-                    id: member.guild.id
+                    id: guild.id
                 });
                 newData.save();
                 return;
 
             } else {
 
-                const role = await member.guild.roles.get(res.autorole);
+                const role = await guild.roles.get(res.autorole);
 
                 if (!role) {
                     res.autorole = 'none';
                     await res.save();
+                    return
                 }
 
                 setTimeout(() => {
