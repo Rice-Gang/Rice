@@ -25,12 +25,13 @@ class Slowmode extends Command {
             if (channelForSlowmode.rateLimitPerUser == 0) {
                 return message.channel.send({ embed: { description: `<:no:762884741069275156>  **${authorTag}** Slowmode isn't enabled in that channel!`, color: 0xff4949 } });
             }
-            
+
             await channelForSlowmode.edit({ rateLimitPerUser: 0 }).then(() => {
-                return message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Disabled slowmode in ${channelForSlowmode.mention}`, color: 0x3cb474 } });
+                message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Disabled slowmode in ${channelForSlowmode.mention}`, color: 0x3cb474 } });
             }).catch((e) => {
-                return message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't disable slowmode in that channel.`, color: 0xff4949 } });
+                message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't disable slowmode in that channel.`, color: 0xff4949 } });
             })
+            return;
         } else {
 
             if (!args[0]) {
@@ -52,19 +53,20 @@ class Slowmode extends Command {
                     return message.channel.send({ embed: { description: `<:no:762884741069275156>  **${authorTag}** Slowmode isn't enabled in that channel!`, color: 0xff4949 } });
                 }
                 await channelForSlowmode.edit({ rateLimitPerUser: 0 }).then(() => {
-                    return message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Disabled slowmode in ${channelForSlowmode.mention}`, color: 0x3cb474 } });
+                    message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Disabled slowmode in ${channelForSlowmode.mention}`, color: 0x3cb474 } });
                 }).catch((e) => {
-                    return message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't disable slowmode in that channel.`, color: 0xff4949 } });
+                    message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't disable slowmode in that channel.`, color: 0xff4949 } });
                 })
+                return;
             }
 
             let prettyTime = time;
             if (ms(prettyTime) > 21600000) prettyTime = 21600000;
             else prettyTime = ms(time);
             await channelForSlowmode.edit({ rateLimitPerUser: parseInt(timeInSeconds) }).then(() => {
-                return message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Set slowmode of ${channelForSlowmode.mention} to \`${ms(prettyTime, { long: true })}\``, color: 0x3cb474 } });
+                message.channel.send({ embed: { description: `<:yes:762884751832252417> **${authorTag}** Set slowmode of ${channelForSlowmode.mention} to \`${ms(prettyTime, { long: true })}\``, color: 0x3cb474 } });
             }).catch((e) => {
-                return message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't set slowmode to that channel.`, color: 0xff4949 } });
+                message.channel.send({ embed: { description: `<:no:762884741069275156> Something went wrong... I couldn't set slowmode to that channel.`, color: 0xff4949 } });
             })
         }
     }

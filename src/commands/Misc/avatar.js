@@ -41,7 +41,7 @@ class Avatar extends Command {
                 try{
                     return msg.channel.send('', {file: img, name: `${fetchuser.username}_av.${end}`})
                 }catch(err){
-                    return msg.channel.send('This users avatar is to big')
+                    return msg.channel.send('This users avatar is too big')
                 }
                
             }

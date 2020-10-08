@@ -59,6 +59,13 @@ class Rice extends Client {
         else caseNum = warnCase + 1
         return caseNum;
     }
+    async getWarns(target, serverID) {
+        const data = await Guild.findOne({ id: serverID });
+        const warnCase = data.warns.find(x => x.User == target);
+
+        if (!warnCase) return null;
+        else return warnCase;
+    }
 
 }
 
