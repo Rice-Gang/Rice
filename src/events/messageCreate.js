@@ -74,7 +74,7 @@ module.exports = class {
             });
 
             if (neededPerms.length > 0) {
-                return message.channel.sendError(`Looks like you are missing some permissions for that command... \n\n here they are: ${neededPerms.map((p) => '`' + p + ``).join(', ')}`)
+                return message.channel.sendError(`Looks like you are missing some permissions for that command... \n\n here they are: ${neededPerms.map((p) => '`' + p + '`').join(', ')}`)
             }
         }
 
