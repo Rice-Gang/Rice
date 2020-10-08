@@ -15,13 +15,13 @@ class Eval extends Command {
         });
     }
 
-    async run(message, args, data) {
+    async run(message, args, data, cleanArgs) {
 
         const client = this.rice,
             rice = this.rice;
 
 
-        let input = args.join(' ');
+        let input = cleanArgs.join(' ');
 
         if (!args[0]) {
             return message.channel.sendError('You need to provide some code...')
