@@ -25,6 +25,7 @@ module.exports = class {
         const msg = message.cleanContent.toLowerCase().split(' ');
         const cmd = msg[1];
         const args = msg.slice(2);
+        const cleanArgs = message.cleanContent.split(' ');
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
 
@@ -78,7 +79,7 @@ module.exports = class {
         }
 
         try {
-            command.run(message, args, data);
+            command.run(message, args, data, cleanArgs);
         } catch (err) {
             console.log(err);
         }
