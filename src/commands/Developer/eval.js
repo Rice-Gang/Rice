@@ -21,7 +21,7 @@ class Eval extends Command {
             rice = this.rice;
 
 
-        let input = message.content.slice(10)
+        let input = args.join(' ');
 
         if (!args[0]) {
             return message.channel.sendError('You need to provide some code...')
