@@ -113,5 +113,6 @@ dist
 # File ext's
 *.txt
 
-# Test Commands
+# Test Commands Format [src/commands/(category)/(command.js)}
 src/commands/Misc/unsend.js
+src/commands/Moderation/nick.js

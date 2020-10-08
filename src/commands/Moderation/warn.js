@@ -33,7 +33,7 @@ class Warn extends Command {
             message.channel.sendError('You need to provide a valid user.')
         }
 
-        let reason = args.slice(1).join(' ');
+        let reason = args.slice(member.user.username.length).join(' ');
 
         if (!reason) reason = 'No reason provided';
 
