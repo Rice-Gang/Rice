@@ -30,5 +30,20 @@ class imgedit{
         base.composite(img2, 145, 120)
         return base.getBufferAsync('image/png');
     }
+    static async vibeng(img){
+        img = await jimp.read(img)
+        img.resize(124, 124)
+        let base = await jimp.read(__dirname + '/imgs/vibing.png')
+        base.composite(img, 129, 60)
+        return base.getBufferAsync('image/png');
+    }
+    static async what(img){
+        img = await jimp.read(img)
+        img.resize(110, 110)
+        img.rotate(20)
+        let base = await jimp.read(__dirname + '/imgs/what.png')
+        base.composite(img, 210, 30)
+        return base.getBufferAsync('image/png');
+    }
 };
 module.exports = imgedit;

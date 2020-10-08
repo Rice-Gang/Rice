@@ -3,15 +3,15 @@ const find = require('../../core/Image/find');
 const imgedit = require('../../core/Image/imgedit')
 
 
-class Sepia extends Command {
+class Vibing extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'sepia',
+            name: 'vibing',
             category: 'Image',
             botPerms: ['attachFiles'],
             memberPerms: [],
-            description: 'Place a sepia filter over a image',
-            usage: 'sepia [ user ]'
+            description: 'Sometimes you just need to vibe',
+            usage: 'vibing [ user ]'
         });
     }
 
@@ -21,9 +21,9 @@ class Sepia extends Command {
         if(lastimg == false) return msg.channel.sendError('I could not find a image in this channel')
         msg.channel.sendTyping()
         
-        let file = await imgedit.sepia(lastimg)
-        msg.channel.send('', {file: file, name: 'sepia.png'})
+        let file = await imgedit.vibeng(lastimg)
+        msg.channel.send('', {file: file, name: 'vibing.png'})
     }
 }
 
-module.exports = Sepia;
+module.exports = Vibing;

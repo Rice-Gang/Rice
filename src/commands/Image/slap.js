@@ -3,7 +3,7 @@ const find = require('../../core/Image/find');
 const imgedit = require('../../core/Image/imgedit')
 
 
-class Sepia extends Command {
+class Slap extends Command {
     constructor(rice) {
         super(rice, {
             name: 'slap',
@@ -28,4 +28,4 @@ class Sepia extends Command {
     }
 }
 
-module.exports = Sepia;
+module.exports = Slap;
