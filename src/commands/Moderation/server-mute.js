@@ -4,7 +4,7 @@ class ServerMute extends Command {
     constructor(rice) {
         super(rice, {
             name: 'servermute',
-            aliases: ['smute', 'server-mute'],
+            aliases: ['smute', 'server-mute', 'voice-mute'],
             category: 'Moderation',
             botPerms: [],
             memberPerms: [],
@@ -15,7 +15,9 @@ class ServerMute extends Command {
 
     async run(message, args) {
 
-        const user = message.mentions[0] || message.channel.guild.members.find(x => x.username.toLowerCase() == args.join(' ').toLowerCase()) || this.rice.users.find(x => x.id == args[0])
+        const member = message.mentions[0] || message.channel.guild.members.get(args[0]) || message.channel.guild.members.find(x => x.username === args[0]);
+        const user = message.channel.guild.members.get(member.id);
+
         if (!user) return message.channel.sendError(`You didn't specify a user.`)
         else {
             if (user.voiceState.channelID === null) {
