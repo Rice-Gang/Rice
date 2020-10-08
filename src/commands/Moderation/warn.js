@@ -20,17 +20,17 @@ class Warn extends Command {
         }
 
         if (user.id === message.author.id) {
-            return message.channel.sendError('<:no:762884741069275156> You cannot warn yourself.')
+            return message.channel.sendError('lYou cannot warn yourself.')
         }
 
         const member = await message.channel.guild.members.get(user.id);
 
         if (member.user.bot) {
-            return message.channel.sendError('<:no:762884741069275156> I can\'t warn bots.')
+            return message.channel.sendError('I can\'t warn bots.')
         }
 
         if (!member) {
-            message.channel.sendError('<:no:762884741069275156> You need to provide a valid user.')
+            message.channel.sendError('You need to provide a valid user.')
         }
 
         let reason = args.slice(member.user.username.length).join(' ');
