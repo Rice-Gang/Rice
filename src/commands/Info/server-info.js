@@ -25,7 +25,7 @@ class Sstats extends Command {
             color: 0xFFFFFd,
         };
         let mfa = 'True'
-        if(server.mfaLevel == '0') mfa = 'Fasle'
+        if(server.mfaLevel == '0') mfa = 'False'
 
         let verlvl = 'None'
         if(server.verificationLevel == 1) verlvl = 'Verfied email'
