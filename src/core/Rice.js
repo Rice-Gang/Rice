@@ -51,7 +51,7 @@ class Rice extends Client {
         const data = await Guild.findOne({ id: message.channel.guild.id });
         const warnArray = data.warns;
         const warnCase = Math.max.apply(Math, warnArray.map(function (o) { return o.Case; }));
-        warnArray.push({ User: target, Mod: message.author.id, Reason: reason, Date: new Date(), Case: warnArray + 1 || 1 });
+        warnArray.push({ User: target, Mod: message.author.id, Reason: reason, Date: new Date(), Case: parseInt(warnCase + 1) || 1 });
         data.warns = warnArray;
         await data.save();
         let caseNum = warnCase;
