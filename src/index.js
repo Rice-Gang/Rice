@@ -44,15 +44,4 @@ const setup = async () => {
 }
 
 setup();
-
-setTimeout(() => {
-    setInterval(() => {
-        if(rice.shards.get(0).status == 'disconnected') rice.connect();
-        
-    }, 10000);
-}, 5000);
-rice.connect().catch(e => {
-    console.log(e)
-    rice.connect()
-});
-
+rice.connect();
