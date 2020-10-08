@@ -31,6 +31,8 @@ module.exports = class {
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
+
+
         if (message.channel.guild) {
             let Member_perms = []
             let Rice_perms = []
@@ -42,15 +44,12 @@ module.exports = class {
             let member_perms = message.channel.guild.members.find(x => x.id == message.author.id).permission
 
             member_tocheck.forEach(perm => {
-                if(!member_perms.has(perm)){
-                    Member_perms.push(perm)
-                }
+                if(!member_perms.has(perm)) Member_perms.push(perm)
             })
             if(!Member_perms.length == 0) return message.channel.sendError(`Looks like you are missing some permissions for that command! Here they are: ${Member_perms.map((p) => `\`${p}\``).join(', ')}`)
 
             rice_tocheck.forEach(perm => {
-                if(!bot_perms.has(perm))
-                Rice_perms.push(perm)
+                if(!bot_perms.has(perm)) Rice_perms.push(perm)
             })
             if(!Rice_perms.length == 0) return message.channel.send(`Looks like I am missing some permissions for that command! Here they are: ${Rice_perms.map((p) => `\`${p}\``).join(', ')}`)
         }

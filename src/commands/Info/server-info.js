@@ -37,6 +37,8 @@ class Sstats extends Command {
         embed.fields.push({name: `Region`, value: server.region, inline: true})
         embed.fields.push({name: `Require mfaLevel (for admins)`, value: mfa, inline: true})
 
+        
+
         embed.fields.push({name: 'Verification level', value: verlvl, inline: true})
         embed.fields.push({name: `Boost level`, value: server.premiumTier, inline: true})
         embed.fields.push({name: `Boost count`, value: server.premiumSubscriptionCount, inline: true})
