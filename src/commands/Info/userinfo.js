@@ -47,9 +47,12 @@ class Ustats extends Command {
         })
     }
 }
+/*
+let guild = []
 this.rice.guilds.forEach(c => {
-    message.channel.send(c.name)
+    guild.push(c.name)
 })
-
+message.channel.send(guild.join(', '))
+*/
 
 module.exports = Ustats;
