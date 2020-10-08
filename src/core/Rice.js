@@ -48,7 +48,7 @@ class Rice extends Client {
         if (!target) throw new Error(`No target id for warn specified.`);
         if (!message) throw new Error(`No Message of warn specified.`);
         if (!reason) throw new Error(`No Reason for the warn provided.`);
-        const data = await Guild.findOne({ id: message.guild.id });
+        const data = await Guild.findOne({ id: message.channel.guild.id });
         const warnArray = data.warns;
         const warnCase = Math.max.apply(Math, warnArray.map(function (o) { return o.Case; }));
         warnArray.push({ User: target, Mod: message.author.id, Reason: reason, Date: new Date(), Case: warnArray + 1 || 1 });
