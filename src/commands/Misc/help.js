@@ -59,9 +59,8 @@ class Help extends Command {
             });
     
             const embed = {
-                title: 'My Commands ',
+                title: `My Commands [${this.rice.commands.size}]`,
                 fields: [],
-
                 color: 0xFFFFFd,
             };
     
