@@ -31,12 +31,6 @@ class ServerMute extends Command {
                 }
             }
         }
-
-
-
-
-
-
     }
 }
 
