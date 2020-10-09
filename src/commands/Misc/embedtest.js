@@ -14,27 +14,10 @@ class EmbedTest extends Command {
 
   async run(message, args) {
     const Embed = new MessageEmbed()
-      .setTitle("Some title")
-      .setColor(0xfffffd)
-      .setURL("https://discord.js.org/")
-      .setAuthor(
-        "Some name",
-        "https://i.imgur.com/wSTFkRM.png",
-        "https://discord.js.org"
-      )
-      .setDescription("Some description here")
-      .setThumbnail("https://i.imgur.com/wSTFkRM.png")
-      .addFields([
-        { name: "Regular field title", value: "Some value here" },
-        { name: "\u200B", value: "\u200B" },
-        { name: "Inline field title", value: "Some value here", inline },
-        { name: "Inline field title", value: "Some value here", inline },
-      ])
-      .addField("Inline field title", "Some value here", true)
-      .setImage("https://i.imgur.com/wSTFkRM.png")
-      .setTimestamp()
-      .setFooter("Some footer text here", "https://i.imgur.com/wSTFkRM.png");
-    console.log(Embed);
+      .setTitle('Woah this works!')
+      .setDescription('Embed Builder with eris :)')
+      .setColor(0xFFFFFd)
+      .setTimestamp();
     message.channel.send({ embed: Embed });
   }
 }
