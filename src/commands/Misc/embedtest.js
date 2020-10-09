@@ -1,5 +1,6 @@
 const Command = require('../../core/Command');
 const MessageEmbed = require('../../core/MessageEmbed');
+let inline = true
 class EmbedTest extends Command {
     constructor(rice) {
         super(rice, {
@@ -20,10 +21,10 @@ class EmbedTest extends Command {
             .setDescription('Some description here')
             .setThumbnail('https://i.imgur.com/wSTFkRM.png')
             .addFields([
-                { name: 'Regular field title', value: 'Some value here', inline: false},
+                { name: 'Regular field title', value: 'Some value here'},
                 { name: '\u200B', value: '\u200B' },
-                { name: 'Inline field title', value: 'Some value here', inline: true},
-                { name: 'Inline field title', value: 'Some value here', inline: true},
+                { name: 'Inline field title', value: 'Some value here', inline},
+                { name: 'Inline field title', value: 'Some value here', inline},
             ])
             .addField('Inline field title', 'Some value here', true)
             .setImage('https://i.imgur.com/wSTFkRM.png')
