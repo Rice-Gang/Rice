@@ -49,10 +49,10 @@ class Ustats extends Command {
         if(game){
             try{
                 let game_create = Date.now() - game.created_at;
-                embed.fields.push({name: `Status name`, value: game.name, inline: true})
-                embed.fields.push({name: `Status state`, value: game.state, inline: true})
+                embed.fields.push({name: `Status name`, value: `${game.name || "None"}`, inline: true})
+                embed.fields.push({name: `Status state`, value: `${game.state || "None"}`, inline: true})
                 embed.fields.push({name: `Status create`, value: `${Math.floor(game_create / 86400000)} Days ${Math.floor((game_create / (1000*60*60)) % 24)} Hours ${Math.floor((game_create / (1000*60)) % 60)} Minutes ${Math.floor((game_create / (1000) % 60))} Seconds`, inline: false})
-            }catch (e){}
+            }catch (e){PassThrough}
            
         }
 
