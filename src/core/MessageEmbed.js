@@ -1,81 +1,79 @@
-const fieldArray = [];
-class MessageEmbed {   
-    constructor() {
-    };
-    setTitle(text) {
-        if (!text) throw new Error('You didn\'t provide any text for the title');
-        this.title = text; 
-        return;
-    };
+class Embed {
+    constructor(embed = {}) {
+        this.setup(embed);
+    }
+    setup(embed) {
+        this.fields = [];
+        Object.assign(this, embed);
+        return this;
+    }
+    setTitle(title) {
+        if (title == undefined) throw new Error(`Title cannot be empty`);
 
-    setColor(hex) {
-        if (!hex) throw new Error("You didn't provide a color.");
-        if (hex == 1) return this.color = 0xFFFFFd
-        this.color = hex;
-        return;
-    };
 
-    setURL(url) {
-        if (!url) throw new Error("You didn't provide a url.");
-        this.url = url;
-        return;
-    };
+        this.title = title;
+        return this;
+    }
+    setDescription(desc) {
+        if (desc == undefined) throw new Error(`Description cannot be empty`);
 
-    setAuthor(text, url) {
-        if (!text) throw new Error('Author can\'t be empty.');
-        this.author.name = text;
-        if (url) {
-            this.author.icon_url = url
-        }
-        return;
-    };
-    setDescription(content) {
-        if (!content) throw new Error(`No Content for description provided.`);
-
-        this.description = content;
-        return;
-    };
-    setThumbnail(url) {
-        if (!url) throw new Error(`No Thumbnail URL Provided.`);
-
-        this.thumbnail.url = url;
-        return;
-    };
-    addField(title, content, position) {
-        if (!title) throw new Error(`No Name specified for the field.`);
-
-        if (!content) throw new Error(`No Value specified for the field.`);
-
-        fieldArray.push({ name: title, value: content, inline: position ? position : false });
-
-        this.fields = fieldArray
-        return;
-    };
+        this.description = desc;
+        return this;
+    }
     setImage(url) {
-        if (!url) throw new Error(`No URL for embed image specified.`);
+        if (url == undefined) throw new Error(`Image URL cannot be empty`);
+
+        this.image = { url };
+        return this;
+    }
+    setThumbnail(url) {
+        if (url == undefined) throw new Error(`Thumbnail URL cannot be empty`);
+
+        this.thumbnail = { url };
+        return this;
+    }
+    setFooter(text, icon_url) {
+        if (text == undefined) throw new Error(`Footer cannot be empty`);
+
+        text = text.toString();
+
+        this.footer = { text, icon_url };
+        return this;
+    }
+    setAuthor(name, icon_url) {
+        if (name == undefined) throw new Error(`Author cannot be empty`);
+
+        this.author = { name, icon_url };
+        return this;
+    }
+    setTimestamp(timestamp) {
+        if (!isNaN(timestamp)) {
+            this.timestamp = new Date(timestamp).toISOString()
+        } else {
+            this.timestamp = new Date()
+        }
+        return this;
+    }
+    setColor(color) {
+        if (color && color.toString().includes('#')) {
+            color = color.toString().split('#').join(' ')
+            this.color = parseInt('0x' + color.trim());
+        } else if (color.toString().toLowerCase() == 'random') {
+            this.color = (Math.random() * (1 << 24)) | 0
+        } else this.color = parseInt(color);
+        return this;
+    }
+    addField(name, value, inline) {
+        if (this.fields.length >= 25) throw new Error(`25 max fields limit exceeded`);
+        if (!name) throw new Error(`No Name for the field specified`);
+        if (!value) throw new Error(`No Value for the field specified`);
+        this.fields.push({ name: name.toString().substring(0, 256), value: value.toString().substring(0, 1024), inline: inline?inline: false})
         
-        this.image.url = url;
-        return;
-    };
-    // setFooter(content, url) {
-    //     if (!content) throw new Error(`No Text for footer specified.`);
-        
-    //     this.footer.text = content;
-        
-    //     if (url) this.footer.icon_url = url
-    //     return;
-    // };
-    setFooter(name, icon_url) {
-        if (!name) throw new Error(`No Text for footer specified.`);
-        
-        this.footer.name = name
-          
-        if (icon_url) this.footer.icon_url = icon_url
-        return;
-    };
-    setTimestamp() {
-        this.timestamp = new Date()
-        return;
-    };
-};
-module.exports = MessageEmbed;
+        return this;
+    }
+    setURL(url) {
+        this.url = url;
+        return this;
+    }
+}
+module.exports = Embed;
