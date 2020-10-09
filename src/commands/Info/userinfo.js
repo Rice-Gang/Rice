@@ -1,5 +1,6 @@
 const Command = require('../../core/Command');
-const os = require('os')
+const os = require('os');
+const { PassThrough } = require('stream');
 const core = os.cpus()[0];
 
 
@@ -26,74 +27,39 @@ class Ustats extends Command {
         let basestatus = msg.channel.guild.members.get(user.id);
         let status = basestatus.clientStatus;
         let game = basestatus.game;
-        let game_create = Date.now() - game.created_at;
-        //console.log(game)
 
-        msg.channel.send({
-            embed: {
-                title: `Info on ${user.username}#${user.discriminator}`,
-                description: `<@${user.id}>\nId: ${user.id}, Username: ${user.username}\nTag: #${user.discriminator}`,
-                thumbnail:{
-                    url: user.avatarURL
-                },
-                fields:[
-                   {
-                       name: 'Joined',
-                       value: `${Math.floor(join_time / 86400000)} Days ${Math.floor((join_time / (1000*60*60)) % 24)} Hours ${Math.floor((join_time / (1000*60)) % 60)} Minutes ${Math.floor((join_time / (1000) % 60))} Seconds`,
-                       inline: true
-                   },
-                   {
-                       name: `Created`,
-                       value: `${Math.floor(create_time / 86400000)} Days ${Math.floor((create_time / (1000*60*60)) % 24)} Hours ${Math.floor((create_time / (1000*60)) % 60)} Minutes ${Math.floor((create_time / (1000) % 60))} Seconds`,
-                       inline: true
-                   },
-                   {
-                       name: `Bot`,
-                       value: user.bot,
-                       inline: true
-                   },
-                   {
-                       name: `Web status`,
-                       value: status.web,
-                       inline: true
-                   },
-                   {
-                       name: `Desktop status`,
-                       value: status.desktop,
-                       inline: true
-                   },
-                   {
-                       name: `Mobile status`,
-                       value: status.mobile,
-                       inline: true
-                   },
-                   {
-                       name: `Status name`,
-                       value: `${game.name || 'None'}`,
-                       inline: true
-                   },
-                   {
-                       name: `Status state`,
-                       value: `${game.state || 'None'}`,
-                       inline: true
-                   },
-                   {
-                       name: `Status created`,
-                       value: `${Math.floor(game_create / 86400000)} Days ${Math.floor((game_create / (1000*60*60)) % 24)} Hours ${Math.floor((game_create / (1000*60)) % 60)} Minutes ${Math.floor((game_create / (1000) % 60))} Seconds`,
-                       inline: false
-                   }
-                ],
-                color: 0xFFFFFd,
-            }
-        })
+        const embed = {
+            title: `Info on ${user.username}#${user.discriminator}`,
+            description: `<@${user.id}>\nId: ${user.id}\nUsername: ${user.username}\nTag: #${user.discriminator}`,
+            thumbnail:{ url: user.avatarURL },
+            fields: [],
+            color: 0xFFFFFd,
+        }
+        embed.fields.push({name: 'Joined', value: `${Math.floor(join_time / 86400000)} Days ${Math.floor((join_time / (1000*60*60)) % 24)} Hours ${Math.floor((join_time / (1000*60)) % 60)} Minutes ${Math.floor((join_time / (1000) % 60))} Seconds`, inline: true})
+        embed.fields.push({name: 'Created', value: `${Math.floor(create_time / 86400000)} Days ${Math.floor((create_time / (1000*60*60)) % 24)} Hours ${Math.floor((create_time / (1000*60)) % 60)} Minutes ${Math.floor((create_time / (1000) % 60))} Seconds`, inline: true})
+        embed.fields.push({name: `Bot`, value: user.bot, inline: true})
+        
+        if(status){
+            try{
+                embed.fields.push({name: `Web status`, value: status.web, inline: true})
+                embed.fields.push({name: `Desktop status`, value: status.desktop, inline: true})
+                embed.fields.push({name: `Mobile status`, value: status.mobile, inline: true})
+            }catch (e){}
+        }
+        if(game){
+            try{
+                let game_create = Date.now() - game.created_at;
+                embed.fields.push({name: `Status name`, value: game.name, inline: true})
+                embed.fields.push({name: `Status state`, value: game.state, inline: true})
+                embed.fields.push({name: `Status create`, value: `${Math.floor(game_create / 86400000)} Days ${Math.floor((game_create / (1000*60*60)) % 24)} Hours ${Math.floor((game_create / (1000*60)) % 60)} Minutes ${Math.floor((game_create / (1000) % 60))} Seconds`, inline: false})
+            }catch (e){}
+           
+        }
+
+        msg.channel.send({embed: embed})
+        
     }
 }
-/*
-let guild = []
-this.rice.guilds.forEach(c => {
-    guild.push(c.name)
-})
-message.channel.send(guild.join(', '))
-*/
+
 
 module.exports = Ustats;
