@@ -8,7 +8,7 @@ module.exports = class {
             const snipes = this.rice.snipes.get(message.channel.id) || [];
 
             snipes.unshift({
-                tag: message.author.username + '#' + message.author.discriminator,
+                tag: message.author.username + "#" + message.author.discriminator,
                 avatar: message.author.avatarURL,
                 content: message.content
             });

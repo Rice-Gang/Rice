@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
-const serverData = require('../../helpers/models/Guild');
+const Command = require("../../core/Command");
+const serverData = require("../../helpers/models/Guild");
 class Mute extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'mute',
-            category: 'Moderation',
-            botPerms: ['manageRoles'],
-            memberPerms: ['manageMessages'],
-            description: 'Mute a specific member'
+            name: "mute",
+            category: "Moderation",
+            botPerms: ["manageRoles"],
+            memberPerms: ["manageMessages"],
+            description: "Mute a specific member"
         });
     }
 
@@ -32,7 +32,7 @@ class Mute extends Command {
 
         if (highestAuthorRole <= highestTargetRole && message.author.id != message.channel.guild.ownerID) return error(`**${authorTag}** You can't mute that member!`);
 
-        const reason = args.slice(1).join(' ');
+        const reason = args.slice(1).join(" ");
 
         const targetTag = `${memberToMute[0].username}#${memberToMute[0].discriminator}`;
 
@@ -41,7 +41,7 @@ class Mute extends Command {
         let muteRole = await message.channel.guild.roles.get(server.muteRole);
         
         if (!muteRole) {
-            muteRole = await message.channel.guild.createRole({ name: 'Muted', color: 0xA8A8A8, mentionable: false, permissions: 0 });
+            muteRole = await message.channel.guild.createRole({ name: "Muted", color: 0xA8A8A8, mentionable: false, permissions: 0 });
             server.muteRole = muteRole.id;
             await server.save();
         }
@@ -50,11 +50,11 @@ class Mute extends Command {
 
         await message.channel.guild.members.get(memberToMute[0].id).addRole(muteRole.id);
 
-        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || 'No Reason Provided.'}`, color: 0x3cb474 } });
+        message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || "No Reason Provided."}`, color: 0x3cb474 } });
 
         message.channel.guild.channels.forEach(c => {
-            if (!c.permissionsOf(this.rice.user.id).has('readMessages')) return;
-            else c.editPermission(muteRole.id, 0, 2048, 'role');
+            if (!c.permissionsOf(this.rice.user.id).has("readMessages")) return;
+            else c.editPermission(muteRole.id, 0, 2048, "role");
         }); 
 
         function error(text) {

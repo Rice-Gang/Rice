@@ -1,6 +1,6 @@
-const Eris = require('eris');
+const Eris = require("eris");
 
-const Guild = require('../helpers/models/Guild');
+const Guild = require("../helpers/models/Guild");
 
 class Rice extends Eris.Client {
     constructor(token, options) {

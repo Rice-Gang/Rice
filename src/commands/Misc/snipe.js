@@ -1,15 +1,15 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class Snipe extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'snipe',
-            description: 'View the last 10 deleted messages in a channel.',
-            category: 'Misc',
+            name: "snipe",
+            description: "View the last 10 deleted messages in a channel.",
+            category: "Misc",
             botPerms: [],
-            aliases: ['sniper'],
+            aliases: ["sniper"],
             memberPerms: [],
-            usage: 'snipe <1 - 10>'
+            usage: "snipe <1 - 10>"
         });
     }
 
@@ -23,7 +23,7 @@ class Snipe extends Command {
             return message.channel.sendError(`There are no recently deleted messages in <#${message.channel.id}>`)
         }
 
-        if (message.content.includes('--mass')) {
+        if (message.content.includes("--mass")) {
             const embed = {
                 color: (Math.random() * (1 << 24)) | 0,
                 fields: []
@@ -45,12 +45,12 @@ class Snipe extends Command {
                     name: `${msg.tag} | ${message.channel.name}`,
                     icon_url: msg.avatar
                 },
-                description: msg.content.length > 1950 ? `${msg.content.substr(0, 1950)}...` : msg.content || '',
+                description: msg.content.length > 1950 ? `${msg.content.substr(0, 1950)}...` : msg.content || "",
                 image: {
                     url: null
                 },
                 footer: {
-                    text: 'Tip: Add --mass at the end of the command to see bulk snipes!'
+                    text: "Tip: Add --mass at the end of the command to see bulk snipes!"
                 }
             }
 

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Level = new mongoose.Schema({
 
@@ -14,4 +14,4 @@ const Level = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Level', Level);
+module.exports = mongoose.model("Level", Level);

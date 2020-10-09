@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class say extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'say',
-            category: 'Fun',
-            botPerms: ['sendMessages'],
+            name: "say",
+            category: "Fun",
+            botPerms: ["sendMessages"],
             memberPerms: [],
-            description: 'Say a message'
+            description: "Say a message"
         });
     }
 
@@ -16,7 +16,7 @@ class say extends Command {
 
         const embed = {
             title: `${message.author.username}#${message.author.discriminator} says`,
-            description:`${args.join(' ')}`,
+            description:`${args.join(" ")}`,
             color: 0xFFFFFd,
             timestamp: new Date(),
             footer: {

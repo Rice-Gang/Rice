@@ -1,14 +1,14 @@
-const Command = require('../../core/Command');
-const Guild = require('../../helpers/models/Guild');
+const Command = require("../../core/Command");
+const Guild = require("../../helpers/models/Guild");
 
 class Help extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'help',
-            category: 'Misc',
-            botPerms: ['sendMessages'],
+            name: "help",
+            category: "Misc",
+            botPerms: ["sendMessages"],
             memberPerms: [],
-            description: 'View all commands.'
+            description: "View all commands."
         });
     }
 
@@ -28,26 +28,26 @@ class Help extends Command {
                 fields: [],
                 color: 0xFFFFFd
             }
-            if (cmd.help.category) embed.fields.push({ name: 'Category', value: cmd.help.category||'None', inline },)
-            if (cmd.help.description) embed.fields.push({ name: 'Description', value: cmd.help.description||'None', inline },)
-            if (cmd.config.cooldown) embed.fields.push({ name: 'Cooldown', value: cmd.config.cooldown / 1000 + ' seconds'||'None', inline },)
-            if (cmd.help.aliases) embed.fields.push({ name: 'Aliases', value: cmd.help.aliases.map(x => `\`${x}\``).join(", ")||'None' },)
-            if (cmd.help.usage) embed.fields.push({ name: 'Usage', value: `\`${prefix}\``+cmd.help.usage||'None', inline },)
-            if (cmd.config.botPerms) embed.fields.push({ name: 'Bot Permissions', value: cmd.config.botPerms.map(x => `\`${x}\``).join(', ')||'None', inline },)
-            if (cmd.config.memberPerms) embed.fields.push({ name: 'Member Permissions', value: cmd.config.memberPerms.map(x => `\`${x}\``).join(', ')||'None', inline })
+            if (cmd.help.category) embed.fields.push({ name: "Category", value: cmd.help.category||"None", inline },)
+            if (cmd.help.description) embed.fields.push({ name: "Description", value: cmd.help.description||"None", inline },)
+            if (cmd.config.cooldown) embed.fields.push({ name: "Cooldown", value: cmd.config.cooldown / 1000 + " seconds"||"None", inline },)
+            if (cmd.help.aliases) embed.fields.push({ name: "Aliases", value: cmd.help.aliases.map(x => `\`${x}\``).join(", ")||"None" },)
+            if (cmd.help.usage) embed.fields.push({ name: "Usage", value: `\`${prefix}\``+cmd.help.usage||"None", inline },)
+            if (cmd.config.botPerms) embed.fields.push({ name: "Bot Permissions", value: cmd.config.botPerms.map(x => `\`${x}\``).join(", ")||"None", inline },)
+            if (cmd.config.memberPerms) embed.fields.push({ name: "Member Permissions", value: cmd.config.memberPerms.map(x => `\`${x}\``).join(", ")||"None", inline })
             console.log(embed.fields)
             message.channel.send({ embed: embed });
 
         } else if (!args[0]) {
 
             const emojis = {
-                'developer': '<:developer:762772547464724480>',
-                'moderation': '🛠️',
-                'misc': 'ℹ️',
-                'image': '📸',
-                'config': '⚙️',
-                'fun': '🤣',
-                'info': '<:PeepoThink:763311088217096232>'
+                "developer": "<:developer:762772547464724480>",
+                "moderation": "🛠️",
+                "misc": "ℹ️",
+                "image": "📸",
+                "config": "⚙️",
+                "fun": "🤣",
+                "info": "<:PeepoThink:763311088217096232>"
             };
 
             const categories = [];
@@ -66,7 +66,7 @@ class Help extends Command {
 
             categories.sort().forEach((ct) => {
                 const cmds = this.rice.commands.filter((cmd) => cmd.help.category === ct);
-                embed.fields.push({ name: emojis[ct.toLowerCase()] + ' ' + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(', ') })
+                embed.fields.push({ name: emojis[ct.toLowerCase()] + " " + ct, value: cmds.map((cmd) => `\`${cmd.help.name}\``).join(", ") })
             });
 
             message.channel.send({ embed });

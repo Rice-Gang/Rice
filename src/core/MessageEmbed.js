@@ -55,10 +55,10 @@ class Embed {
         return this;
     }
     setColor(color) {
-        if (color && color.toString().includes('#')) {
-            color = color.toString().split('#').join(' ')
-            this.color = parseInt('0x' + color.trim());
-        } else if (color.toString().toLowerCase() == 'random') {
+        if (color && color.toString().includes("#")) {
+            color = color.toString().split("#").join(" ")
+            this.color = parseInt("0x" + color.trim());
+        } else if (color.toString().toLowerCase() == "random") {
             this.color = (Math.random() * (1 << 24)) | 0
         } else this.color = parseInt(color);
         return this;

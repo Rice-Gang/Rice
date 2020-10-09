@@ -1,17 +1,17 @@
-const Command = require('../../core/Command');
-const os = require('os')
+const Command = require("../../core/Command");
+const os = require("os")
 const core = os.cpus()[0];
 
 
 class Sstats extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'server-info',
-            aliases: ['sstats', 'server-info', 'serverinfo','si', 'server'],
-            category: 'Info',
-            botPerms: ['embedLinks'],
-            memberPerms: ['sendMessages'],
-            description: 'Shows info on a user',
+            name: "server-info",
+            aliases: ["sstats", "server-info", "serverinfo","si", "server"],
+            category: "Info",
+            botPerms: ["embedLinks"],
+            memberPerms: ["sendMessages"],
+            description: "Shows info on a user",
             usage: `user-stats [ user ]`
         });
     }
@@ -24,14 +24,14 @@ class Sstats extends Command {
             fields: [],
             color: 0xFFFFFd,
         };
-        let mfa = 'True'
-        if(server.mfaLevel == '0') mfa = 'False'
+        let mfa = "True"
+        if(server.mfaLevel == "0") mfa = "False"
 
-        let verlvl = 'None'
-        if(server.verificationLevel == 1) verlvl = 'Verified email'
-        if(server.verificationLevel == 2) verlvl = 'Verified email, 5 Mins'
-        if(server.verificationLevel == 3) verlvl = 'Verified email, 10 Mins'
-        if(server.verificationLevel == 4) verlvl = 'Verified phone, 10 Mins'
+        let verlvl = "None"
+        if(server.verificationLevel == 1) verlvl = "Verified email"
+        if(server.verificationLevel == 2) verlvl = "Verified email, 5 Mins"
+        if(server.verificationLevel == 3) verlvl = "Verified email, 10 Mins"
+        if(server.verificationLevel == 4) verlvl = "Verified phone, 10 Mins"
 
         embed.fields.push({name: `Owner`, value: `<@${server.ownerID}>`, inline: true})
         embed.fields.push({name: `Region`, value: server.region, inline: true})
@@ -39,7 +39,7 @@ class Sstats extends Command {
 
         
 
-        embed.fields.push({name: 'Verification level', value: verlvl, inline: true})
+        embed.fields.push({name: "Verification level", value: verlvl, inline: true})
         embed.fields.push({name: `Boost level`, value: server.premiumTier, inline: true})
         embed.fields.push({name: `Boost count`, value: server.premiumSubscriptionCount, inline: true})
 

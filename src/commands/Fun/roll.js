@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class Roll extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'roll',
-            category: 'Fun',
+            name: "roll",
+            category: "Fun",
             botPerms: [],
             memberPerms: [],
-            description: 'Roll some dice'
+            description: "Roll some dice"
         });
     }
 
@@ -15,7 +15,7 @@ class Roll extends Command {
 
         
 
-        return message.channel.send('rolled a ' + Math.floor(Math.random() * 12) +5)
+        return message.channel.send("rolled a " + Math.floor(Math.random() * 12) +5)
     }
 }
 

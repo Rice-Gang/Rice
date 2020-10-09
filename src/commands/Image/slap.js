@@ -1,17 +1,17 @@
-const Command = require('../../core/Command');
-const find = require('../../core/Image/find');
-const imgedit = require('../../core/Image/imgedit')
+const Command = require("../../core/Command");
+const find = require("../../core/Image/find");
+const imgedit = require("../../core/Image/imgedit")
 
 
 class Slap extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'slap',
-            category: 'Image',
-            botPerms: ['attachFiles'],
+            name: "slap",
+            category: "Image",
+            botPerms: ["attachFiles"],
             memberPerms: [],
-            description: 'Slap someobe',
-            usage: 'slap [ user ]'
+            description: "Slap someobe",
+            usage: "slap [ user ]"
         });
     }
 
@@ -20,11 +20,11 @@ class Slap extends Command {
         
         let img1 = msg.author.staticAvatarURL;
         let img2 = await find.find(msg, args, this.rice)
-        if(img2 == false) return msg.channel.sendError('I beed to be given a user or an img foy you to slap')
+        if(img2 == false) return msg.channel.sendError("I beed to be given a user or an img foy you to slap")
         msg.channel.sendTyping()
         
         let file = await imgedit.slap(img1, img2)
-        return msg.channel.send('', {file: file, name: 'slap.png'})
+        return msg.channel.send("", {file: file, name: "slap.png"})
     }
 }
 

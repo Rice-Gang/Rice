@@ -1,12 +1,12 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class Ping extends Command {
     constructor(client) {
         super(client, {
-            name: 'ping',
-            category: 'Misc',
-            aliases: ['pinger'],
-            description: 'View the bot ping...'
+            name: "ping",
+            category: "Misc",
+            aliases: ["pinger"],
+            description: "View the bot ping..."
         });
     }
 

@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
-const serverData = require('../../helpers/models/Guild');
+const Command = require("../../core/Command");
+const serverData = require("../../helpers/models/Guild");
 class Unmute extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'unmute',
-            category: 'Moderation',
-            botPerms: ['manageRoles'],
-            memberPerms: ['manageMessages'],
-            description: 'Mute a specific member'
+            name: "unmute",
+            category: "Moderation",
+            botPerms: ["manageRoles"],
+            memberPerms: ["manageMessages"],
+            description: "Mute a specific member"
         });
     }
 

@@ -1,18 +1,18 @@
-const Command = require('../../core/Command');
-const os = require('os');
-const { PassThrough } = require('stream');
+const Command = require("../../core/Command");
+const os = require("os");
+const { PassThrough } = require("stream");
 const core = os.cpus()[0];
 
 
 class Ustats extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'user-info',
-            aliases: ['ustats', 'whos', 'whois', 'user'],
-            category: 'Info',
-            botPerms: ['embedLinks'],
-            memberPerms: ['sendMessages'],
-            description: 'Shows info on a user',
+            name: "user-info",
+            aliases: ["ustats", "whos", "whois", "user"],
+            category: "Info",
+            botPerms: ["embedLinks"],
+            memberPerms: ["sendMessages"],
+            description: "Shows info on a user",
             usage: `user-stats [ user ]`
         });
     }
@@ -20,7 +20,7 @@ class Ustats extends Command {
     async run(msg, args) {
 
 //const status = message.channel.guild.members.get(message.author.id).clientStatus;
-        let user = msg.mentions[0] || msg.channel.guild.members.find(x => x.username.toLowerCase() == args.join(' ').toLowerCase()) || this.rice.users.find(x => x.id == args[0]) || this.rice.users.find(x => x.username.toLowerCase() + "#" + x.discriminator == args.join(' ').toLowerCase()) || msg.author;
+        let user = msg.mentions[0] || msg.channel.guild.members.find(x => x.username.toLowerCase() == args.join(" ").toLowerCase()) || this.rice.users.find(x => x.id == args[0]) || this.rice.users.find(x => x.username.toLowerCase() + "#" + x.discriminator == args.join(" ").toLowerCase()) || msg.author;
         let join_time = Date.now() - msg.channel.guild.members.find(x => x.id == user.id).joinedAt;
         let create_time = Date.now() - user.createdAt;
 
@@ -35,8 +35,8 @@ class Ustats extends Command {
             fields: [],
             color: 0xFFFFFd,
         }
-        embed.fields.push({name: 'Joined', value: `${Math.floor(join_time / 86400000)} Days ${Math.floor((join_time / (1000*60*60)) % 24)} Hours ${Math.floor((join_time / (1000*60)) % 60)} Minutes ${Math.floor((join_time / (1000) % 60))} Seconds`, inline: true})
-        embed.fields.push({name: 'Created', value: `${Math.floor(create_time / 86400000)} Days ${Math.floor((create_time / (1000*60*60)) % 24)} Hours ${Math.floor((create_time / (1000*60)) % 60)} Minutes ${Math.floor((create_time / (1000) % 60))} Seconds`, inline: true})
+        embed.fields.push({name: "Joined", value: `${Math.floor(join_time / 86400000)} Days ${Math.floor((join_time / (1000*60*60)) % 24)} Hours ${Math.floor((join_time / (1000*60)) % 60)} Minutes ${Math.floor((join_time / (1000) % 60))} Seconds`, inline: true})
+        embed.fields.push({name: "Created", value: `${Math.floor(create_time / 86400000)} Days ${Math.floor((create_time / (1000*60*60)) % 24)} Hours ${Math.floor((create_time / (1000*60)) % 60)} Minutes ${Math.floor((create_time / (1000) % 60))} Seconds`, inline: true})
         embed.fields.push({name: `Bot`, value: user.bot, inline: true})
         
         if(status){

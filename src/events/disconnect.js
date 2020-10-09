@@ -6,7 +6,7 @@ module.exports = class {
 
     async run(rice) {
 
-        while (this.rice.shards.get(0).status == 'disconnected'){
+        while (this.rice.shards.get(0).status == "disconnected"){
             await sleep(10000)
             await this.rice.connect();
         } 

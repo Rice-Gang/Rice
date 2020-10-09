@@ -1,17 +1,17 @@
-const Command = require('../../core/Command');
-const os = require('os')
+const Command = require("../../core/Command");
+const os = require("os")
 const core = os.cpus()[0];
 
 
 class channelinfo extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'channel-info',
-            aliases: ['channel'],
-            category: 'Info',
-            botPerms: ['embedLinks'],
+            name: "channel-info",
+            aliases: ["channel"],
+            category: "Info",
+            botPerms: ["embedLinks"],
             memberPerms: [],
-            description: 'Shows the information of a channel',
+            description: "Shows the information of a channel",
         });
     }
 
@@ -25,7 +25,7 @@ class channelinfo extends Command {
             description: `Mention: <#${channel.id}>`,
             fields: [
                 {
-                    name: 'Type:',
+                    name: "Type:",
                     value: `${channel.type}`,
                     inline: true
                 }
