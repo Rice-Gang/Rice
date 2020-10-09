@@ -1,20 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Guild = new mongoose.Schema({
+  id: { type: String },
 
-    id: { type: String },
+  prefix: { type: String, default: "rice " },
 
-    prefix: { type: String, default: 'rice ' },
+  muteRole: { type: String, default: "" },
 
-    muteRole: { type: String, default: ''},
+  logID: { type: String, default: "" },
 
-    logID: { type: String, default: ''},
+  autorole: { type: String, default: "none" },
 
-    autorole: { type: String, default: 'none' },
-
-    warns: { type: Array, default: [] },
-    infractionCount: { type: Array, default: [] },
-
+  warns: { type: Array, default: [] },
+  infractionCount: { type: Array, default: [] },
 });
 
-module.exports = mongoose.model('Guild', Guild);
+module.exports = mongoose.model("Guild", Guild);
