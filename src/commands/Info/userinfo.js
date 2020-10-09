@@ -32,7 +32,7 @@ class Ustats extends Command {
         msg.channel.send({
             embed: {
                 title: `Info on ${user.username}#${user.discriminator}`,
-                description: `<@${user.id}>\nId: ${user.id}, Username: ${user.username}, Tag: ${user.discriminator}`,
+                description: `<@${user.id}>\nId: ${user.id}, Username: ${user.username}\nTag: #${user.discriminator}`,
                 thumbnail:{
                     url: user.avatarURL
                 },
@@ -76,11 +76,6 @@ class Ustats extends Command {
                        name: `Status state`,
                        value: `${game.state || 'None'}`,
                        inline: true
-                   },
-                   {
-                        name: `Emoji`,
-                        value: `${game.emoji.name || 'None'}`,
-                        inline: true
                    },
                    {
                        name: `Status created`,
