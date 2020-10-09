@@ -16,17 +16,17 @@ class channelinfo extends Command {
     }
 
     async run(msg, args) {
-        const channel = msg.mentions[0] || msg.mentions.channel;
-        const ch = msg.channel.guild 
+        let channel = msg.mentions[0] || msg.mentions.channel;
+        const guild = msg.channel.guild;
 
         msg.channel.send({
             embed: {
-            title: `${ch.name} | ${ch.id}`,
-            description: `Mention: <#${ch.id}>`,
+            title: `${channel.name} | ${channel.id}`,
+            description: `Mention: <#${channel.id}>`,
             fields: [
                 {
                     name: 'Type:',
-                    value: `${ch.type}`,
+                    value: `${channel.type}`,
                     inline: true
                 }
             ],
