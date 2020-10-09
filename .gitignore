@@ -115,5 +115,5 @@ dist
 
 # Do not remove
 # Test Commands Format [src/commands/(category)/(command.js)}
-src/commands/Misc/unsend.js
+
 src/commands/Moderation/nick.js
