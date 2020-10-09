@@ -42,7 +42,7 @@ class Channelnuke extends Command {
                 permissionOverwrites: overs,
                 reason: `My nuke commands was used by ${msg.author.username}`
             })
-            this.rice.editChannelPosition(newchannel.id, position)
+            await this.rice.editChannelPosition(newchannel.id, position)
             newchannel.send({
                 embed: {
                     title: `Channel nuked by ${msg.author.username}#${msg.author.discriminator}`,
