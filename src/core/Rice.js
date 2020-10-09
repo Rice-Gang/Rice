@@ -1,16 +1,17 @@
-const { Client, Collection } = require('eris');
+const Eris = require('eris');
 
 const Guild = require('../helpers/models/Guild');
 
-class Rice extends Client {
+class Rice extends Eris.Client {
     constructor(token, options) {
         super(token, options);
 
-        this.commands = new Collection();
-        this.aliases = new Collection();
+        this.commands = new Eris.Collection();
+        this.aliases = new Eris.Collection();
 
-        this.snipes = new Collection();
-        this.cooldown = new Set()
+        this.snipes = new Eris.Collection();
+        this.cooldown = new Set();
+        
     }
 
     setupCommand(cmdPath, cmdName) {

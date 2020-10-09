@@ -29,17 +29,19 @@ module.exports = class {
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
 
-        if (!command) return;
+        if (!command) {
+            return message.channel.sendError(`Command \`${cmd}\` is not available.`)
+        }
 
         if (command.help.category === 'Developer' && !developers.includes(message.author.id)) return;
 
-        
+
         const cooldown = this.rice.cooldown;
-        if(cooldown.has(`${message.author.id}_${command.help.name}`)){
+        if (cooldown.has(`${message.author.id}_${command.help.name}`)) {
             return message.channel.sendError(`You are still in cooldown for this command\
             \nCooldown: ${command.config.cooldown / 1000} Second(s)`)
-        }else{
-            if(!developers.includes(message.author.id)){
+        } else {
+            if (!developers.includes(message.author.id)) {
                 this.rice.cooldown.add(`${message.author.id}_${command.help.name}`)
                 setTimeout(() => {
                     this.rice.cooldown.delete(`${message.author.id}_${command.help.name}`)
@@ -64,7 +66,7 @@ module.exports = class {
                 const needed = neededPerms.map((p) => '`' + p + '`').join(', ');
                 return message.channel.sendError(`Looks like I am missing some permissions for that command, here they are: ${needed}`)
             }
-            
+
             neededPerms = [];
 
             command.config.memberPerms.forEach((perm) => {
