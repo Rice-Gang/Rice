@@ -13,9 +13,9 @@ class Help extends Command {
     }
 
     async run(message, args, developers) {
-        
+
         if (args[0]) {
-            let prefix = await Guild.findOne({id: message.channel.guild.id}).prefix
+            let prefix = await Guild.findOne({ id: message.channel.guild.id }).prefix
             const cmd = this.rice.commands.get(args[0]) || this.rice.commands.get(this.rice.aliases.get(args[0]));
 
             if (!cmd) {
@@ -28,13 +28,54 @@ class Help extends Command {
                 fields: [],
                 color: 0xFFFFFd
             }
-            if (cmd.help.category) embed.fields.push({ name: "Category", value: cmd.help.category||"None", inline },)
-            if (cmd.help.description) embed.fields.push({ name: "Description", value: cmd.help.description||"None", inline },)
-            if (cmd.config.cooldown) embed.fields.push({ name: "Cooldown", value: cmd.config.cooldown / 1000 + " seconds"||"None", inline },)
-            if (cmd.help.aliases) embed.fields.push({ name: "Aliases", value: cmd.help.aliases.map(x => `\`${x}\``).join(", ")||"None" },)
-            if (cmd.help.usage) embed.fields.push({ name: "Usage", value: `\`${prefix}\``+cmd.help.usage||"None", inline },)
-            if (cmd.config.botPerms) embed.fields.push({ name: "Bot Permissions", value: cmd.config.botPerms.map(x => `\`${x}\``).join(", ")||"None", inline },)
-            if (cmd.config.memberPerms) embed.fields.push({ name: "Member Permissions", value: cmd.config.memberPerms.map(x => `\`${x}\``).join(", ")||"None", inline })
+            if (cmd.help.category)
+                embed.fields.push(
+                    {
+                        name: "Category",
+                        value: cmd.help.category || "None",
+                        inline
+                    })
+            if (cmd.help.description)
+                embed.fields.push(
+                    {
+                        name: "Description",
+                        value: cmd.help.description || "None",
+                        inline
+                    })
+            if (cmd.config.cooldown)
+                embed.fields.push(
+                    {
+                        name: "Cooldown",
+                        value: cmd.config.cooldown / 1000 + " seconds" || "None",
+                        inline
+                    })
+            if (cmd.help.aliases)
+                embed.fields.push(
+                    {
+                        name: "Aliases",
+                        value: cmd.help.aliases.map(x => `\`${x}\``).join(", ") || "None"
+                    })
+            if (cmd.help.usage)
+                embed.fields.push(
+                    {
+                        name: "Usage",
+                        value: `\`${prefix}\`` + cmd.help.usage || "None",
+                        inline
+                    })
+            if (cmd.config.botPerms)
+                embed.fields.push(
+                    {
+                        name: "Bot Permissions",
+                        value: cmd.config.botPerms.map(x => `\`${x}\``).join(", ") || "None",
+                        inline
+                    })
+            if (cmd.config.memberPerms)
+                embed.fields.push(
+                    {
+                        name: "Member Permissions",
+                        value: cmd.config.memberPerms.map(x => `\`${x}\``).join(", ") || "None",
+                        inline
+                    })
             console.log(embed.fields)
             message.channel.send({ embed: embed });
 

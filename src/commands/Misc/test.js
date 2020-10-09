@@ -13,18 +13,7 @@ class Test extends Command {
     }
 
     async run(message, args) {
-
-        const testEmbed = {
-            title: "Test",
-            description: "command works",
-            color: 0xFFFFFd,
-            timestamp: new Date,
-            footer: {
-                text: this.rice.user.username,
-                icon_url: this.rice.user.avatarURL
-            }
-        }
-        return message.channel.send({embed: testEmbed})
+        return message.channel.send("Test Command Works!")
     }
 }
 
