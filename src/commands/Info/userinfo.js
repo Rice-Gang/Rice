@@ -78,9 +78,14 @@ class Ustats extends Command {
                        inline: true
                    },
                    {
+                        name: `Emoji`,
+                        value: `${game.emoji.name || 'None'}`,
+                        inline: true
+                   },
+                   {
                        name: `Status created`,
                        value: `${Math.floor(game_create / 86400000)} Days ${Math.floor((game_create / (1000*60*60)) % 24)} Hours ${Math.floor((game_create / (1000*60)) % 60)} Minutes ${Math.floor((game_create / (1000) % 60))} Seconds`,
-                       inline: true
+                       inline: false
                    }
                 ],
                 color: 0xFFFFFd,
