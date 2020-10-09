@@ -12,23 +12,25 @@ class EmbedTest extends Command {
     }
 
     async run(message, args) {
-        //message.channel.send(message.member.user.avatarURL)
         const Embed = new MessageEmbed()
-        Embed.setTitle('test');
-        Embed.setColor(0xFFFFFd);
-        //Embed.url = ''
-        Embed.setDescription('hello');
-        Embed.setThumbnail(message.member.user.avatarURL);
-        // //Embed.fields = [{ }]
-        // Embed.image = {
-        //    url: 
-        // }
-        //Embed.setFooter({name: })
-        
-        Embed.setTimestamp()
-        
-        console.log(Embed)
-        message.channel.send({embed: Embed});
+            .setTitle('Some title')
+            .setColor(0xFFFFFd)
+            .setURL('https://discord.js.org/')
+            .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+            .setDescription('Some description here')
+            .setThumbnail('https://i.imgur.com/wSTFkRM.png')
+            .addFields([
+                { name: 'Regular field title', value: 'Some value here', inline: false},
+                { name: '\u200B', value: '\u200B' },
+                { name: 'Inline field title', value: 'Some value here', inline: true},
+                { name: 'Inline field title', value: 'Some value here', inline: true},
+            ])
+            .addField('Inline field title', 'Some value here', true)
+            .setImage('https://i.imgur.com/wSTFkRM.png')
+            .setTimestamp()
+            .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+            console.log(Embed)
+        message.channel.send({ embed: Embed });
     }
 }
 

@@ -45,5 +45,23 @@ class imgedit{
         base.composite(img, 210, 30)
         return base.getBufferAsync('image/png');
     }
+    static async changemymind(text){
+        let base = await jimp.read(__dirname + '/imgs/changemymind.png')
+        let font1 = await jimp.loadFont(jimp.FONT_SANS_64_BLACK)
+        let font2 = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
+        let font3 = await jimp.loadFont(jimp.FONT_SANS_16_BLACK)
+        let font4 = await jimp.loadFont(jimp.FONT_SANS_8_BLACK)
+        let to_use = font1
+       
+        let size1 = await jimp.measureText(font1, text)
+        let size2 = await jimp.measureText(font2, text)
+        let size3 = await jimp.measureText(font3, text)
+        if(size1 > 256) to_use = font2
+        if(size2 > 256) to_use = font3
+        if(size3 > 256) to_use = font4
+
+        base.print(to_use, 165, 264, text)
+        return base.getBufferAsync('image/png');
+    }
 };
 module.exports = imgedit;

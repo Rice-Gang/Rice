@@ -32,7 +32,7 @@ class Clear extends Command {
         }else{
             delamout = parseInt(amout) + 1
         }
-        console.log(delamout)
+
         let no_del = await msg.channel.send('<a:loading:762935750203277322> Deleting messages')
         let filter = x => x.id != no_del.id && !x.pinned;
         await msg.channel.purge(delamout, filter)
