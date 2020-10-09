@@ -7,8 +7,8 @@ class KnockKnockJoke extends Command {
             name: 'knockknockjoke',
             aliases: ['rj', 'random', 'rjoke','knock-knock','knock'],
             category: 'Fun',
-            botPerms: [],
-            memberPerms: [],
+            botPerms: ['sendMessages'],
+            memberPerms: ['sendMessages'],
             description: 'gives a random knock-knock joke',
             usage: 'rice knockknock'
         });
