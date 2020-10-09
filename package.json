@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "got": "^11.7.0",
     "eris": "github:settlelol/eris",
+    "got": "^11.7.0",
     "jimp": "^0.16.1",
     "jokeslol": "^1.0.3",
     "mongoose": "^5.10.7",
