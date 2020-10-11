@@ -15,7 +15,7 @@ class Help extends Command {
     async run(message, args, developers) {
 
         if (args[0]) {
-            let prefix = await Guild.findOne({ id: message.channel.guild.id }).prefix
+            let prefix = await Guild.findOne({ id: message.channel.guild.id });
             const cmd = this.rice.commands.get(args[0]) || this.rice.commands.get(this.rice.aliases.get(args[0]));
 
             if (!cmd) {
@@ -24,7 +24,7 @@ class Help extends Command {
             let inline = true;
             //console.log(cmd)
             const embed = {
-                title: `Command \`${prefix}\`${cmd.help.name}`,
+                title: `Command \`${prefix.prefix}\`${cmd.help.name}`,
                 fields: [],
                 color: 0xFFFFFd
             }
@@ -59,7 +59,7 @@ class Help extends Command {
                 embed.fields.push(
                     {
                         name: "Usage",
-                        value: `\`${prefix}\`` + cmd.help.usage || "None",
+                        value: `\`${prefix.prefix}\`` + cmd.help.usage || "None",
                         inline
                     })
             if (cmd.config.botPerms)
