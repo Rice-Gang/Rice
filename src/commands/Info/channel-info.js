@@ -21,7 +21,7 @@ class channelinfo extends Command {
 
         msg.channel.send({
             embed: {
-            title: `${channel.name} | ${channel.id}`,
+            title: `${channel.id}`,
             description: `Mention: <#${channel.id}>`,
             fields: [
                 {
