@@ -16,7 +16,7 @@ class channelinfo extends Command {
     }
 
     async run(msg, args) {
-        let channel = msg.mentions[0] || msg.mentions.channel;
+        let channel = msg.mentions[0] || msg.channel.guild;
         const guild = msg.channel.guild;
 
         msg.channel.send({
