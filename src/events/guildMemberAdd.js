@@ -1,4 +1,4 @@
-const Guild = require('../helpers/models/Guild');
+const Guild = require("../helpers/models/Guild");
 
 module.exports = class {
     constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class {
                 const role = await guild.roles.get(res.autorole);
 
                 if (!role) {
-                    res.autorole = 'none';
+                    res.autorole = "none";
                     await res.save();
                     return
                 }

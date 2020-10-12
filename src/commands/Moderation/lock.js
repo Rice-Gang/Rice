@@ -1,41 +1,41 @@
-const { color } = require('jimp')
-const Command = require('../../core/Command')
+const { color } = require("jimp")
+const Command = require("../../core/Command")
 
 class Lock extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'lock',
-            category: 'Moderation',
-            botPerms: ['manageChannels'],
-            memberPerms: ['manageChannels'],
-            description: 'Locks the whole server',
-            usage: 'lock <on/off>'
+            name: "lock",
+            category: "Moderation",
+            botPerms: ["manageChannels"],
+            memberPerms: ["manageChannels"],
+            description: "Locks the whole server",
+            usage: "lock <on/off>"
         })
     }
 
     async run (message, args) {
-        const channels = message.channels.guild.filter(ch => ch.type == 'text')
+        const channels = message.channels.guild.filter(ch => ch.type == "text")
 
-        if(args[0] == 'on') {
+        if(args[0] == "on") {
             channels.forEach(channel => {
                 channel.permissionOverwrites(message.channels.guild.roles.everyone, {
                     SEND_MESSAGE: false,
                 }).then(() => {
-                    channel.setName(channel.name += '🔒')
+                    channel.setName(channel.name += "🔒")
                 })
             })
             return message.channel.send({ embed: {
-                description: 'All channels locked!',
+                description: "All channels locked!",
                 color: 0xf3f3f3
             }})
-        } else if(args[0] == 'off') {
+        } else if(args[0] == "off") {
             channel.permissionOverwrites(message.channels.guild.roles.everyone, {
                 SEND_MESSAGE: true,
             }).then(() => {
-                channel.setName(channel.name.replace('🔒', ''))
+                channel.setName(channel.name.replace("🔒", ""))
             })
             return message.channel.send({ embed: {
-                description: 'Locked',
+                description: "Locked",
                 color: 0xf3f3f3
             }})
         }
@@ -43,10 +43,10 @@ class Lock extends Command {
             message.channel.updateOverwrites(message.channels.guild.roles.everyone, {
                 SEND_MESSAGE: false,
             }).then(() => {
-                message.channel.setName(message.channel.nme += '🔒')
+                message.channel.setName(message.channel.nme += "🔒")
             })
             return message.channel.send({ embed: {
-                description: 'Channel Locked',
+                description: "Channel Locked",
                 color: 0xf3f3f3
             }})
         }

@@ -1,15 +1,15 @@
 
-const ms = require('ms');
-const Command = require('../../core/Command');
+const ms = require("ms");
+const Command = require("../../core/Command");
 
 class Slowmode extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'slowmode',
-            category: 'Moderation',
-            botPerms: ['manageChannels'],
-            memberPerms: ['manageChannels'],
-            description: 'Add a slowmode to a specific channel',
+            name: "slowmode",
+            category: "Moderation",
+            botPerms: ["manageChannels"],
+            memberPerms: ["manageChannels"],
+            description: "Add a slowmode to a specific channel",
             usage: `slowmode < seconds >`
         });
     }
@@ -17,7 +17,7 @@ class Slowmode extends Command {
     async run(message, args) {
         const authorTag = `${message.author.username}#${message.author.discriminator}`;
 
-        const disableArgs = ['off', 'stop', 'disable', 'false'];
+        const disableArgs = ["off", "stop", "disable", "false"];
 
         const channelForSlowmode = message.channel.guild.channels.get(message.channelMentions[0]) || message.channel;
 

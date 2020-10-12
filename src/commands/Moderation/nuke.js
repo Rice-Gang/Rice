@@ -1,16 +1,16 @@
-const { Collection } = require('eris');
-const Command = require('../../core/Command');
+const { Collection } = require("eris");
+const Command = require("../../core/Command");
 
 class Channelnuke extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'nuke',
-            aliases: ['c-nuke', 'channel-nuke', 'channel-c'],
-            category: 'Moderation',
-            botPerms: ['manageChannels', 'manageMessages'],
-            memberPerms: ['manageChannels', 'manageMessages'],
-            description: 'Delete every message in a channel by cloning it',
-            usage: 'channelnuke'
+            name: "nuke",
+            aliases: ["c-nuke", "channel-nuke", "channel-c"],
+            category: "Moderation",
+            botPerms: ["manageChannels", "manageMessages"],
+            memberPerms: ["manageChannels", "manageMessages"],
+            description: "Delete every message in a channel by cloning it",
+            usage: "channelnuke"
         });
     }
 
@@ -33,7 +33,7 @@ class Channelnuke extends Command {
             
             
 
-            msg.channel.delete('Nuke command')
+            msg.channel.delete("Nuke command")
             let newchannel = await this.rice.createChannel(msg.guildID, name, type, {
                 topic: topic,
                 nsfw: nsfw,

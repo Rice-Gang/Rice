@@ -1,16 +1,17 @@
-const { Client, Collection } = require('eris');
+const Eris = require("eris");
 
-const Guild = require('../helpers/models/Guild');
+const Guild = require("../helpers/models/Guild");
 
-class Rice extends Client {
+class Rice extends Eris.Client {
     constructor(token, options) {
         super(token, options);
 
-        this.commands = new Collection();
-        this.aliases = new Collection();
+        this.commands = new Eris.Collection();
+        this.aliases = new Eris.Collection();
 
-        this.snipes = new Collection();
-        this.cooldown = new Set()
+        this.snipes = new Eris.Collection();
+        this.cooldown = new Set();
+        
     }
 
     setupCommand(cmdPath, cmdName) {
@@ -66,7 +67,10 @@ class Rice extends Client {
         if (!warnCase) return null;
         else return warnCase;
     }
-
+async getPrefix(guildID) {
+const prefix = await Guild.findOne({ id: guildID });
+return prefix.prefix;
+}
 }
 
 module.exports = Rice;

@@ -9,8 +9,8 @@ module.exports = class {
 
         this.rice.editStatus({
             type: 2,
-            name: 'rice help',
-            status: 'online'
+            name: "rice help",
+            status: "online"
         });
     }
 }

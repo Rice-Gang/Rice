@@ -5,9 +5,9 @@ module.exports = class Command {
         botPerms = new Array(),
         memberPerms = new Array(),
         cooldown = 3000,
-        category = 'Misc',
-        description = 'No description',
-        usage = 'No usage',
+        category = "Misc",
+        description = "No description",
+        usage = "No usage",
     }) {
         this.rice = rice;
         this.config = { memberPerms, botPerms, cooldown };

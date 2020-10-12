@@ -10,7 +10,7 @@ module.exports = class {
         /*console.log(user.username);
         const logs = await guild.getAuditLogs({
             limit: 1,
-            before: 'MEMBER_BAN_ADD',
+            before: "MEMBER_BAN_ADD",
             actionType: 22
         })*/
     }

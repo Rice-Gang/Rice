@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class Infractions extends Command {
     constructor(client) {
         super(client, {
-            name: 'infractions',
-            aliases: ['warns', 'warnings'],
-            category: 'Moderation',
+            name: "infractions",
+            aliases: ["warns", "warnings"],
+            category: "Moderation",
             botPerms: [],
-            memberPerms: ['manageMessages']
+            memberPerms: ["manageMessages"]
         });
     }
 
@@ -54,12 +54,12 @@ class Infractions extends Command {
 
             if (warns.length < 1) {
                 embed.color = 0xff0000;
-                embed.description = 'This guild has no infractions.';
-                embed.footer.text = ' ';
+                embed.description = "This guild has no infractions.";
+                embed.footer.text = " ";
             } else {
                 warns.forEach((s) => {
                     embed.color = 0xd6d3c1;
-                    embed.fields.push({ name: this.firstLUC(s.typeOf) + ' | #' + s.case, value: `<@!${s.moderator}> - ${s.reason}`, inline: false });
+                    embed.fields.push({ name: this.firstLUC(s.typeOf) + " | #" + s.case, value: `<@!${s.moderator}> - ${s.reason}`, inline: false });
                     embed.footer.text = `Page ${args[0] || 1} / ${page}`;
                 });
             }
@@ -95,7 +95,7 @@ class Infractions extends Command {
 
             const embed = {
                 author: {
-                    name: member.user.username + '#' + member.user.discriminator,
+                    name: member.user.username + "#" + member.user.discriminator,
                     icon_url: member.user.avatarURL
                 },
                 color: null,
@@ -108,12 +108,12 @@ class Infractions extends Command {
 
             if (warns.length < 1) {
                 embed.color = 0xff0000;
-                embed.description = 'This user has no infractions.';
-                embed.footer.text = ' ';
+                embed.description = "This user has no infractions.";
+                embed.footer.text = " ";
             } else {
                 warns.forEach((s) => {
                     embed.color = 0xd6d3c1;
-                    embed.fields.push({ name: this.firstLUC(s.typeOf) + ' | #' + s.case, value: 'Moderator', value: `<@!${s.moderator}> - ${s.reason}`, inline: false });
+                    embed.fields.push({ name: this.firstLUC(s.typeOf) + " | #" + s.case, value: "Moderator", value: `<@!${s.moderator}> - ${s.reason}`, inline: false });
                     embed.footer.text = `Page ${args[1] || 1} / ${page}`
                 });
             }

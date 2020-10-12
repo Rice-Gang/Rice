@@ -1,13 +1,13 @@
-const Command = require('../../core/Command');
+const Command = require("../../core/Command");
 
 class Howgay extends Command {
     constructor(rice) {
         super(rice, {
-            name: 'howgay',
-            category: 'Fun',
+            name: "howgay",
+            category: "Fun",
             botPerms: [],
             memberPerms: [],
-            description: 'See how gay someone is'
+            description: "See how gay someone is"
         });
     }
 
@@ -16,10 +16,10 @@ class Howgay extends Command {
         const author = message.author;
 
         if (!args[0]) {
-        return message.channel.send('You are ' + Math.floor(Math.random() * 12) +5 + '% gay.')
+        return message.channel.send("You are " + Math.floor(Math.random() * 12) +5 + "% gay.")
         }
         else {
-            message.channel.send(`<@${member.id}> is ` + Math.floor(Math.random() * 12) +5 + '% gay.')
+            message.channel.send(`<@${member.id}> is ` + Math.floor(Math.random() * 12) +5 + "% gay.")
         }
     }
 }
