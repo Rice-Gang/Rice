@@ -11,7 +11,7 @@ class Rice extends Eris.Client {
 
         this.snipes = new Eris.Collection();
         this.cooldown = new Set();
-        
+
     }
 
     setupCommand(cmdPath, cmdName) {
@@ -67,10 +67,30 @@ class Rice extends Eris.Client {
         if (!warnCase) return null;
         else return warnCase;
     }
-async getPrefix(guildID) {
-const prefix = await Guild.findOne({ id: guildID });
-return prefix.prefix;
-}
+    async getPrefix(guildID) {
+        const prefix = await Guild.findOne({ id: guildID });
+        return prefix.prefix;
+    }
+    async resolveCase(guildID, caseID) {
+        if (!caseID) throw new Error(`No case id specified.`);
+        const data = await Guild.findOne({ id: guildID });
+
+        const cases = data.warns;
+
+        const foundCase = cases.find(x => x.Case == parseInt(caseID));
+        if (!foundCase) return null;
+        else return foundCase; 
+    }
+    async getAllCases(guildID, page) {
+        const data = await Guild.findOne({ id: guildID });
+
+        const cases = data.warns;
+
+        if (cases.length == 0) return null;
+        else {
+                
+        }
+    }
 }
 
 module.exports = Rice;
