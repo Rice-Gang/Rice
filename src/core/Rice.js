@@ -67,7 +67,9 @@ class Rice extends Eris.Client {
         if (!warnCase) return null;
         else return warnCase;
     }
-
+async getPrefix(guildID) {
+const prefix = await Guild.findOne({ id: guildID });
+return prefix.prefix;
 }
 
 module.exports = Rice;
