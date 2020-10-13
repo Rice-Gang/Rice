@@ -1,5 +1,4 @@
 const Command = require("../../core/Command");
-const MessageEmbed = require("../../core/MessageEmbed");
 const jokes = require("jokeslol");
 class dadjoke extends Command {
   constructor(rice) {
@@ -14,7 +13,6 @@ class dadjoke extends Command {
 
   async run(message, args) {
     jokes.DadJoke(function (joke) {
-      console.log(joke);
       return message.channel.send(joke);
     });
   }
