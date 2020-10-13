@@ -26,11 +26,13 @@ class Viewcase extends Command {
             else if (guildFound.warns.length <= 10) page = 2;
             else if (guildFound.warns.length <= 15) page = 3;
             else if (guildFound.warns.length <= 20) page = 4;
-            const array = guildFound.warns.map(warn => `\`${warn.Case}\` - ${this.rice.users.get(warn.User).username}#${this.rice.users.get(warn.User).discriminator}\n\n**Warned By**: ${this.rice.users.get(warn.Mod).username}#${this.rice.users.get(warn.Mod).discriminator}\n**Reason**: ${warn.Reason}`);
+            let array = guildFound.warns.map(warn => `\`${warn.Case}\` - ${this.rice.users.get(warn.User).username}#${this.rice.users.get(warn.User).discriminator}\n\n**Warned By**: ${this.rice.users.get(warn.Mod).username}#${this.rice.users.get(warn.Mod).discriminator}\n**Reason**: ${warn.Reason}`);
+            array = array.slice(amount - 5, amount);
             const allWarns = new MessageEmbed()
             .setTitle(`Warns`)
             .setDescription(`${array.join('\n\n')}`)
-            .setColor(0xFFFFFd);
+            .setColor(0xFFFFFd)
+            .setFooter(`Page ${args[1] || 1} of ${page}`);
             message.channel.send({ embed: allWarns });
         }
 
