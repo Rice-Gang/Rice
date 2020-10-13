@@ -49,7 +49,8 @@ class Viewcase extends Command {
             message.channel.send({ embed });
         }
 
-        const caseFound = await this.rice.resolveCase(message.channel.guild.id, args[0]);
+        if (!message.content.includes('--all')) {
+            const caseFound = await this.rice.resolveCase(message.channel.guild.id, args[0]);
 
         if (!caseFound) {
             return message.channel.sendError('That case doesn\'t exist.')
@@ -78,6 +79,7 @@ class Viewcase extends Command {
             };
 
             message.channel.send({ embed });
+        }
         }
     }
 }
