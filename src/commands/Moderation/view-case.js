@@ -27,12 +27,12 @@ class Viewcase extends Command {
             let page;
             let amount = 5 * parseInt(args[1] || 1);
 
-            if (data.guild.warns.length <= 5) page = 1;
-            if (data.guild.warns.length <= 10) page = 2;
-            if (data.guild.warns.length <= 15) page = 3;
-            if (data.guild.warns.length <= 20) page = 4;
-            if (data.guild.warns.length <= 25) page = 5;
-            if (data.guild.warns.length <= 30) page = 6;
+            if (data.guild.warns.length =< 5) page = 1;
+            if (data.guild.warns.length =< 10) page = 2;
+            if (data.guild.warns.length =< 15) page = 3;
+            if (data.guild.warns.length =< 20) page = 4;
+            if (data.guild.warns.length =< 25) page = 5;
+            if (data.guild.warns.length =< 30) page = 6;
 
             let array = data.guild.warns.map(x => `\`${x.Case}\` - ${this.rice.users.get(x.User).username}#${this.rice.users.get(x.User).discriminator}\n\n**Warned by**: ${this.rice.users.get(x.Mod).username}#${this.rice.users.get(x.Mod).discriminator}\n**Reason**: ${x.Reason}`);
             array = array.slice(amount - 5, amount);
