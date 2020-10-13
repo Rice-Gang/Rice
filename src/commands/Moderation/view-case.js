@@ -41,10 +41,6 @@ class Viewcase extends Command {
                 return message.channel.sendError('There are no warns for that page')
             }
 
-            if (args[1] || 1 > page) {
-                return message.channel.send('That page doesn\'t exist.')
-            }
-
             const embed = {
                 title: `${message.channel.guild.name} Warns`,
                 description: array.join('\n\n'),
