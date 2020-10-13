@@ -13,7 +13,7 @@ module.exports = class {
         data.guild = await this.rice.guild(message.channel.guild.id);
 
         if (message.channel.guild === undefined) return;
-        //if (message.author.bot) return;
+        if (message.author.bot) return;
 
         const prefix = data.guild.prefix ? data.guild.prefix : "rice ";
 
