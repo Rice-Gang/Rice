@@ -37,6 +37,14 @@ class Viewcase extends Command {
             let array = data.guild.warns.map(x => `\`${x.Case}\` - ${this.rice.users.get(x.User).username}#${this.rice.users.get(x.User).discriminator}\n\n**Warned by**: ${this.rice.users.get(x.Mod).username}#${this.rice.users.get(x.Mod).discriminator}\n**Reason**: ${x.Reason}`);
             array = array.slice(amount - 5, amount);
 
+            if (!array.length) {
+                return message.channel.sendError('There are no warns for that page')
+            }
+
+            if (args[1] || 1 > page) {
+                return message.channel.send('That page doesn\'t exist.')
+            }
+
             const embed = {
                 title: `${message.channel.guild.name} Warns`,
                 description: array.join('\n\n'),
