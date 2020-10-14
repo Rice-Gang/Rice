@@ -1,8 +1,8 @@
 const Command = require("../../core/Command");
 
 class Warn extends Command {
-    constructor(client) {
-        super(client, {
+    constructor(rice) {
+        super(rice, {
             name: "warn",
             category: "Moderation",
             aliases: [],
@@ -15,8 +15,8 @@ class Warn extends Command {
 
         const user = message.mentions[0] || this.rice.users.get(args[0]) || this.rice.users.find(x => x.username == args[0]);
 
-        if (!message.mentions[0] || !message.channel.guild.members.get(message.mentions[0].id)) {
-            return message.channel.sendError("<:no:762884741069275156> You need to provide a valid member to warn.")
+        if (!message.mentions[0] || !message.channel.guild.members.get(message.mentions[0].id) || !user.id) {
+            return message.channel.sendError(" You need to provide a valid member to warn.")
         }
 
         if (user.id === message.author.id) {
@@ -33,7 +33,7 @@ class Warn extends Command {
             message.channel.sendError("You need to provide a valid user.")
         }
 
-        let reason = args.slice(member.user.username.length).join(" ");
+        let reason = args.slice(1).join(" ");
 
         if (!reason) reason = "No reason provided";
 

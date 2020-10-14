@@ -3,8 +3,8 @@ const Command = require('../../core/Command');
 const Embed = require('../../core/MessageEmbed');
 
 class Viewcase extends Command {
-    constructor(client) {
-        super(client, {
+    constructor(rice) {
+        super(rice, {
             name: 'view-case',
             category: 'Moderation',
             aliases: ['vc'],
