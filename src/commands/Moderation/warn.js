@@ -13,7 +13,7 @@ class Warn extends Command {
 
     async run(message, args, data) {
 
-        const user = message.mentions[0] || bot.users.get(args[0]) || bot.users.find(x => x.username == args[0]);
+        const user = message.mentions[0] || this.rice.users.get(args[0]) || this.rice.users.find(x => x.username == args[0]);
 
         if (!message.mentions[0] || !message.channel.guild.members.get(message.mentions[0].id)) {
             return message.channel.sendError("<:no:762884741069275156> You need to provide a valid member to warn.")
