@@ -9,7 +9,6 @@ class Sepia extends Command {
             name: "sepia",
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Place a sepia filter over a image",
             usage: "sepia [ user ]"
         });

@@ -9,7 +9,6 @@ class Sepia extends Command {
             name: "changemymind",
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Changemymind meme template",
             usage: "changemymind < text >"
         });

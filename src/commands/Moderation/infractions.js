@@ -6,7 +6,6 @@ class Infractions extends Command {
             name: "infractions",
             aliases: ["warns", "warnings"],
             category: "Moderation",
-            botPerms: [],
             memberPerms: ["manageMessages"]
         });
     }

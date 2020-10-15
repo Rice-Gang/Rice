@@ -6,7 +6,6 @@ class Lenny extends Command {
             name: "lenny",
             category: "Fun",
             botPerms: ["sendMessages"],
-            memberPerms: [],
             description: "Send a simple lenny face."
         });
     }

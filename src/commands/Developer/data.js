@@ -8,10 +8,7 @@ class data extends Command {
         super(rice, {
             name: "data",
             category: "Developer",
-            botPerms: ["sendMessages"],
-            memberPerms: [],
-            description: "Nothing here lol",
-            usage: "nothing to use :/"
+            botPerms: ["sendMessages"]
         });
     }
 

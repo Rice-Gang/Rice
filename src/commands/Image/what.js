@@ -9,7 +9,6 @@ class What extends Command {
             name: "what",
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "What you say",
             usage: "what [ user ]"
         });

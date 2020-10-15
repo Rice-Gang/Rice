@@ -10,7 +10,6 @@ class channelinfo extends Command {
             aliases: ["channel"],
             category: "Info",
             botPerms: ["embedLinks"],
-            memberPerms: [],
             description: "Shows the information of a channel",
         });
     }

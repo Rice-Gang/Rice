@@ -7,7 +7,6 @@ class fac extends Command {
             name: "fac",
             category: "Fun",
             botPerms: ["sendMessages"],
-            memberPerms: [],
             description: "Flip A Coin",
         });
     }

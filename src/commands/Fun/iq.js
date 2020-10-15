@@ -6,7 +6,6 @@ class iq extends Command {
       name: "iq",
       category: "Fun",
       botPerms: ["sendMessages"],
-      memberPerms: [],
       description: "Tells you your IQ",
     });
   }

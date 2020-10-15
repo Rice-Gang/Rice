@@ -5,8 +5,6 @@ class Howgay extends Command {
         super(rice, {
             name: "howgay",
             category: "Fun",
-            botPerms: [],
-            memberPerms: [],
             description: "See how gay someone is"
         });
     }

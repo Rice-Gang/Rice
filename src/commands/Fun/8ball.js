@@ -9,7 +9,6 @@ class Ball extends Command {
           name: "8ball",
           category: "Fun",
           botPerms: ["attachFiles"],
-          memberPerms: [],
           description: "8ball",
         });
       }

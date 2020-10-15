@@ -6,9 +6,7 @@ class Snipe extends Command {
             name: "snipe",
             description: "View the last 10 deleted messages in a channel.",
             category: "Misc",
-            botPerms: [],
             aliases: ["sniper"],
-            memberPerms: [],
             usage: "snipe <1 - 10>"
         });
     }

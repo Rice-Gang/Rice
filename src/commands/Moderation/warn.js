@@ -5,9 +5,7 @@ class Warn extends Command {
         super(rice, {
             name: "warn",
             category: "Moderation",
-            aliases: [],
             memberPerms: ["manageMessages"],
-            botPerms: []
         });
     }
 
@@ -33,7 +31,7 @@ class Warn extends Command {
             message.channel.sendError("You need to provide a valid user.")
         }
 
-        let reason = args.slice(1).join(" ");
+        let reason = args.slice(user.user).join(" ");
 
         if (!reason) reason = "No reason provided";
 
@@ -52,6 +50,7 @@ class Warn extends Command {
         }
 
         message.channel.createMessage({ embed });
+        member.getDMChannel().createMessage("you have been warned for "+reason)
     }
 }
 

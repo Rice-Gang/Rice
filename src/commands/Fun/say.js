@@ -6,7 +6,6 @@ class say extends Command {
             name: "say",
             category: "Fun",
             botPerms: ["sendMessages"],
-            memberPerms: [],
             description: "Say a message"
         });
     }

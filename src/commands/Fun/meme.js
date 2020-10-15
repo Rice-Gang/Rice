@@ -8,7 +8,6 @@ class Meme extends Command {
             name: "meme",
             category: "Fun",
             botPerms: ["embedLinks"],
-            memberPerms: [],
             description: "Send a meme from reddit"
         });
     }

@@ -10,7 +10,6 @@ class Eval extends Command {
             name: "eval",
             description: "Evaluates some javascript code.",
             botPerms: ["embedLinks"],
-            memberPerms: [],
             category: "Developer"
         });
     }

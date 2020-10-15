@@ -7,10 +7,8 @@ class Gay extends Command {
     constructor(rice) {
         super(rice, {
             name: "gay",
-            aliases: [],
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Overly the raibow over a image",
             usage: `gay [ user ]`
         });

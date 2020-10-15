@@ -9,7 +9,6 @@ class Vibing extends Command {
             name: "vibing",
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Sometimes you just need to vibe",
             usage: "vibing [ user ]"
         });

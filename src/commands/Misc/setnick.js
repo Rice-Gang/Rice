@@ -6,7 +6,6 @@ class Setnick extends Command {
             name: "setnick",
             category: "Misc",
             botPerms: ["manageNicknames"],
-            memberPerms: [],
             description: "Change someones nickname"
         });
     }

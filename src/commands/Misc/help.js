@@ -7,7 +7,6 @@ class Help extends Command {
             name: "help",
             category: "Misc",
             botPerms: ["sendMessages"],
-            memberPerms: [],
             description: "View all commands."
         });
     }
@@ -25,30 +24,23 @@ class Help extends Command {
             //console.log(cmd)
             const embed = {
                 title: `Command \`${prefix.prefix}\`${cmd.help.name}`,
-                fields: [],
+                fields: [{
+                    name: "Category",
+                    value: cmd.help.category,
+                    inline
+                },
+                {
+                    name: "Description",
+                    value: cmd.help.description,
+                    inline
+                },
+                {
+                    name: "Cooldown",
+                    value: cmd.config.cooldown / 1000 + " seconds" || "3 seconds",
+                    inline
+                }],
                 color: 0xFFFFFd
             }
-            if (cmd.help.category)
-                embed.fields.push(
-                    {
-                        name: "Category",
-                        value: cmd.help.category || "None",
-                        inline
-                    })
-            if (cmd.help.description)
-                embed.fields.push(
-                    {
-                        name: "Description",
-                        value: cmd.help.description || "None",
-                        inline
-                    })
-            if (cmd.config.cooldown)
-                embed.fields.push(
-                    {
-                        name: "Cooldown",
-                        value: cmd.config.cooldown / 1000 + " seconds" || "None",
-                        inline
-                    })
             if (cmd.help.aliases)
                 embed.fields.push(
                     {
@@ -59,21 +51,21 @@ class Help extends Command {
                 embed.fields.push(
                     {
                         name: "Usage",
-                        value: `\`${prefix.prefix}\`` + cmd.help.usage || "None",
+                        value: `\`${prefix.prefix}\`` + cmd.help.usage,
                         inline
                     })
             if (cmd.config.botPerms)
                 embed.fields.push(
                     {
                         name: "Bot Permissions",
-                        value: cmd.config.botPerms.map(x => `\`${x}\``).join(", ") || "None",
+                        value: cmd.config.botPerms.map(x => `\`${x}\``).join(", ") || `\`sendMessages\``,
                         inline
                     })
             if (cmd.config.memberPerms)
                 embed.fields.push(
                     {
                         name: "Member Permissions",
-                        value: cmd.config.memberPerms.map(x => `\`${x}\``).join(", ") || "None",
+                        value: cmd.config.memberPerms.map(x => `\`${x}\``).join(", ") || `\`sendMessages\``,
                         inline
                     })
             console.log(embed.fields)

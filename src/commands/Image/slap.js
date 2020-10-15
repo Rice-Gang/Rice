@@ -9,7 +9,6 @@ class Slap extends Command {
             name: "slap",
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Slap someobe",
             usage: "slap [ user ]"
         });

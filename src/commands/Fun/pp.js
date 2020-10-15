@@ -8,7 +8,6 @@ class pp extends Command {
             category: "Fun",
             botPerms: ["sendMessages"],
             aliases: ["penis"],
-            memberPerms: [],
             description: "Shows a user pp size"
         });
     }

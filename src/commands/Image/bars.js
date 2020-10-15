@@ -10,7 +10,6 @@ class Bars extends Command {
             aliases: ["jail"],
             category: "Image",
             botPerms: ["attachFiles"],
-            memberPerms: [],
             description: "Place bars over a image",
             usage: "bars [ user ]"
         });

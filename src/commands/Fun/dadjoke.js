@@ -6,7 +6,6 @@ class dadjoke extends Command {
       name: "dadjoke",
       category: "Fun",
       botPerms: ["sendMessages"],
-      memberPerms: [],
       description: "Gets a funny Dad Joke",
     });
   }

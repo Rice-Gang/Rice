@@ -9,7 +9,6 @@ class Viewcase extends Command {
             category: 'Moderation',
             aliases: ['vc'],
             memberPerms: ['manageMessages'],
-            botPerms: []
         });
     }
 
