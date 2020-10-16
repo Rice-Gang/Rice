@@ -28,19 +28,6 @@ class Removecase extends Command {
         else {
             await this.rice.removeCase(message.channel.guild.id, args[0]);
         }
-        // const embed = {
-        //     color: 0xFFFFFd,
-        //     author: {
-        //         name: mod,
-        //         icon_url: this.rice.users.get(caseFound.Mod).dynamicAvatarURL('png')
-        //     },
-        //     description: `**Warned By**: ${mod}\n**Target**: ${target}\n**Reason**: ${caseFound.Reason}`,
-        //     timestamp: caseFound.Date,
-        //     footer: {
-        //         text: 'Add --all at the end to view all warns in this server.'
-        //     }
-        // };
-
         //message.channel.sendSuccess(` `);
 
     }
