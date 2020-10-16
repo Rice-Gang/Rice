@@ -52,7 +52,22 @@ class Embed {
     addBlankField(inline = false) {
         return this.addField('\u200B', '\u200B', inline);
     }
+    addFields(array) {
+        if (!array || !Array.isArray(array)) {
+            throw new Error(`Not a valid fields array`);
+        }
+        if (this.fields.length + array.length > 25) array = array.slice(0, (25-this.fields.length + array.length));
 
+        array.forEach(e => {
+            if (e.name == undefined || e.name == null) {
+                throw new Error(`No valid name for the field specified`)
+            }
+            if (e.value == undefined || e.value == null) {
+                throw new Error(`No Valid value for the field specified`)
+            }
+            this.fields.push({ name: e.name, value: e.value, inline: e.inline || false });
+        })
+    }
     attachFile(file) {
         this.file = file;
 

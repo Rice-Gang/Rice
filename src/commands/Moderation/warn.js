@@ -50,7 +50,6 @@ class Warn extends Command {
         }
 
         message.channel.createMessage({ embed });
-        member.getDMChannel().createMessage("you have been warned for "+reason)
     }
 }
 

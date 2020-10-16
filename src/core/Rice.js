@@ -60,6 +60,14 @@ class Rice extends Eris.Client {
         else caseNum = warnCase + 1
         return caseNum;
     }
+    async removeCase(guildID, caseID) {
+        if (!caseID) throw new Error(`No case number specified to be deleted.`);
+        const data = await Guild.findOne({ id: guildID });
+        const cases = data.warns;
+        const foundCase = cases.find(x => x.Case == parseInt(caseID));
+        if (!foundCase) return null;
+        else return await data.deleteOne({cases: foundCase});
+    }
     async getWarns(target, serverID) {
         const data = await Guild.findOne({ id: serverID });
         const warnCase = data.warns.find(x => x.User == target);
