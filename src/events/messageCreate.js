@@ -10,11 +10,11 @@ module.exports = class {
 
         const developers = ["699312838455459911", "657191205968543764", "329220047824486400", "521677874055479296", "373293135704621077", "695520751842885672", "515204641450098704", "342314924804014081"]
 
-        data.guild = await this.rice.guild(message.channel.guild.id);
-
         if (message.channel.guild === undefined) return;
         if (message.author.bot) return;
 
+        data.guild = await this.rice.guild(message.channel.guild.id);
+        
         const prefix = data.guild.prefix ? data.guild.prefix : "rice ";
 
         const prefixRegex = new RegExp(`^(<@!?${this.rice.user.id}>)\\s*`);
