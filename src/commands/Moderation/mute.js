@@ -52,7 +52,6 @@ class Mute extends Command {
 
         message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || "No Reason Provided."}`, color: 0x3cb474 } });
 
-        memberToMute.getDMChannel().then(x => x.createMessage(`You have been muted in ${message.channel.guild.name} for ${reason}.`));
 
         message.channel.guild.channels.forEach(c => {
             if (!c.permissionsOf(this.rice.user.id).has("readMessages")) return;
@@ -62,6 +61,7 @@ class Mute extends Command {
         function error(text) {
             message.channel.send({ embed: { description: `<:no:762884741069275156> ${text}`, color: 0x0ff4949 } })
         }
+        memberToMute.getDMChannel().then(x => x.createMessage(`You have been muted in ${message.channel.guild.name} for ${reason}.`));
 
     }
 }
