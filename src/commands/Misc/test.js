@@ -13,7 +13,7 @@ class Test extends Command {
     }
 
     async run(message, args) {
-        return message.channel.send("Test Command Works!")
+        return message.author.getDMChannel().then(x => x.createMessage("Test Command Works!"));
     }
 }
 
