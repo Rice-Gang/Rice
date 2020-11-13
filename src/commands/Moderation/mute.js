@@ -21,7 +21,7 @@ class Mute extends Command {
 
         if (!memberToMute[0] || !message.channel.guild.members.get(memberToMute[0].id)) return error(`**${authorTag}** Specify a valid member to mute!`);
 
-        if (memberToMute[0].id == message.author.id) return error(`**${authorTag}** You can mute yourself!`);
+        //if (memberToMute[0].id == message.author.id) return error(`**${authorTag}** You can mute yourself!`);
 
         const highestAuthorRole = Math.max.apply(Math, message.member.roles.map((x) => {
             return x.position;
@@ -53,7 +53,7 @@ class Mute extends Command {
         message.channel.send({ embed: { description: `<:yes:762884751832252417> **${targetTag}** has been muted by **${authorTag}**\nReason: ${reason || "No Reason Provided."}`, color: 0x3cb474 } });
 
         memberToMute.getDMChannel().then(x => x.createMessage(`You have been muted in ${message.channel.guild.name} for ${reason}.`));
-        
+
         message.channel.guild.channels.forEach(c => {
             if (!c.permissionsOf(this.rice.user.id).has("readMessages")) return;
             else c.editPermission(muteRole.id, 0, 2048, "role");
