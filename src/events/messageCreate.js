@@ -29,10 +29,7 @@ module.exports = class {
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
         
-        if (cmd === "") {
-           return message.channel.sendError("What do you want from me?!??!?!");
-        }
-        else if (cmd !== command) {
+        if (!command) {
             return message.channel.sendError(`Command \`${cmd}\` is not available.`)
         }
         
