@@ -26,6 +26,8 @@ class Eval extends Command {
             return message.channel.sendError("You need to provide some code...")
         }
 
+        if (input.includes("token")) return message.channel.sendError("good try buddy");
+        
         const asynchr = input.includes("return") || input.includes("await");
 
         let result, evalTime;
