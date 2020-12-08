@@ -28,11 +28,11 @@ module.exports = class {
         const cleanArgs = message.cleanContent.split(" ").slice(2);
 
         const command = this.rice.commands.get(cmd) || this.rice.commands.get(this.rice.aliases.get(cmd));
-
+        
         if (!command) {
             return message.channel.sendError(`Command \`${cmd}\` is not available.`)
         }
-
+        
         if (command.help.category === "Developer" && !developers.includes(message.author.id)) return;
 
 
