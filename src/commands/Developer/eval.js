@@ -37,7 +37,7 @@ class Eval extends Command {
             result = await eval(asynchr ? `(async() => {${input}})();` : input);
             evalTime = Date.now() - before;
             if (typeof result !== "string") {
-                result = clean(inspect(result, {
+                result = this.clean(inspect(result, {
                     depth: +!(inspect(result, { depth: 1 }).length > 1000)
                 }));
             }
