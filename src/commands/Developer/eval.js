@@ -27,7 +27,7 @@ class Eval extends Command {
         }
 
         if (input.includes("token")) return message.channel.sendError("good try buddy");
-        
+
         const asynchr = input.includes("return") || input.includes("await");
 
         let result, evalTime;
@@ -37,9 +37,9 @@ class Eval extends Command {
             result = await eval(asynchr ? `(async() => {${input}})();` : input);
             evalTime = Date.now() - before;
             if (typeof result !== "string") {
-                result = inspect(result, {
+                result = clean(inspect(result, {
                     depth: +!(inspect(result, { depth: 1 }).length > 1000)
-                });
+                }));
             }
         } catch (err) {
             result = err.message;
@@ -69,6 +69,15 @@ class Eval extends Command {
                 }
             });
         }
+    }
+    clean(text) {
+        if (typeof text === 'string'){
+            text = text
+                .replace(/`/g, `\`${String.fromCharCode(8203)}`)
+                .replace(/@/g, `@${String.fromCharCode(8203)}`)
+                .replace(new RegExp(this.rice.token || rice.token), '****')
+        }
+        return text;
     }
 }
 
